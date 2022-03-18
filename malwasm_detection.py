@@ -3,6 +3,7 @@ import argparse
 import os
 import time
 import urllib
+import pyfiglet
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from pathlib import Path
@@ -22,6 +23,8 @@ chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
 chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
+ascii_banner = pyfiglet.figlet_format("Malwasm")
+print(ascii_banner)
 print("Detecting WASM files...")
 # Specify path to chromedriver and set specified options
 driver = webdriver.Chrome("chromedriver", options=chrome_options)
