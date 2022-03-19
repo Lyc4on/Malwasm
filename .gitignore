@@ -1,3 +1,11 @@
 /.idea
 /Temp
 /venv
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+apk_samples/
