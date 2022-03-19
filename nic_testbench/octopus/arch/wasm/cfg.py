@@ -20,6 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+# modified code from https://github.com/pventuzelo/octopus/blob/master/octopus/arch/wasm/cfg.py
+
 from logging import getLogger
 
 from octopus.analysis.cfg import CFG
@@ -305,9 +307,12 @@ class WasmCFG(CFG):
         self.functions = list()
         self.basicblocks = list()
         self.edges = list()
+        self.final = list()
+        self.datas = list()
 
         self.analyzer = WasmModuleAnalyzer(self.module_bytecode)
         self.run_static_analysis()
+        self.profile_instrs_per_funcs()
 
     def run_static_analysis(self):
         self.functions = enum_func(self.module_bytecode)
@@ -373,4 +378,32 @@ class WasmCFG(CFG):
         line = ("length functions = %d\n" % len(self.functions))
         line += ("length basicblocks = %d\n" % len(self.basicblocks))
         line += ("length edges = %d\n" % len(self.edges))
+        line += ("final: \n%s\n\n" % self.final)
+        line += ("datas: \n%s\n\n" % self.datas)
         return line
+
+    def profile_instrs_per_funcs(self):
+        # Reset final and datas
+        self.final = list()
+        self.datas = list()
+
+        import numpy as np
+
+        # legend x axis - name functions
+        group_names = tuple([func.name for func in self.functions])
+        # number of functions
+        ind = [x for x, _ in enumerate(self.functions)]
+
+        # list all groups
+        all_groups = [v for _, v in _groups.items()]
+
+        # list()
+        for func in self.functions:
+            data = list()
+            group = [i.group for i in func.instructions]
+            for g in all_groups:
+                data.append(group.count(g))
+            self.datas.append(tuple(data))
+
+        for idx in range(len(all_groups)):
+            self.final.append(tuple([x[idx] for x in self.datas]))

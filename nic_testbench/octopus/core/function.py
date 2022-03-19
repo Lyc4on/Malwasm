@@ -20,6 +20,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+# modified code from https://github.com/pventuzelo/octopus/blob/master/octopus/nic_testbench/octopus/core/function.py
+
+from octopus.arch.wasm.wasm import _groups
+from collections import Counter
+
 class Function(object):
 
     def __init__(self, start_offset, start_instr=None,
@@ -34,6 +39,7 @@ class Function(object):
         self.end_instr = None
         self.basicblocks = list()
         self.instructions = list()
+        self.profile_instrs = dict()
 
     def __str__(self):
         line = ('%x' % self.start_offset) + ': ' + str(self.name) + '\n'
@@ -46,7 +52,26 @@ class Function(object):
             line += 'end_offset = ' + str(self.end_offset) + '\n'
         if self.end_instr:
             line += 'end_instr = ' + str(self.end_instr.name) + '\n'
-        line += 'lenght basicblocks: %s\n' % len(self.basicblocks)
-        line += 'lenght instructions: %s\n' % len(self.instructions)
+        line += 'length basicblocks: %s\n' % len(self.basicblocks)
+        line += 'length instructions: %s\n' % len(self.instructions)
+        line += 'ratio: %s instrs/block\n' % round(len(self.instructions)/len(self.basicblocks), 2)
+        
+        line += 'instructions: \n'
+        self.profile_instrs_per_func()
+
+        for instr in self.instructions:
+            line += '\t%s\n' % str(instr.name)
+
+        line += 'profile: %s\n' % str(self.profile_instrs)
         line += '\n\n'
         return line
+
+    # Custom method to profile instrs per function
+    def profile_instrs_per_func(self):
+        # instrs_arr = list()
+        for instr in self.instructions:
+            # instrs_arr.append(instr)
+            self.profile_instrs[instr.name] = self.profile_instrs.get(instr.name, 0) + 1
+        
+        
+        
