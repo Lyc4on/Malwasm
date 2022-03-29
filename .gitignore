@@ -12,3 +12,4 @@ apk_samples/
 __pycache__/
 nic_testbench/__pycache__/
 *.pyc
+.vscode/

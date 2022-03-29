@@ -5,7 +5,7 @@
 import argparse
 import sys
 
-from utils import bytecode_to_bytes
+from classes import classes
 
 from wasm import (
     decode_module, decode_bytecode,
@@ -75,6 +75,8 @@ def main() -> None:
                     # outfile.write('Current section is SEC_FUNCTION\n')
                     func_sec = cur_sec_data.payload
             # outfile.write('\n')
+        
+        mod_obj = classes.Module() # Module Object
 
         # Disassemble
         if args.disassmble and code_sec is not None:
@@ -90,8 +92,12 @@ def main() -> None:
                 outfile.write('\n'.join(format_function(func_body, func_type)))
                 outfile.write('\n')
 
-        outfile.close()
-            
+                func_obj = classes.Function(i, func_body, func_type) # Create Function object
+                mod_obj.add_func(func_obj) # Add Function obj to module object
+
+        print(mod_obj)
+
+        outfile.close()            
 
 if __name__ == '__main__':
     main()
