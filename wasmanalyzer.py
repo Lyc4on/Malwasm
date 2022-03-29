@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Usage: python3 wasmanalyzer.py -d -f wasmwat_samples/bb.wasm -o out.txt
+# Usage:
+# python3 wasmanalyzer.py -d -f nic_testbench/wasmwat_samples/cryptonight/cryptonight.wasm -o out.txt
 
 import argparse
 import sys
