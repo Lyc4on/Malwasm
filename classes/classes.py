@@ -24,7 +24,7 @@ class Rule():
 class Module():
     func_objs = []
     profile = {} 
-    called_by = {} # {'func_id_A': [func_id that calls A]} --> {'1': [15, 17, 18]}
+    called_by = {} # { called_id: {caller_id: count,...}, ...}
 
     def __init__(self):
         pass
