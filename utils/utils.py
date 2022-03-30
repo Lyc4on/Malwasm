@@ -100,6 +100,26 @@ def get_blocks_count(profile):
         count += 1
     return count
 
+def get_mod_profile(profile, insn_count):
+    returnProfile = {}
+    insn = ['i32.add', 'i32.and', 'i32.shl', 'i32.shr_u', 'i32.xor']
+    total_insn_count = 0
+    
+    for ins in insn:
+        value = profile.get(ins, 0) # get value, if None then set 0
+        returnProfile[ins] = value
+        total_insn_count += value
+    
+    # Get local_dist of each ins in returnProfile
+    returnProfile = {k:round(v/total_insn_count, 2) if v > 0 else 0 
+                    for (k,v) in returnProfile.items()}
+
+    # Overall 'dist' = total_insn_count/insn_count
+    returnProfile['global_dist'] = round(total_insn_count/insn_count, 2)
+        # returnProfile[ins] = round(value/insn_count, 2) if value > 0 else 0
+
+    return returnProfile
+
 def get_profile(insn_arr):
     profile = {}
     # Strip whitespace and then split to keep only first string of each element in insn_arr

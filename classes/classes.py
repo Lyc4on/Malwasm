@@ -16,11 +16,38 @@ from wasm import (
 
 class Module():
     func_objs = []
-
+    profile = {} 
+    called_by = {} # {'func_id_A': [func_id that calls A]} --> {'1': [15, 17, 18]}
 
     def __init__(self):
         pass
-    
+
+    def profile_module(self):
+        if self.func_objs: # if arr is not empty
+            self.sort_objs() # Sort func_objs
+            length = 5 if len(self.func_objs) >= 5 else len(self.func_objs)
+            
+            for i in range(length):
+                func_id = self.func_objs[i].id
+                func_profile = self.func_objs[i].profile
+                func_insn_count = self.func_objs[i].insn_count
+                self.profile[func_id] = utils.get_mod_profile(func_profile, func_insn_count)
+
+    def analyse_cfg(self):
+        if self.func_objs:
+            for func in self.func_objs:
+                # Set counter default 0 if key don't exist
+                self.called_by[str(func.id)] = self.called_by.get(str(func.id), {})
+                
+                # print(self.called_by[str(func.id)])
+                caller_id = str(func.id)
+                if func.calls_arr: # if not empty
+                    for called in func.calls_arr:
+                        called_id = str(called)
+                        self.called_by[called_id] = self.called_by.get(called_id, {}) # set if key not exist yet
+                        current_count = self.called_by[called_id].get(caller_id, 0) # set 0 if not exist
+                        self.called_by[called_id][caller_id] = current_count+1 if current_count > 0 else 1
+
     def add_func(self, func):
         if not isinstance(func, Function):
             raise ValueError("Can't add non-Function objects to func_objs array")
@@ -31,24 +58,23 @@ class Module():
         self.func_objs.sort(key=lambda x: x.ratio, reverse=True)
 
     def __str__(self):
-        returnStr = ''
+        returnStr = '{b} CFG Information {b}\n\n'.format(b="="*26)
+        called_by = json.dumps(self.called_by, sort_keys=True, indent=2)
+        returnStr += 'CFG - {{ called: caller_A : count, ... }}:\n{j}\n\n'.format(j=called_by)
+        returnStr += '{b} Module Profile {b}\n\n'.format(b="="*26)
+        returnStr += 'profile: {j}\n\n'.format(j=json.dumps(self.profile, sort_keys=True, indent=4))
+        returnStr += '{b} Functions Profile {b}\n\n'.format(b="="*25)
         for func in self.func_objs:
             returnStr += '{}\n'.format(func)
         return returnStr
 
 class Function():
     # Local variables
-    param_section = []
-    result_section = '' # always a single return type
-    local_section = ''
-    insn_arr = []
-    insn_count = 0
+    param_section = insn_arr = calls_arr = []
+    result_section = local_section = '' # always a single return type
+    insn_count = id = blocks_count = 0
     profile = {}
-    id = 0
-    blocks_count = 0
     ratio = 0.0
-    calls_arr = []
-    
 
     def __init__(self, id, func_body, func_type=None):
         self.id = id
@@ -74,5 +100,5 @@ class Function():
         returnStr += 'ratio: {:.2f}\n'.format(self.ratio)
         returnStr += 'calls: {c}\n'.format(c=''.join(str(ca)+' ' for ca in self.calls_arr))
         returnStr += 'profile: {j}\n\n'.format(j=json.dumps(self.profile, sort_keys=True, indent=4))
-        returnStr += 'instructions: \n{i}\n'.format(i=''.join(o+'\n' for o in self.insn_arr))
+        # returnStr += 'instructions: \n{i}\n'.format(i=''.join(o+'\n' for o in self.insn_arr))
         return returnStr

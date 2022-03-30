@@ -75,16 +75,20 @@ def main() -> None:
 
                 func_obj = classes.Function(i, func_body, func_type) # Create Function object
                 mod_obj.add_func(func_obj) # Add Function obj to module object
-            
-            of_str = args.file.split(os.sep)[-1] # Get the ../../<of_str.wasm>
-            of_str = of_str.split('.')[0] + '_dis.txt'
-            of_path = os.getcwd() + os.sep + of_str
-            mod_of = open(of_path, 'w')
-            mod_of.write(str(mod_obj))
-            mod_of.close()
         
-        # Sort mod_obj functions array
-        mod_obj.sort_objs()
+        mod_obj.profile_module()
+        mod_obj.analyse_cfg()
+
+        # Save disassemble analysis results
+        of_str = args.file.split(os.sep)[-1] # Get the ../../<of_str.wasm>
+        of_str = of_str.split('.')[0] + '_dis.txt'
+        of_path = os.getcwd() + os.sep + of_str
+        mod_of = open(of_path, 'w')
+        mod_of.write(str(mod_obj))
+        mod_of.close()      
+
+        # Implement CFG function
+
 
 if __name__ == '__main__':
     main()
