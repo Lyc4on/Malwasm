@@ -17,6 +17,7 @@ from wasm import (
 class Module():
     func_objs = []
 
+
     def __init__(self):
         pass
     
@@ -25,6 +26,9 @@ class Module():
             raise ValueError("Can't add non-Function objects to func_objs array")
         else:
             self.func_objs.append(func)
+    
+    def sort_objs(self):
+        self.func_objs.sort(key=lambda x: x.ratio, reverse=True)
 
     def __str__(self):
         returnStr = ''
@@ -68,7 +72,7 @@ class Function():
         returnStr += 'insn_count: {c}\n'.format(c=str(self.insn_count))
         returnStr += 'blocks: {b}\n'.format(b=str(self.blocks_count))
         returnStr += 'ratio: {:.2f}\n'.format(self.ratio)
-        returnStr += 'instructions: \n{i}\n'.format(i=''.join(o+'\n' for o in self.insn_arr))
         returnStr += 'calls: {c}\n'.format(c=''.join(str(ca)+' ' for ca in self.calls_arr))
         returnStr += 'profile: {j}\n\n'.format(j=json.dumps(self.profile, sort_keys=True, indent=4))
+        returnStr += 'instructions: \n{i}\n'.format(i=''.join(o+'\n' for o in self.insn_arr))
         return returnStr

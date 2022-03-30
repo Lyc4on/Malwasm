@@ -4,6 +4,7 @@
 # python3 wasmanalyzer.py -d -f nic_testbench/wasmwat_samples/cryptonight/cryptonight.wasm
 
 import argparse, sys, os
+import graphviz
 from classes import classes
 from wasm import (
     decode_module, decode_bytecode,
@@ -82,6 +83,8 @@ def main() -> None:
             mod_of.write(str(mod_obj))
             mod_of.close()
         
+        # Sort mod_obj functions array
+        mod_obj.sort_objs()
 
 if __name__ == '__main__':
     main()

@@ -105,9 +105,6 @@ def get_profile(insn_arr):
     # Strip whitespace and then split to keep only first string of each element in insn_arr
     insn_arr_strip = [x.strip().split(' ',1)[0] for x in insn_arr]
     
-    # # Add block key into profile - every func has 1 block by default
-    # profile['block'] = profile.get('block', 1)
-
     # Count each opcode in array
     for op in insn_arr_strip:
         profile[op] = profile.get(op, 0) + 1 # get op and add 1 to count; assign 0 if op(key) not found

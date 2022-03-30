@@ -4,6 +4,19 @@ result: i32
 insn_count: 16
 blocks: 2
 ratio: 8.00
+calls: 
+profile: {
+    "block": 1,
+    "end": 2,
+    "get_global": 3,
+    "get_local": 2,
+    "i32.add": 2,
+    "i32.and": 1,
+    "i32.const": 2,
+    "set_global": 2,
+    "set_local": 1
+}
+
 instructions: 
   block -1
     get_global 6
@@ -22,19 +35,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "block": 1,
-    "end": 2,
-    "get_global": 3,
-    "get_local": 2,
-    "i32.add": 2,
-    "i32.and": 1,
-    "i32.const": 2,
-    "set_global": 2,
-    "set_local": 1
-}
-
 
 func_name: func_1
 param:  
@@ -42,15 +42,15 @@ result: i32
 insn_count: 2
 blocks: 1
 ratio: 2.00
-instructions: 
-  get_global 6
-end
-
 calls: 
 profile: {
     "end": 1,
     "get_global": 1
 }
+
+instructions: 
+  get_global 6
+end
 
 
 func_name: func_2
@@ -59,17 +59,17 @@ result:
 insn_count: 3
 blocks: 1
 ratio: 3.00
-instructions: 
-  get_local 0
-  set_global 6
-end
-
 calls: 
 profile: {
     "end": 1,
     "get_local": 1,
     "set_global": 1
 }
+
+instructions: 
+  get_local 0
+  set_global 6
+end
 
 
 func_name: func_3
@@ -78,6 +78,14 @@ result:
 insn_count: 7
 blocks: 2
 ratio: 3.50
+calls: 
+profile: {
+    "block": 1,
+    "end": 2,
+    "get_local": 2,
+    "set_global": 2
+}
+
 instructions: 
   block -64
     get_local 0
@@ -87,14 +95,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "block": 1,
-    "end": 2,
-    "get_local": 2,
-    "set_global": 2
-}
-
 
 func_name: func_4
 param: i32 i32 
@@ -102,6 +102,16 @@ result:
 insn_count: 9
 blocks: 2
 ratio: 4.50
+calls: 
+profile: {
+    "end": 2,
+    "get_global": 1,
+    "get_local": 2,
+    "i32.eqz": 1,
+    "if": 1,
+    "set_global": 2
+}
+
 instructions: 
   get_global 8
   i32.eqz
@@ -113,16 +123,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "end": 2,
-    "get_global": 1,
-    "get_local": 2,
-    "i32.eqz": 1,
-    "if": 1,
-    "set_global": 2
-}
-
 
 func_name: func_5
 param: i32 
@@ -130,17 +130,17 @@ result:
 insn_count: 3
 blocks: 1
 ratio: 3.00
-instructions: 
-  get_local 0
-  set_global 10
-end
-
 calls: 
 profile: {
     "end": 1,
     "get_local": 1,
     "set_global": 1
 }
+
+instructions: 
+  get_local 0
+  set_global 10
+end
 
 
 func_name: func_6
@@ -149,15 +149,15 @@ result: i32
 insn_count: 2
 blocks: 1
 ratio: 2.00
-instructions: 
-  get_global 10
-end
-
 calls: 
 profile: {
     "end": 1,
     "get_global": 1
 }
+
+instructions: 
+  get_global 10
+end
 
 
 func_name: func_7
@@ -166,16 +166,6 @@ result:
 insn_count: 8
 blocks: 1
 ratio: 8.00
-instructions: 
-  get_local 0
-  get_local 1
-  i32.const 3
-  i32.shl
-  i64.extend_u/i32
-  get_local 2
-  call 36
-end
-
 calls: 36 
 profile: {
     "call": 1,
@@ -186,6 +176,16 @@ profile: {
     "i64.extend_u/i32": 1
 }
 
+instructions: 
+  get_local 0
+  get_local 1
+  i32.const 3
+  i32.shl
+  i64.extend_u/i32
+  get_local 2
+  call 36
+end
+
 
 func_name: func_8
 param:  
@@ -193,18 +193,18 @@ result: i32
 insn_count: 4
 blocks: 1
 ratio: 4.00
-instructions: 
-  i32.const 1
-  i32.const 2097552
-  call 56
-end
-
 calls: 56 
 profile: {
     "call": 1,
     "end": 1,
     "i32.const": 2
 }
+
+instructions: 
+  i32.const 1
+  i32.const 2097552
+  call 56
+end
 
 
 func_name: func_9
@@ -213,6 +213,17 @@ result:
 insn_count: 10
 blocks: 2
 ratio: 5.00
+calls: 52 55 
+profile: {
+    "block": 1,
+    "call": 2,
+    "drop": 1,
+    "end": 2,
+    "get_local": 2,
+    "i32.add": 1,
+    "i32.const": 1
+}
+
 instructions: 
   block -64
     get_local 0
@@ -225,17 +236,6 @@ instructions:
   end
 end
 
-calls: 52 55 
-profile: {
-    "block": 1,
-    "call": 2,
-    "drop": 1,
-    "end": 2,
-    "get_local": 2,
-    "i32.add": 1,
-    "i32.const": 1
-}
-
 
 func_name: func_10
 param: i32 i32 i32 i32 
@@ -243,6 +243,40 @@ result:
 insn_count: 878
 blocks: 11
 ratio: 79.82
+calls: 43 50 49 31 31 31 31 31 31 31 31 30 53 30 53 49 31 31 31 31 31 31 31 31 42 
+profile: {
+    "block": 1,
+    "br": 1,
+    "br_if": 2,
+    "call": 25,
+    "call_indirect": 1,
+    "drop": 2,
+    "else": 1,
+    "end": 7,
+    "get_global": 2,
+    "get_local": 322,
+    "i32.add": 53,
+    "i32.and": 6,
+    "i32.const": 64,
+    "i32.load": 55,
+    "i32.load8_s": 1,
+    "i32.lt_u": 2,
+    "i32.ne": 1,
+    "i32.or": 7,
+    "i32.shl": 1,
+    "i32.store": 1,
+    "i32.wrap/i64": 1,
+    "i64.add": 4,
+    "i64.load": 126,
+    "i64.store": 96,
+    "i64.xor": 28,
+    "if": 2,
+    "loop": 3,
+    "set_global": 2,
+    "set_local": 29,
+    "tee_local": 32
+}
+
 instructions: 
   block -64
     get_global 6
@@ -1123,40 +1157,6 @@ instructions:
   end
 end
 
-calls: 43 50 49 31 31 31 31 31 31 31 31 30 53 30 53 49 31 31 31 31 31 31 31 31 42 
-profile: {
-    "block": 1,
-    "br": 1,
-    "br_if": 2,
-    "call": 25,
-    "call_indirect": 1,
-    "drop": 2,
-    "else": 1,
-    "end": 7,
-    "get_global": 2,
-    "get_local": 322,
-    "i32.add": 53,
-    "i32.and": 6,
-    "i32.const": 64,
-    "i32.load": 55,
-    "i32.load8_s": 1,
-    "i32.lt_u": 2,
-    "i32.ne": 1,
-    "i32.or": 7,
-    "i32.shl": 1,
-    "i32.store": 1,
-    "i32.wrap/i64": 1,
-    "i64.add": 4,
-    "i64.load": 126,
-    "i64.store": 96,
-    "i64.xor": 28,
-    "if": 2,
-    "loop": 3,
-    "set_global": 2,
-    "set_local": 29,
-    "tee_local": 32
-}
-
 
 func_name: func_11
 param: i32 i32 i32 
@@ -1164,14 +1164,6 @@ result:
 insn_count: 6
 blocks: 1
 ratio: 6.00
-instructions: 
-  get_local 2
-  get_local 0
-  get_local 1
-  i64.extend_u/i32
-  call 35
-end
-
 calls: 35 
 profile: {
     "call": 1,
@@ -1180,6 +1172,14 @@ profile: {
     "i64.extend_u/i32": 1
 }
 
+instructions: 
+  get_local 2
+  get_local 0
+  get_local 1
+  i64.extend_u/i32
+  call 35
+end
+
 
 func_name: func_12
 param: i32 i32 i32 
@@ -1187,6 +1187,17 @@ result:
 insn_count: 16
 blocks: 2
 ratio: 8.00
+calls: 40 14 
+profile: {
+    "call": 2,
+    "end": 2,
+    "get_local": 3,
+    "i32.const": 6,
+    "i32.shl": 1,
+    "i64.extend_u/i32": 1,
+    "if": 1
+}
+
 instructions: 
   i32.const 256
   get_local 0
@@ -1205,17 +1216,6 @@ instructions:
   end
 end
 
-calls: 40 14 
-profile: {
-    "call": 2,
-    "end": 2,
-    "get_local": 3,
-    "i32.const": 6,
-    "i32.shl": 1,
-    "i64.extend_u/i32": 1,
-    "if": 1
-}
-
 
 func_name: func_13
 param: i32 i32 i32 
@@ -1223,6 +1223,16 @@ result:
 insn_count: 15
 blocks: 2
 ratio: 7.50
+calls: 44 14 
+profile: {
+    "call": 2,
+    "end": 2,
+    "get_local": 3,
+    "i32.const": 6,
+    "i32.shl": 1,
+    "if": 1
+}
+
 instructions: 
   i32.const 256
   get_local 0
@@ -1240,16 +1250,6 @@ instructions:
   end
 end
 
-calls: 44 14 
-profile: {
-    "call": 2,
-    "end": 2,
-    "get_local": 3,
-    "i32.const": 6,
-    "i32.shl": 1,
-    "if": 1
-}
-
 
 func_name: func_14
 param: i32 i32 i32 
@@ -1257,6 +1257,22 @@ result:
 insn_count: 204
 blocks: 2
 ratio: 102.00
+calls: 
+profile: {
+    "block": 1,
+    "end": 2,
+    "get_local": 24,
+    "i32.add": 19,
+    "i32.and": 12,
+    "i32.const": 59,
+    "i32.load": 36,
+    "i32.shl": 16,
+    "i32.shr_u": 12,
+    "i32.store": 4,
+    "i32.xor": 16,
+    "tee_local": 3
+}
+
 instructions: 
   block -64
     get_local 1
@@ -1463,22 +1479,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "block": 1,
-    "end": 2,
-    "get_local": 24,
-    "i32.add": 19,
-    "i32.and": 12,
-    "i32.const": 59,
-    "i32.load": 36,
-    "i32.shl": 16,
-    "i32.shr_u": 12,
-    "i32.store": 4,
-    "i32.xor": 16,
-    "tee_local": 3
-}
-
 
 func_name: func_15
 param: i32 i32 
@@ -1486,6 +1486,22 @@ result:
 insn_count: 1756
 blocks: 2
 ratio: 878.00
+calls: 
+profile: {
+    "block": 1,
+    "end": 2,
+    "get_local": 200,
+    "i32.add": 163,
+    "i32.and": 120,
+    "i32.const": 563,
+    "i32.load": 204,
+    "i32.shl": 160,
+    "i32.shr_u": 120,
+    "i32.store": 20,
+    "i32.xor": 160,
+    "tee_local": 43
+}
+
 instructions: 
   block -64
     get_local 0
@@ -3244,22 +3260,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "block": 1,
-    "end": 2,
-    "get_local": 200,
-    "i32.add": 163,
-    "i32.and": 120,
-    "i32.const": 563,
-    "i32.load": 204,
-    "i32.shl": 160,
-    "i32.shr_u": 120,
-    "i32.store": 20,
-    "i32.xor": 160,
-    "tee_local": 43
-}
-
 
 func_name: func_16
 param: i32 i32 
@@ -3267,6 +3267,33 @@ result:
 insn_count: 1080
 blocks: 8
 ratio: 135.00
+calls: 
+profile: {
+    "block": 1,
+    "br_if": 2,
+    "else": 1,
+    "end": 5,
+    "get_global": 2,
+    "get_local": 249,
+    "i32.add": 117,
+    "i32.const": 188,
+    "i32.load": 59,
+    "i32.load8_u": 20,
+    "i32.ne": 2,
+    "i32.or": 35,
+    "i32.shl": 85,
+    "i32.shr_u": 32,
+    "i32.store": 21,
+    "i32.xor": 80,
+    "i64.load": 4,
+    "i64.store": 4,
+    "if": 1,
+    "loop": 2,
+    "set_global": 2,
+    "set_local": 33,
+    "tee_local": 135
+}
+
 instructions: 
   block -64
     get_global 6
@@ -4349,33 +4376,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "block": 1,
-    "br_if": 2,
-    "else": 1,
-    "end": 5,
-    "get_global": 2,
-    "get_local": 249,
-    "i32.add": 117,
-    "i32.const": 188,
-    "i32.load": 59,
-    "i32.load8_u": 20,
-    "i32.ne": 2,
-    "i32.or": 35,
-    "i32.shl": 85,
-    "i32.shr_u": 32,
-    "i32.store": 21,
-    "i32.xor": 80,
-    "i64.load": 4,
-    "i64.store": 4,
-    "if": 1,
-    "loop": 2,
-    "set_global": 2,
-    "set_local": 33,
-    "tee_local": 135
-}
-
 
 func_name: func_17
 param: i32 i32 i64 
@@ -4383,6 +4383,42 @@ result:
 insn_count: 156
 blocks: 12
 ratio: 13.00
+calls: 69 32 32 69 
+profile: {
+    "block": 1,
+    "br_if": 1,
+    "call": 4,
+    "drop": 2,
+    "else": 1,
+    "end": 9,
+    "get_local": 41,
+    "i32.add": 16,
+    "i32.const": 20,
+    "i32.eqz": 2,
+    "i32.load": 5,
+    "i32.shl": 2,
+    "i32.shr_s": 1,
+    "i32.store": 5,
+    "i32.sub": 1,
+    "i32.wrap/i64": 1,
+    "i64.add": 2,
+    "i64.and": 1,
+    "i64.const": 7,
+    "i64.eq": 1,
+    "i64.extend_s/i32": 1,
+    "i64.extend_u/i32": 2,
+    "i64.ge_u": 1,
+    "i64.gt_u": 2,
+    "i64.shr_u": 2,
+    "i64.store32": 1,
+    "i64.sub": 1,
+    "if": 6,
+    "loop": 1,
+    "return": 1,
+    "set_local": 9,
+    "tee_local": 6
+}
+
 instructions: 
   block -64
     i32.const 64
@@ -4541,42 +4577,6 @@ instructions:
   end
 end
 
-calls: 69 32 32 69 
-profile: {
-    "block": 1,
-    "br_if": 1,
-    "call": 4,
-    "drop": 2,
-    "else": 1,
-    "end": 9,
-    "get_local": 41,
-    "i32.add": 16,
-    "i32.const": 20,
-    "i32.eqz": 2,
-    "i32.load": 5,
-    "i32.shl": 2,
-    "i32.shr_s": 1,
-    "i32.store": 5,
-    "i32.sub": 1,
-    "i32.wrap/i64": 1,
-    "i64.add": 2,
-    "i64.and": 1,
-    "i64.const": 7,
-    "i64.eq": 1,
-    "i64.extend_s/i32": 1,
-    "i64.extend_u/i32": 2,
-    "i64.ge_u": 1,
-    "i64.gt_u": 2,
-    "i64.shr_u": 2,
-    "i64.store32": 1,
-    "i64.sub": 1,
-    "if": 6,
-    "loop": 1,
-    "return": 1,
-    "set_local": 9,
-    "tee_local": 6
-}
-
 
 func_name: func_18
 param: i32 i32 i32 i32 
@@ -4584,6 +4584,33 @@ result:
 insn_count: 363
 blocks: 7
 ratio: 51.86
+calls: 33 33 33 33 33 33 
+profile: {
+    "block": 1,
+    "call": 6,
+    "else": 2,
+    "end": 5,
+    "get_global": 2,
+    "get_local": 119,
+    "i32.add": 17,
+    "i32.const": 54,
+    "i32.eq": 1,
+    "i32.eqz": 1,
+    "i32.load": 38,
+    "i32.lt_s": 1,
+    "i32.lt_u": 1,
+    "i32.shr_u": 30,
+    "i32.store": 8,
+    "i32.store8": 42,
+    "i32.sub": 4,
+    "i64.const": 4,
+    "i64.extend_s/i32": 2,
+    "if": 3,
+    "set_global": 2,
+    "set_local": 2,
+    "tee_local": 18
+}
+
 instructions: 
   block -64
     get_global 6
@@ -4949,33 +4976,6 @@ instructions:
   end
 end
 
-calls: 33 33 33 33 33 33 
-profile: {
-    "block": 1,
-    "call": 6,
-    "else": 2,
-    "end": 5,
-    "get_global": 2,
-    "get_local": 119,
-    "i32.add": 17,
-    "i32.const": 54,
-    "i32.eq": 1,
-    "i32.eqz": 1,
-    "i32.load": 38,
-    "i32.lt_s": 1,
-    "i32.lt_u": 1,
-    "i32.shr_u": 30,
-    "i32.store": 8,
-    "i32.store8": 42,
-    "i32.sub": 4,
-    "i64.const": 4,
-    "i64.extend_s/i32": 2,
-    "if": 3,
-    "set_global": 2,
-    "set_local": 2,
-    "tee_local": 18
-}
-
 
 func_name: func_19
 param: i32 i32 i64 
@@ -4983,6 +4983,24 @@ result:
 insn_count: 62
 blocks: 2
 ratio: 31.00
+calls: 33 34 
+profile: {
+    "block": 1,
+    "call": 2,
+    "end": 2,
+    "get_global": 2,
+    "get_local": 18,
+    "i32.add": 2,
+    "i32.const": 12,
+    "i32.store": 8,
+    "i64.const": 5,
+    "i64.shl": 1,
+    "i64.store": 4,
+    "set_global": 2,
+    "set_local": 1,
+    "tee_local": 2
+}
+
 instructions: 
   block -64
     get_global 6
@@ -5047,24 +5065,6 @@ instructions:
   end
 end
 
-calls: 33 34 
-profile: {
-    "block": 1,
-    "call": 2,
-    "end": 2,
-    "get_global": 2,
-    "get_local": 18,
-    "i32.add": 2,
-    "i32.const": 12,
-    "i32.store": 8,
-    "i64.const": 5,
-    "i64.shl": 1,
-    "i64.store": 4,
-    "set_global": 2,
-    "set_local": 1,
-    "tee_local": 2
-}
-
 
 func_name: func_20
 param: i32 i64 i32 
@@ -5072,6 +5072,45 @@ result:
 insn_count: 749
 blocks: 26
 ratio: 28.81
+calls: 37 37 37 38 38 38 38 38 38 38 38 38 38 
+profile: {
+    "block": 3,
+    "br": 2,
+    "br_if": 6,
+    "call": 13,
+    "else": 2,
+    "end": 16,
+    "get_global": 2,
+    "get_local": 251,
+    "i32.add": 56,
+    "i32.and": 2,
+    "i32.const": 100,
+    "i32.div_s": 1,
+    "i32.eqz": 1,
+    "i32.gt_s": 4,
+    "i32.load": 47,
+    "i32.load8_s": 17,
+    "i32.load8_u": 2,
+    "i32.lt_s": 5,
+    "i32.ne": 1,
+    "i32.shl": 4,
+    "i32.shr_u": 14,
+    "i32.store": 37,
+    "i32.store8": 41,
+    "i32.sub": 2,
+    "i32.wrap/i64": 2,
+    "i32.xor": 17,
+    "i64.const": 8,
+    "i64.load": 8,
+    "i64.shr_u": 1,
+    "i64.store": 15,
+    "if": 7,
+    "loop": 5,
+    "set_global": 2,
+    "set_local": 14,
+    "tee_local": 41
+}
+
 instructions: 
   block -64
     get_global 6
@@ -5823,45 +5862,6 @@ instructions:
   end
 end
 
-calls: 37 37 37 38 38 38 38 38 38 38 38 38 38 
-profile: {
-    "block": 3,
-    "br": 2,
-    "br_if": 6,
-    "call": 13,
-    "else": 2,
-    "end": 16,
-    "get_global": 2,
-    "get_local": 251,
-    "i32.add": 56,
-    "i32.and": 2,
-    "i32.const": 100,
-    "i32.div_s": 1,
-    "i32.eqz": 1,
-    "i32.gt_s": 4,
-    "i32.load": 47,
-    "i32.load8_s": 17,
-    "i32.load8_u": 2,
-    "i32.lt_s": 5,
-    "i32.ne": 1,
-    "i32.shl": 4,
-    "i32.shr_u": 14,
-    "i32.store": 37,
-    "i32.store8": 41,
-    "i32.sub": 2,
-    "i32.wrap/i64": 2,
-    "i32.xor": 17,
-    "i64.const": 8,
-    "i64.load": 8,
-    "i64.shr_u": 1,
-    "i64.store": 15,
-    "if": 7,
-    "loop": 5,
-    "set_global": 2,
-    "set_local": 14,
-    "tee_local": 41
-}
-
 
 func_name: func_21
 param: i32 i32 i32 
@@ -5869,6 +5869,34 @@ result:
 insn_count: 448
 blocks: 9
 ratio: 49.78
+calls: 39 39 39 39 39 39 39 39 39 39 38 38 38 38 38 38 38 38 38 38 
+profile: {
+    "block": 1,
+    "br_if": 2,
+    "call": 20,
+    "end": 6,
+    "get_global": 2,
+    "get_local": 157,
+    "i32.add": 44,
+    "i32.const": 68,
+    "i32.eqz": 1,
+    "i32.gt_s": 1,
+    "i32.le_s": 1,
+    "i32.load": 37,
+    "i32.ne": 1,
+    "i32.shl": 3,
+    "i32.store": 19,
+    "i32.xor": 18,
+    "i64.load": 8,
+    "i64.store": 8,
+    "if": 2,
+    "loop": 2,
+    "return": 1,
+    "set_global": 3,
+    "set_local": 38,
+    "tee_local": 5
+}
+
 instructions: 
   block -64
     get_global 6
@@ -6319,34 +6347,6 @@ instructions:
   end
 end
 
-calls: 39 39 39 39 39 39 39 39 39 39 38 38 38 38 38 38 38 38 38 38 
-profile: {
-    "block": 1,
-    "br_if": 2,
-    "call": 20,
-    "end": 6,
-    "get_global": 2,
-    "get_local": 157,
-    "i32.add": 44,
-    "i32.const": 68,
-    "i32.eqz": 1,
-    "i32.gt_s": 1,
-    "i32.le_s": 1,
-    "i32.load": 37,
-    "i32.ne": 1,
-    "i32.shl": 3,
-    "i32.store": 19,
-    "i32.xor": 18,
-    "i64.load": 8,
-    "i64.store": 8,
-    "if": 2,
-    "loop": 2,
-    "return": 1,
-    "set_global": 3,
-    "set_local": 38,
-    "tee_local": 5
-}
-
 
 func_name: func_22
 param: i32 i32 i32 
@@ -6354,6 +6354,25 @@ result:
 insn_count: 2129
 blocks: 2
 ratio: 1064.50
+calls: 
+profile: {
+    "block": 1,
+    "end": 2,
+    "get_local": 323,
+    "i32.add": 135,
+    "i32.and": 3,
+    "i32.const": 594,
+    "i32.load": 136,
+    "i32.load8_u": 60,
+    "i32.or": 160,
+    "i32.shl": 286,
+    "i32.shr_u": 99,
+    "i32.store": 24,
+    "i32.xor": 127,
+    "set_local": 59,
+    "tee_local": 120
+}
+
 instructions: 
   block -64
     get_local 0
@@ -8485,25 +8504,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "block": 1,
-    "end": 2,
-    "get_local": 323,
-    "i32.add": 135,
-    "i32.and": 3,
-    "i32.const": 594,
-    "i32.load": 136,
-    "i32.load8_u": 60,
-    "i32.or": 160,
-    "i32.shl": 286,
-    "i32.shr_u": 99,
-    "i32.store": 24,
-    "i32.xor": 127,
-    "set_local": 59,
-    "tee_local": 120
-}
-
 
 func_name: func_23
 param: i32 i32 i32 
@@ -8511,6 +8511,25 @@ result:
 insn_count: 2204
 blocks: 2
 ratio: 1102.00
+calls: 
+profile: {
+    "block": 1,
+    "end": 2,
+    "get_local": 340,
+    "i32.add": 143,
+    "i32.and": 3,
+    "i32.const": 611,
+    "i32.load": 144,
+    "i32.load8_u": 60,
+    "i32.or": 160,
+    "i32.shl": 286,
+    "i32.shr_u": 99,
+    "i32.store": 32,
+    "i32.xor": 136,
+    "set_local": 60,
+    "tee_local": 127
+}
+
 instructions: 
   block -64
     get_local 0
@@ -10717,25 +10736,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "block": 1,
-    "end": 2,
-    "get_local": 340,
-    "i32.add": 143,
-    "i32.and": 3,
-    "i32.const": 611,
-    "i32.load": 144,
-    "i32.load8_u": 60,
-    "i32.or": 160,
-    "i32.shl": 286,
-    "i32.shr_u": 99,
-    "i32.store": 32,
-    "i32.xor": 136,
-    "set_local": 60,
-    "tee_local": 127
-}
-
 
 func_name: func_24
 param: i32 i32 i64 i32 
@@ -10743,6 +10743,50 @@ result: i32
 insn_count: 808
 blocks: 39
 ratio: 20.72
+calls: 41 69 69 41 67 67 41 41 
+profile: {
+    "block": 14,
+    "br": 4,
+    "br_if": 1,
+    "br_table": 3,
+    "call": 8,
+    "drop": 3,
+    "else": 4,
+    "end": 22,
+    "get_global": 2,
+    "get_local": 230,
+    "i32.add": 25,
+    "i32.and": 2,
+    "i32.const": 105,
+    "i32.load": 2,
+    "i32.load8_u": 1,
+    "i32.lt_u": 1,
+    "i32.or": 3,
+    "i32.shl": 3,
+    "i32.shr_u": 2,
+    "i32.store": 2,
+    "i32.store8": 2,
+    "i32.sub": 2,
+    "i32.wrap/i64": 8,
+    "i32.xor": 1,
+    "i64.add": 4,
+    "i64.and": 4,
+    "i64.const": 50,
+    "i64.eq": 3,
+    "i64.gt_u": 2,
+    "i64.load": 96,
+    "i64.ne": 1,
+    "i64.shr_u": 17,
+    "i64.store": 113,
+    "i64.store8": 16,
+    "if": 6,
+    "loop": 1,
+    "return": 5,
+    "set_global": 7,
+    "set_local": 11,
+    "tee_local": 22
+}
+
 instructions: 
   block -1
     get_global 6
@@ -11553,50 +11597,6 @@ instructions:
   end
 end
 
-calls: 41 69 69 41 67 67 41 41 
-profile: {
-    "block": 14,
-    "br": 4,
-    "br_if": 1,
-    "br_table": 3,
-    "call": 8,
-    "drop": 3,
-    "else": 4,
-    "end": 22,
-    "get_global": 2,
-    "get_local": 230,
-    "i32.add": 25,
-    "i32.and": 2,
-    "i32.const": 105,
-    "i32.load": 2,
-    "i32.load8_u": 1,
-    "i32.lt_u": 1,
-    "i32.or": 3,
-    "i32.shl": 3,
-    "i32.shr_u": 2,
-    "i32.store": 2,
-    "i32.store8": 2,
-    "i32.sub": 2,
-    "i32.wrap/i64": 8,
-    "i32.xor": 1,
-    "i64.add": 4,
-    "i64.and": 4,
-    "i64.const": 50,
-    "i64.eq": 3,
-    "i64.gt_u": 2,
-    "i64.load": 96,
-    "i64.ne": 1,
-    "i64.shr_u": 17,
-    "i64.store": 113,
-    "i64.store8": 16,
-    "if": 6,
-    "loop": 1,
-    "return": 5,
-    "set_global": 7,
-    "set_local": 11,
-    "tee_local": 22
-}
-
 
 func_name: func_25
 param: i32 
@@ -11604,6 +11604,34 @@ result:
 insn_count: 2395
 blocks: 25
 ratio: 95.80
+calls: 
+profile: {
+    "block": 1,
+    "br": 7,
+    "br_if": 1,
+    "end": 17,
+    "get_local": 683,
+    "i32.add": 157,
+    "i32.const": 171,
+    "i32.or": 7,
+    "i32.shl": 77,
+    "i32.wrap/i64": 14,
+    "i64.add": 14,
+    "i64.and": 152,
+    "i64.const": 167,
+    "i64.load": 106,
+    "i64.lt_u": 8,
+    "i64.or": 38,
+    "i64.shl": 24,
+    "i64.shr_u": 24,
+    "i64.store": 80,
+    "i64.xor": 282,
+    "if": 7,
+    "loop": 8,
+    "set_local": 70,
+    "tee_local": 280
+}
+
 instructions: 
   block -64
     get_local 0
@@ -14001,34 +14029,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "block": 1,
-    "br": 7,
-    "br_if": 1,
-    "end": 17,
-    "get_local": 683,
-    "i32.add": 157,
-    "i32.const": 171,
-    "i32.or": 7,
-    "i32.shl": 77,
-    "i32.wrap/i64": 14,
-    "i64.add": 14,
-    "i64.and": 152,
-    "i64.const": 167,
-    "i64.load": 106,
-    "i64.lt_u": 8,
-    "i64.or": 38,
-    "i64.shl": 24,
-    "i64.shr_u": 24,
-    "i64.store": 80,
-    "i64.xor": 282,
-    "if": 7,
-    "loop": 8,
-    "set_local": 70,
-    "tee_local": 280
-}
-
 
 func_name: func_26
 param: i32 i32 
@@ -14036,6 +14036,36 @@ result:
 insn_count: 754
 blocks: 9
 ratio: 83.78
+calls: 
+profile: {
+    "block": 1,
+    "br": 1,
+    "br_if": 1,
+    "end": 6,
+    "get_local": 258,
+    "i32.add": 30,
+    "i32.const": 38,
+    "i32.le_s": 1,
+    "i32.load": 2,
+    "i32.ne": 2,
+    "i32.shl": 4,
+    "i32.sub": 1,
+    "i64.and": 25,
+    "i64.const": 35,
+    "i64.extend_u/i32": 2,
+    "i64.load": 59,
+    "i64.or": 6,
+    "i64.shl": 6,
+    "i64.shr_u": 6,
+    "i64.store": 52,
+    "i64.xor": 101,
+    "if": 2,
+    "loop": 2,
+    "return": 1,
+    "set_local": 42,
+    "tee_local": 70
+}
+
 instructions: 
   block -64
     get_local 1
@@ -14792,36 +14822,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "block": 1,
-    "br": 1,
-    "br_if": 1,
-    "end": 6,
-    "get_local": 258,
-    "i32.add": 30,
-    "i32.const": 38,
-    "i32.le_s": 1,
-    "i32.load": 2,
-    "i32.ne": 2,
-    "i32.shl": 4,
-    "i32.sub": 1,
-    "i64.and": 25,
-    "i64.const": 35,
-    "i64.extend_u/i32": 2,
-    "i64.load": 59,
-    "i64.or": 6,
-    "i64.shl": 6,
-    "i64.shr_u": 6,
-    "i64.store": 52,
-    "i64.xor": 101,
-    "if": 2,
-    "loop": 2,
-    "return": 1,
-    "set_local": 42,
-    "tee_local": 70
-}
-
 
 func_name: func_27
 param: i32 i32 i32 
@@ -14829,6 +14829,28 @@ result:
 insn_count: 122
 blocks: 2
 ratio: 61.00
+calls: 42 69 
+profile: {
+    "block": 1,
+    "call": 2,
+    "drop": 1,
+    "end": 2,
+    "get_global": 2,
+    "get_local": 42,
+    "i32.add": 3,
+    "i32.const": 5,
+    "i32.load": 1,
+    "i32.store": 1,
+    "i64.and": 1,
+    "i64.const": 18,
+    "i64.load": 10,
+    "i64.or": 1,
+    "i64.store": 26,
+    "set_global": 2,
+    "set_local": 1,
+    "tee_local": 3
+}
+
 instructions: 
   block -64
     get_global 6
@@ -14953,28 +14975,6 @@ instructions:
   end
 end
 
-calls: 42 69 
-profile: {
-    "block": 1,
-    "call": 2,
-    "drop": 1,
-    "end": 2,
-    "get_global": 2,
-    "get_local": 42,
-    "i32.add": 3,
-    "i32.const": 5,
-    "i32.load": 1,
-    "i32.store": 1,
-    "i64.and": 1,
-    "i64.const": 18,
-    "i64.load": 10,
-    "i64.or": 1,
-    "i64.store": 26,
-    "set_global": 2,
-    "set_local": 1,
-    "tee_local": 3
-}
-
 
 func_name: func_28
 param: i32 i32 i32 i32 
@@ -14982,6 +14982,49 @@ result: i32
 insn_count: 2229
 blocks: 121
 ratio: 18.42
+calls: 45 46 69 45 45 69 69 45 45 69 69 47 47 69 69 47 47 69 69 46 46 69 69 46 46 69 69 45 45 69 69 47 47 69 69 46 46 69 67 45 45 69 67 47 47 69 67 46 46 69 
+profile: {
+    "block": 22,
+    "br": 13,
+    "br_if": 7,
+    "br_table": 4,
+    "call": 50,
+    "drop": 27,
+    "else": 18,
+    "end": 76,
+    "get_global": 2,
+    "get_local": 695,
+    "i32.add": 159,
+    "i32.and": 5,
+    "i32.const": 327,
+    "i32.eq": 1,
+    "i32.eqz": 6,
+    "i32.gt_u": 19,
+    "i32.load": 24,
+    "i32.load8_u": 1,
+    "i32.lt_s": 1,
+    "i32.lt_u": 6,
+    "i32.ne": 2,
+    "i32.or": 2,
+    "i32.shl": 13,
+    "i32.shr_u": 22,
+    "i32.store": 38,
+    "i32.store8": 1,
+    "i32.sub": 34,
+    "i32.xor": 1,
+    "i64.const": 92,
+    "i64.extend_u/i32": 5,
+    "i64.load": 108,
+    "i64.or": 4,
+    "i64.store": 201,
+    "if": 50,
+    "loop": 3,
+    "return": 3,
+    "set_global": 5,
+    "set_local": 101,
+    "tee_local": 81
+}
+
 instructions: 
   block -1
     get_global 6
@@ -17213,49 +17256,6 @@ instructions:
   end
 end
 
-calls: 45 46 69 45 45 69 69 45 45 69 69 47 47 69 69 47 47 69 69 46 46 69 69 46 46 69 69 45 45 69 69 47 47 69 69 46 46 69 67 45 45 69 67 47 47 69 67 46 46 69 
-profile: {
-    "block": 22,
-    "br": 13,
-    "br_if": 7,
-    "br_table": 4,
-    "call": 50,
-    "drop": 27,
-    "else": 18,
-    "end": 76,
-    "get_global": 2,
-    "get_local": 695,
-    "i32.add": 159,
-    "i32.and": 5,
-    "i32.const": 327,
-    "i32.eq": 1,
-    "i32.eqz": 6,
-    "i32.gt_u": 19,
-    "i32.load": 24,
-    "i32.load8_u": 1,
-    "i32.lt_s": 1,
-    "i32.lt_u": 6,
-    "i32.ne": 2,
-    "i32.or": 2,
-    "i32.shl": 13,
-    "i32.shr_u": 22,
-    "i32.store": 38,
-    "i32.store8": 1,
-    "i32.sub": 34,
-    "i32.xor": 1,
-    "i64.const": 92,
-    "i64.extend_u/i32": 5,
-    "i64.load": 108,
-    "i64.or": 4,
-    "i64.store": 201,
-    "if": 50,
-    "loop": 3,
-    "return": 3,
-    "set_global": 5,
-    "set_local": 101,
-    "tee_local": 81
-}
-
 
 func_name: func_29
 param: i32 i32 i32 i32 
@@ -17263,6 +17263,31 @@ result:
 insn_count: 4157
 blocks: 5
 ratio: 831.40
+calls: 
+profile: {
+    "block": 1,
+    "br": 1,
+    "end": 4,
+    "get_local": 1224,
+    "i32.add": 13,
+    "i32.const": 13,
+    "i64.add": 470,
+    "i64.and": 1,
+    "i64.const": 597,
+    "i64.extend_u/i32": 2,
+    "i64.load": 18,
+    "i64.mul": 1,
+    "i64.or": 288,
+    "i64.shl": 288,
+    "i64.shr_u": 288,
+    "i64.store": 10,
+    "i64.xor": 305,
+    "if": 1,
+    "loop": 1,
+    "set_local": 159,
+    "tee_local": 472
+}
+
 instructions: 
   block -64
     get_local 2
@@ -21422,31 +21447,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "block": 1,
-    "br": 1,
-    "end": 4,
-    "get_local": 1224,
-    "i32.add": 13,
-    "i32.const": 13,
-    "i64.add": 470,
-    "i64.and": 1,
-    "i64.const": 597,
-    "i64.extend_u/i32": 2,
-    "i64.load": 18,
-    "i64.mul": 1,
-    "i64.or": 288,
-    "i64.shl": 288,
-    "i64.shr_u": 288,
-    "i64.store": 10,
-    "i64.xor": 305,
-    "if": 1,
-    "loop": 1,
-    "set_local": 159,
-    "tee_local": 472
-}
-
 
 func_name: func_30
 param: i32 i32 i32 i32 
@@ -21454,6 +21454,34 @@ result:
 insn_count: 1680
 blocks: 8
 ratio: 210.00
+calls: 
+profile: {
+    "block": 1,
+    "br": 2,
+    "end": 6,
+    "get_global": 2,
+    "get_local": 517,
+    "i32.add": 82,
+    "i32.const": 84,
+    "i32.lt_u": 1,
+    "i32.shl": 24,
+    "i64.add": 122,
+    "i64.and": 1,
+    "i64.const": 131,
+    "i64.extend_u/i32": 2,
+    "i64.load": 77,
+    "i64.or": 64,
+    "i64.shl": 64,
+    "i64.shr_u": 64,
+    "i64.store": 44,
+    "i64.xor": 97,
+    "if": 2,
+    "loop": 2,
+    "set_global": 2,
+    "set_local": 123,
+    "tee_local": 166
+}
+
 instructions: 
   block -64
     get_global 6
@@ -23136,34 +23164,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "block": 1,
-    "br": 2,
-    "end": 6,
-    "get_global": 2,
-    "get_local": 517,
-    "i32.add": 82,
-    "i32.const": 84,
-    "i32.lt_u": 1,
-    "i32.shl": 24,
-    "i64.add": 122,
-    "i64.and": 1,
-    "i64.const": 131,
-    "i64.extend_u/i32": 2,
-    "i64.load": 77,
-    "i64.or": 64,
-    "i64.shl": 64,
-    "i64.shr_u": 64,
-    "i64.store": 44,
-    "i64.xor": 97,
-    "if": 2,
-    "loop": 2,
-    "set_global": 2,
-    "set_local": 123,
-    "tee_local": 166
-}
-
 
 func_name: func_31
 param: i32 i32 i32 i32 
@@ -23171,6 +23171,31 @@ result:
 insn_count: 2162
 blocks: 5
 ratio: 432.40
+calls: 
+profile: {
+    "block": 1,
+    "br": 1,
+    "end": 4,
+    "get_local": 632,
+    "i32.add": 9,
+    "i32.const": 9,
+    "i64.add": 256,
+    "i64.and": 1,
+    "i64.const": 309,
+    "i64.extend_u/i32": 2,
+    "i64.load": 10,
+    "i64.mul": 1,
+    "i64.or": 144,
+    "i64.shl": 144,
+    "i64.shr_u": 144,
+    "i64.store": 6,
+    "i64.xor": 153,
+    "if": 1,
+    "loop": 1,
+    "set_local": 85,
+    "tee_local": 249
+}
+
 instructions: 
   block -64
     get_local 2
@@ -25335,31 +25360,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "block": 1,
-    "br": 1,
-    "end": 4,
-    "get_local": 632,
-    "i32.add": 9,
-    "i32.const": 9,
-    "i64.add": 256,
-    "i64.and": 1,
-    "i64.const": 309,
-    "i64.extend_u/i32": 2,
-    "i64.load": 10,
-    "i64.mul": 1,
-    "i64.or": 144,
-    "i64.shl": 144,
-    "i64.shr_u": 144,
-    "i64.store": 6,
-    "i64.xor": 153,
-    "if": 1,
-    "loop": 1,
-    "set_local": 85,
-    "tee_local": 249
-}
-
 
 func_name: func_32
 param: i32 
@@ -25367,6 +25367,43 @@ result:
 insn_count: 408
 blocks: 10
 ratio: 40.80
+calls: 56 69 70 
+profile: {
+    "block": 1,
+    "br": 1,
+    "call": 3,
+    "drop": 2,
+    "else": 1,
+    "end": 7,
+    "get_global": 2,
+    "get_local": 98,
+    "i32.add": 38,
+    "i32.and": 16,
+    "i32.const": 74,
+    "i32.div_u": 1,
+    "i32.eq": 1,
+    "i32.ge_u": 1,
+    "i32.gt_u": 1,
+    "i32.load": 20,
+    "i32.load8_s": 16,
+    "i32.load8_u": 3,
+    "i32.lt_u": 1,
+    "i32.or": 6,
+    "i32.rem_u": 1,
+    "i32.shl": 16,
+    "i32.shr_u": 12,
+    "i32.store": 5,
+    "i32.store8": 13,
+    "i32.sub": 4,
+    "i32.xor": 5,
+    "if": 4,
+    "loop": 1,
+    "return": 1,
+    "set_global": 3,
+    "set_local": 21,
+    "tee_local": 29
+}
+
 instructions: 
   block -64
     get_global 6
@@ -25777,43 +25814,6 @@ instructions:
   end
 end
 
-calls: 56 69 70 
-profile: {
-    "block": 1,
-    "br": 1,
-    "call": 3,
-    "drop": 2,
-    "else": 1,
-    "end": 7,
-    "get_global": 2,
-    "get_local": 98,
-    "i32.add": 38,
-    "i32.and": 16,
-    "i32.const": 74,
-    "i32.div_u": 1,
-    "i32.eq": 1,
-    "i32.ge_u": 1,
-    "i32.gt_u": 1,
-    "i32.load": 20,
-    "i32.load8_s": 16,
-    "i32.load8_u": 3,
-    "i32.lt_u": 1,
-    "i32.or": 6,
-    "i32.rem_u": 1,
-    "i32.shl": 16,
-    "i32.shr_u": 12,
-    "i32.store": 5,
-    "i32.store8": 13,
-    "i32.sub": 4,
-    "i32.xor": 5,
-    "if": 4,
-    "loop": 1,
-    "return": 1,
-    "set_global": 3,
-    "set_local": 21,
-    "tee_local": 29
-}
-
 
 func_name: func_33
 param: i32 i32 i32 
@@ -25821,6 +25821,21 @@ result: i32
 insn_count: 64
 blocks: 5
 ratio: 12.80
+calls: 55 55 55 56 56 69 48 
+profile: {
+    "block": 1,
+    "call": 7,
+    "drop": 1,
+    "end": 5,
+    "get_local": 20,
+    "i32.const": 7,
+    "i32.load": 7,
+    "i32.store": 6,
+    "if": 3,
+    "set_local": 2,
+    "tee_local": 5
+}
+
 instructions: 
   block -1
     get_local 0
@@ -25887,21 +25902,6 @@ instructions:
   end
 end
 
-calls: 55 55 55 56 56 69 48 
-profile: {
-    "block": 1,
-    "call": 7,
-    "drop": 1,
-    "end": 5,
-    "get_local": 20,
-    "i32.const": 7,
-    "i32.load": 7,
-    "i32.store": 6,
-    "if": 3,
-    "set_local": 2,
-    "tee_local": 5
-}
-
 
 func_name: func_34
 param:  
@@ -25909,6 +25909,29 @@ result: i32
 insn_count: 108
 blocks: 5
 ratio: 21.60
+calls: 56 9 4 56 13 55 51 
+profile: {
+    "block": 1,
+    "call": 7,
+    "drop": 2,
+    "end": 4,
+    "get_global": 4,
+    "get_local": 29,
+    "i32.add": 13,
+    "i32.const": 13,
+    "i32.eqz": 1,
+    "i32.load": 6,
+    "i32.load16_u": 1,
+    "i32.store": 1,
+    "i64.extend_u/i32": 1,
+    "i64.store": 1,
+    "if": 2,
+    "return": 1,
+    "set_global": 5,
+    "set_local": 12,
+    "tee_local": 4
+}
+
 instructions: 
   block -1
     get_global 6
@@ -26019,29 +26042,6 @@ instructions:
   end
 end
 
-calls: 56 9 4 56 13 55 51 
-profile: {
-    "block": 1,
-    "call": 7,
-    "drop": 2,
-    "end": 4,
-    "get_global": 4,
-    "get_local": 29,
-    "i32.add": 13,
-    "i32.const": 13,
-    "i32.eqz": 1,
-    "i32.load": 6,
-    "i32.load16_u": 1,
-    "i32.store": 1,
-    "i64.extend_u/i32": 1,
-    "i64.store": 1,
-    "if": 2,
-    "return": 1,
-    "set_global": 5,
-    "set_local": 12,
-    "tee_local": 4
-}
-
 
 func_name: func_35
 param: i32 i32 i32 
@@ -26049,6 +26049,38 @@ result: i32
 insn_count: 319
 blocks: 15
 ratio: 21.27
+calls: 
+profile: {
+    "block": 5,
+    "br": 3,
+    "br_table": 1,
+    "else": 1,
+    "end": 8,
+    "get_local": 56,
+    "i32.add": 4,
+    "i32.and": 2,
+    "i32.const": 44,
+    "i32.eqz": 1,
+    "i32.load16_s": 3,
+    "i32.or": 1,
+    "i32.shl": 1,
+    "i32.shr_s": 1,
+    "i32.store16": 3,
+    "i32.sub": 1,
+    "i64.add": 16,
+    "i64.const": 50,
+    "i64.load": 18,
+    "i64.mul": 16,
+    "i64.shr_u": 16,
+    "i64.store": 20,
+    "i64.store8": 16,
+    "if": 2,
+    "return": 2,
+    "set_local": 8,
+    "tee_local": 19,
+    "unreachable": 1
+}
+
 instructions: 
   block -1
     get_local 0
@@ -26370,38 +26402,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "block": 5,
-    "br": 3,
-    "br_table": 1,
-    "else": 1,
-    "end": 8,
-    "get_local": 56,
-    "i32.add": 4,
-    "i32.and": 2,
-    "i32.const": 44,
-    "i32.eqz": 1,
-    "i32.load16_s": 3,
-    "i32.or": 1,
-    "i32.shl": 1,
-    "i32.shr_s": 1,
-    "i32.store16": 3,
-    "i32.sub": 1,
-    "i64.add": 16,
-    "i64.const": 50,
-    "i64.load": 18,
-    "i64.mul": 16,
-    "i64.shr_u": 16,
-    "i64.store": 20,
-    "i64.store8": 16,
-    "if": 2,
-    "return": 2,
-    "set_local": 8,
-    "tee_local": 19,
-    "unreachable": 1
-}
-
 
 func_name: func_36
 param: i32 
@@ -26409,6 +26409,22 @@ result: i32
 insn_count: 64
 blocks: 9
 ratio: 7.11
+calls: 55 55 55 55 
+profile: {
+    "block": 1,
+    "call": 4,
+    "end": 7,
+    "get_local": 16,
+    "i32.const": 7,
+    "i32.eqz": 2,
+    "i32.load": 9,
+    "i32.store": 4,
+    "if": 5,
+    "return": 2,
+    "set_local": 3,
+    "tee_local": 4
+}
+
 instructions: 
   block -1
     get_local 0
@@ -26475,22 +26491,6 @@ instructions:
   end
 end
 
-calls: 55 55 55 55 
-profile: {
-    "block": 1,
-    "call": 4,
-    "end": 7,
-    "get_local": 16,
-    "i32.const": 7,
-    "i32.eqz": 2,
-    "i32.load": 9,
-    "i32.store": 4,
-    "if": 5,
-    "return": 2,
-    "set_local": 3,
-    "tee_local": 4
-}
-
 
 func_name: func_37
 param: i64 i64 i32 
@@ -26498,6 +26498,24 @@ result: i64
 insn_count: 56
 blocks: 2
 ratio: 28.00
+calls: 
+profile: {
+    "block": 1,
+    "end": 2,
+    "get_local": 17,
+    "i64.add": 5,
+    "i64.and": 2,
+    "i64.const": 7,
+    "i64.extend_u/i32": 2,
+    "i64.lt_u": 2,
+    "i64.mul": 4,
+    "i64.shl": 2,
+    "i64.shr_u": 3,
+    "i64.store": 1,
+    "set_local": 3,
+    "tee_local": 5
+}
+
 instructions: 
   block -2
     get_local 1
@@ -26556,24 +26574,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "block": 1,
-    "end": 2,
-    "get_local": 17,
-    "i64.add": 5,
-    "i64.and": 2,
-    "i64.const": 7,
-    "i64.extend_u/i32": 2,
-    "i64.lt_u": 2,
-    "i64.mul": 4,
-    "i64.shl": 2,
-    "i64.shr_u": 3,
-    "i64.store": 1,
-    "set_local": 3,
-    "tee_local": 5
-}
-
 
 func_name: func_38
 param: i32 
@@ -26581,6 +26581,45 @@ result: i32
 insn_count: 3344
 blocks: 316
 ratio: 10.58
+calls: 68 68 68 68 68 68 68 62 
+profile: {
+    "block": 29,
+    "br": 44,
+    "br_if": 26,
+    "call": 8,
+    "drop": 2,
+    "else": 64,
+    "end": 171,
+    "get_global": 2,
+    "get_local": 846,
+    "i32.add": 181,
+    "i32.and": 93,
+    "i32.const": 560,
+    "i32.eq": 28,
+    "i32.eqz": 31,
+    "i32.ge_u": 4,
+    "i32.gt_u": 17,
+    "i32.le_u": 5,
+    "i32.load": 141,
+    "i32.lt_u": 23,
+    "i32.ne": 9,
+    "i32.or": 69,
+    "i32.shl": 70,
+    "i32.shr_u": 70,
+    "i32.store": 213,
+    "i32.sub": 43,
+    "i32.xor": 11,
+    "i64.load": 2,
+    "i64.store": 2,
+    "if": 126,
+    "loop": 15,
+    "return": 11,
+    "set_global": 13,
+    "set_local": 147,
+    "tee_local": 267,
+    "unreachable": 1
+}
+
 instructions: 
   block -1
     get_global 6
@@ -29927,45 +29966,6 @@ instructions:
   end
 end
 
-calls: 68 68 68 68 68 68 68 62 
-profile: {
-    "block": 29,
-    "br": 44,
-    "br_if": 26,
-    "call": 8,
-    "drop": 2,
-    "else": 64,
-    "end": 171,
-    "get_global": 2,
-    "get_local": 846,
-    "i32.add": 181,
-    "i32.and": 93,
-    "i32.const": 560,
-    "i32.eq": 28,
-    "i32.eqz": 31,
-    "i32.ge_u": 4,
-    "i32.gt_u": 17,
-    "i32.le_u": 5,
-    "i32.load": 141,
-    "i32.lt_u": 23,
-    "i32.ne": 9,
-    "i32.or": 69,
-    "i32.shl": 70,
-    "i32.shr_u": 70,
-    "i32.store": 213,
-    "i32.sub": 43,
-    "i32.xor": 11,
-    "i64.load": 2,
-    "i64.store": 2,
-    "if": 126,
-    "loop": 15,
-    "return": 11,
-    "set_global": 13,
-    "set_local": 147,
-    "tee_local": 267,
-    "unreachable": 1
-}
-
 
 func_name: func_39
 param: i32 
@@ -29973,6 +29973,39 @@ result:
 insn_count: 903
 blocks: 105
 ratio: 8.60
+calls: 
+profile: {
+    "block": 7,
+    "br": 12,
+    "br_if": 5,
+    "drop": 2,
+    "else": 20,
+    "end": 56,
+    "get_local": 243,
+    "i32.add": 44,
+    "i32.and": 20,
+    "i32.const": 131,
+    "i32.eq": 12,
+    "i32.eqz": 9,
+    "i32.ge_u": 1,
+    "i32.gt_u": 1,
+    "i32.load": 52,
+    "i32.lt_u": 4,
+    "i32.ne": 4,
+    "i32.or": 10,
+    "i32.shl": 19,
+    "i32.shr_u": 11,
+    "i32.store": 71,
+    "i32.sub": 3,
+    "i32.xor": 4,
+    "if": 44,
+    "loop": 4,
+    "return": 12,
+    "set_local": 38,
+    "tee_local": 63,
+    "unreachable": 1
+}
+
 instructions: 
   block -64
     get_local 0
@@ -30878,39 +30911,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "block": 7,
-    "br": 12,
-    "br_if": 5,
-    "drop": 2,
-    "else": 20,
-    "end": 56,
-    "get_local": 243,
-    "i32.add": 44,
-    "i32.and": 20,
-    "i32.const": 131,
-    "i32.eq": 12,
-    "i32.eqz": 9,
-    "i32.ge_u": 1,
-    "i32.gt_u": 1,
-    "i32.load": 52,
-    "i32.lt_u": 4,
-    "i32.ne": 4,
-    "i32.or": 10,
-    "i32.shl": 19,
-    "i32.shr_u": 11,
-    "i32.store": 71,
-    "i32.sub": 3,
-    "i32.xor": 4,
-    "if": 44,
-    "loop": 4,
-    "return": 12,
-    "set_local": 38,
-    "tee_local": 63,
-    "unreachable": 1
-}
-
 
 func_name: func_40
 param: i32 i32 
@@ -30918,6 +30918,30 @@ result: i32
 insn_count: 54
 blocks: 10
 ratio: 5.40
+calls: 54 67 
+profile: {
+    "block": 1,
+    "call": 2,
+    "drop": 1,
+    "else": 1,
+    "end": 7,
+    "get_local": 15,
+    "i32.add": 1,
+    "i32.and": 1,
+    "i32.const": 6,
+    "i32.div_u": 1,
+    "i32.eqz": 2,
+    "i32.gt_u": 1,
+    "i32.load": 1,
+    "i32.mul": 1,
+    "i32.ne": 1,
+    "i32.or": 1,
+    "if": 5,
+    "return": 2,
+    "set_local": 3,
+    "tee_local": 1
+}
+
 instructions: 
   block -1
     get_local 0
@@ -30974,30 +30998,6 @@ instructions:
   end
 end
 
-calls: 54 67 
-profile: {
-    "block": 1,
-    "call": 2,
-    "drop": 1,
-    "else": 1,
-    "end": 7,
-    "get_local": 15,
-    "i32.add": 1,
-    "i32.and": 1,
-    "i32.const": 6,
-    "i32.div_u": 1,
-    "i32.eqz": 2,
-    "i32.gt_u": 1,
-    "i32.load": 1,
-    "i32.mul": 1,
-    "i32.ne": 1,
-    "i32.or": 1,
-    "if": 5,
-    "return": 2,
-    "set_local": 3,
-    "tee_local": 1
-}
-
 
 func_name: func_41
 param:  
@@ -31005,15 +31005,15 @@ result: i32
 insn_count: 2
 blocks: 1
 ratio: 2.00
-instructions: 
-  i32.const 11400
-end
-
 calls: 
 profile: {
     "end": 1,
     "i32.const": 1
 }
+
+instructions: 
+  i32.const 11400
+end
 
 
 func_name: func_42
@@ -31022,6 +31022,22 @@ result: i32
 insn_count: 23
 blocks: 2
 ratio: 11.50
+calls: 6 61 
+profile: {
+    "block": 1,
+    "call": 2,
+    "end": 2,
+    "get_global": 2,
+    "get_local": 5,
+    "i32.add": 1,
+    "i32.const": 2,
+    "i32.load": 1,
+    "i32.store": 1,
+    "set_global": 2,
+    "set_local": 2,
+    "tee_local": 2
+}
+
 instructions: 
   block -1
     get_global 6
@@ -31047,22 +31063,6 @@ instructions:
   end
 end
 
-calls: 6 61 
-profile: {
-    "block": 1,
-    "call": 2,
-    "end": 2,
-    "get_global": 2,
-    "get_local": 5,
-    "i32.add": 1,
-    "i32.const": 2,
-    "i32.load": 1,
-    "i32.store": 1,
-    "set_global": 2,
-    "set_local": 2,
-    "tee_local": 2
-}
-
 
 func_name: func_43
 param: i32 i32 i32 
@@ -31070,6 +31070,25 @@ result: i32
 insn_count: 51
 blocks: 4
 ratio: 12.75
+calls: 11 63 
+profile: {
+    "block": 1,
+    "call": 2,
+    "end": 4,
+    "get_global": 2,
+    "get_local": 16,
+    "i32.add": 2,
+    "i32.and": 1,
+    "i32.const": 7,
+    "i32.eqz": 1,
+    "i32.load": 2,
+    "i32.store": 4,
+    "i32.store8": 1,
+    "if": 2,
+    "set_global": 2,
+    "set_local": 4
+}
+
 instructions: 
   block -1
     get_global 6
@@ -31123,25 +31142,6 @@ instructions:
   end
 end
 
-calls: 11 63 
-profile: {
-    "block": 1,
-    "call": 2,
-    "end": 4,
-    "get_global": 2,
-    "get_local": 16,
-    "i32.add": 2,
-    "i32.and": 1,
-    "i32.const": 7,
-    "i32.eqz": 1,
-    "i32.load": 2,
-    "i32.store": 4,
-    "i32.store8": 1,
-    "if": 2,
-    "set_global": 2,
-    "set_local": 4
-}
-
 
 func_name: func_44
 param: i32 i32 i32 
@@ -31149,6 +31149,25 @@ result: i32
 insn_count: 48
 blocks: 4
 ratio: 12.00
+calls: 12 61 
+profile: {
+    "block": 1,
+    "call": 2,
+    "else": 1,
+    "end": 3,
+    "get_global": 2,
+    "get_local": 14,
+    "i32.add": 2,
+    "i32.const": 7,
+    "i32.load": 2,
+    "i32.lt_s": 1,
+    "i32.store": 6,
+    "if": 1,
+    "set_global": 2,
+    "set_local": 2,
+    "tee_local": 2
+}
+
 instructions: 
   block -1
     get_global 6
@@ -31199,25 +31218,6 @@ instructions:
   end
 end
 
-calls: 12 61 
-profile: {
-    "block": 1,
-    "call": 2,
-    "else": 1,
-    "end": 3,
-    "get_global": 2,
-    "get_local": 14,
-    "i32.add": 2,
-    "i32.const": 7,
-    "i32.load": 2,
-    "i32.lt_s": 1,
-    "i32.store": 6,
-    "if": 1,
-    "set_global": 2,
-    "set_local": 2,
-    "tee_local": 2
-}
-
 
 func_name: func_45
 param: i32 
@@ -31225,6 +31225,19 @@ result: i32
 insn_count: 14
 blocks: 3
 ratio: 4.67
+calls: 62 
+profile: {
+    "call": 1,
+    "else": 1,
+    "end": 2,
+    "get_local": 3,
+    "i32.const": 3,
+    "i32.gt_u": 1,
+    "i32.store": 1,
+    "i32.sub": 1,
+    "if": 1
+}
+
 instructions: 
   get_local 0
   i32.const -4096
@@ -31241,19 +31254,6 @@ instructions:
   end
 end
 
-calls: 62 
-profile: {
-    "call": 1,
-    "else": 1,
-    "end": 2,
-    "get_local": 3,
-    "i32.const": 3,
-    "i32.gt_u": 1,
-    "i32.store": 1,
-    "i32.sub": 1,
-    "if": 1
-}
-
 
 func_name: func_46
 param:  
@@ -31261,15 +31261,15 @@ result: i32
 insn_count: 2
 blocks: 1
 ratio: 2.00
-instructions: 
-  i32.const 8204
-end
-
 calls: 
 profile: {
     "end": 1,
     "i32.const": 1
 }
+
+instructions: 
+  i32.const 8204
+end
 
 
 func_name: func_47
@@ -31278,6 +31278,34 @@ result: i32
 insn_count: 195
 blocks: 15
 ratio: 13.00
+calls: 15 61 15 61 
+profile: {
+    "block": 3,
+    "br": 2,
+    "br_if": 2,
+    "call": 4,
+    "else": 2,
+    "end": 9,
+    "get_global": 2,
+    "get_local": 62,
+    "i32.add": 12,
+    "i32.const": 22,
+    "i32.eq": 3,
+    "i32.ge_s": 1,
+    "i32.gt_u": 1,
+    "i32.load": 11,
+    "i32.or": 1,
+    "i32.shl": 1,
+    "i32.shr_s": 1,
+    "i32.store": 19,
+    "i32.sub": 5,
+    "if": 4,
+    "loop": 1,
+    "set_global": 2,
+    "set_local": 10,
+    "tee_local": 15
+}
+
 instructions: 
   block -1
     get_global 6
@@ -31475,34 +31503,6 @@ instructions:
   end
 end
 
-calls: 15 61 15 61 
-profile: {
-    "block": 3,
-    "br": 2,
-    "br_if": 2,
-    "call": 4,
-    "else": 2,
-    "end": 9,
-    "get_global": 2,
-    "get_local": 62,
-    "i32.add": 12,
-    "i32.const": 22,
-    "i32.eq": 3,
-    "i32.ge_s": 1,
-    "i32.gt_u": 1,
-    "i32.load": 11,
-    "i32.or": 1,
-    "i32.shl": 1,
-    "i32.shr_s": 1,
-    "i32.store": 19,
-    "i32.sub": 5,
-    "if": 4,
-    "loop": 1,
-    "set_global": 2,
-    "set_local": 10,
-    "tee_local": 15
-}
-
 
 func_name: func_48
 param: i32 
@@ -31510,6 +31510,29 @@ result: i32
 insn_count: 79
 blocks: 16
 ratio: 4.94
+calls: 65 65 64 5 65 8 
+profile: {
+    "block": 5,
+    "br": 1,
+    "br_if": 1,
+    "call": 6,
+    "drop": 2,
+    "else": 2,
+    "end": 12,
+    "get_local": 12,
+    "i32.const": 10,
+    "i32.eqz": 1,
+    "i32.gt_s": 1,
+    "i32.gt_u": 1,
+    "i32.le_s": 1,
+    "i32.load": 8,
+    "i32.or": 1,
+    "if": 5,
+    "loop": 1,
+    "set_local": 6,
+    "tee_local": 3
+}
+
 instructions: 
   block -1
     block -64
@@ -31591,29 +31614,6 @@ instructions:
   end
 end
 
-calls: 65 65 64 5 65 8 
-profile: {
-    "block": 5,
-    "br": 1,
-    "br_if": 1,
-    "call": 6,
-    "drop": 2,
-    "else": 2,
-    "end": 12,
-    "get_local": 12,
-    "i32.const": 10,
-    "i32.eqz": 1,
-    "i32.gt_s": 1,
-    "i32.gt_u": 1,
-    "i32.le_s": 1,
-    "i32.load": 8,
-    "i32.or": 1,
-    "if": 5,
-    "loop": 1,
-    "set_local": 6,
-    "tee_local": 3
-}
-
 
 func_name: func_49
 param: i32 
@@ -31621,6 +31621,27 @@ result: i32
 insn_count: 78
 blocks: 7
 ratio: 11.14
+calls: 
+profile: {
+    "block": 2,
+    "br": 1,
+    "br_if": 2,
+    "call_indirect": 2,
+    "drop": 2,
+    "end": 4,
+    "get_local": 16,
+    "i32.add": 6,
+    "i32.and": 2,
+    "i32.const": 18,
+    "i32.le_u": 1,
+    "i32.load": 7,
+    "i32.lt_u": 1,
+    "i32.store": 5,
+    "i32.sub": 1,
+    "if": 1,
+    "tee_local": 7
+}
+
 instructions: 
   block -1
     block -64
@@ -31701,27 +31722,6 @@ instructions:
   tee_local 0
 end
 
-calls: 
-profile: {
-    "block": 2,
-    "br": 1,
-    "br_if": 2,
-    "call_indirect": 2,
-    "drop": 2,
-    "end": 4,
-    "get_local": 16,
-    "i32.add": 6,
-    "i32.and": 2,
-    "i32.const": 18,
-    "i32.le_u": 1,
-    "i32.load": 7,
-    "i32.lt_u": 1,
-    "i32.store": 5,
-    "i32.sub": 1,
-    "if": 1,
-    "tee_local": 7
-}
-
 
 func_name: func_50
 param:  
@@ -31729,15 +31729,15 @@ result:
 insn_count: 2
 blocks: 1
 ratio: 2.00
-instructions: 
-  nop
-end
-
 calls: 
 profile: {
     "end": 1,
     "nop": 1
 }
+
+instructions: 
+  nop
+end
 
 
 func_name: func_51
@@ -31746,6 +31746,29 @@ result: i32
 insn_count: 145
 blocks: 15
 ratio: 9.67
+calls: 
+profile: {
+    "block": 1,
+    "br": 4,
+    "end": 11,
+    "get_local": 60,
+    "i32.add": 5,
+    "i32.and": 3,
+    "i32.const": 12,
+    "i32.ge_s": 1,
+    "i32.le_s": 1,
+    "i32.lt_s": 2,
+    "i32.or": 3,
+    "i32.shl": 3,
+    "i32.store": 17,
+    "i32.store8": 2,
+    "i32.sub": 2,
+    "if": 5,
+    "loop": 4,
+    "set_local": 8,
+    "tee_local": 1
+}
+
 instructions: 
   block -1
     get_local 0
@@ -31893,29 +31916,6 @@ instructions:
   end
 end
 
-calls: 
-profile: {
-    "block": 1,
-    "br": 4,
-    "end": 11,
-    "get_local": 60,
-    "i32.add": 5,
-    "i32.and": 3,
-    "i32.const": 12,
-    "i32.ge_s": 1,
-    "i32.le_s": 1,
-    "i32.lt_s": 2,
-    "i32.or": 3,
-    "i32.shl": 3,
-    "i32.store": 17,
-    "i32.store8": 2,
-    "i32.sub": 2,
-    "if": 5,
-    "loop": 4,
-    "set_local": 8,
-    "tee_local": 1
-}
-
 
 func_name: func_52
 param: i32 
@@ -31923,6 +31923,29 @@ result: i32
 insn_count: 53
 blocks: 7
 ratio: 7.57
+calls: 3 7 2 1 7 
+profile: {
+    "block": 1,
+    "call": 5,
+    "drop": 1,
+    "end": 5,
+    "get_global": 3,
+    "get_local": 9,
+    "i32.add": 2,
+    "i32.and": 2,
+    "i32.const": 8,
+    "i32.eqz": 1,
+    "i32.gt_s": 2,
+    "i32.load": 1,
+    "i32.lt_s": 2,
+    "i32.or": 1,
+    "i32.store": 2,
+    "if": 3,
+    "return": 2,
+    "set_local": 1,
+    "tee_local": 2
+}
+
 instructions: 
   block -1
     get_global 5
@@ -31978,29 +32001,6 @@ instructions:
   end
 end
 
-calls: 3 7 2 1 7 
-profile: {
-    "block": 1,
-    "call": 5,
-    "drop": 1,
-    "end": 5,
-    "get_global": 3,
-    "get_local": 9,
-    "i32.add": 2,
-    "i32.and": 2,
-    "i32.const": 8,
-    "i32.eqz": 1,
-    "i32.gt_s": 2,
-    "i32.load": 1,
-    "i32.lt_s": 2,
-    "i32.or": 1,
-    "i32.store": 2,
-    "if": 3,
-    "return": 2,
-    "set_local": 1,
-    "tee_local": 2
-}
-
 
 func_name: func_53
 param: i32 i32 i32 
@@ -32008,6 +32008,34 @@ result: i32
 insn_count: 223
 blocks: 23
 ratio: 9.70
+calls: 10 
+profile: {
+    "block": 1,
+    "br": 5,
+    "call": 1,
+    "else": 1,
+    "end": 15,
+    "get_local": 80,
+    "i32.add": 11,
+    "i32.and": 4,
+    "i32.const": 18,
+    "i32.eq": 1,
+    "i32.eqz": 1,
+    "i32.ge_s": 1,
+    "i32.le_s": 1,
+    "i32.load": 17,
+    "i32.load8_s": 6,
+    "i32.lt_s": 3,
+    "i32.store": 17,
+    "i32.store8": 6,
+    "i32.sub": 3,
+    "if": 8,
+    "loop": 5,
+    "return": 2,
+    "set_local": 15,
+    "tee_local": 1
+}
+
 instructions: 
   block -1
     get_local 2
@@ -32233,34 +32261,6 @@ instructions:
   end
 end
 
-calls: 10 
-profile: {
-    "block": 1,
-    "br": 5,
-    "call": 1,
-    "else": 1,
-    "end": 15,
-    "get_local": 80,
-    "i32.add": 11,
-    "i32.and": 4,
-    "i32.const": 18,
-    "i32.eq": 1,
-    "i32.eqz": 1,
-    "i32.ge_s": 1,
-    "i32.le_s": 1,
-    "i32.load": 17,
-    "i32.load8_s": 6,
-    "i32.lt_s": 3,
-    "i32.store": 17,
-    "i32.store8": 6,
-    "i32.sub": 3,
-    "if": 8,
-    "loop": 5,
-    "return": 2,
-    "set_local": 15,
-    "tee_local": 1
-}
-
 
 func_name: func_54
 param: i32 i32 i32 
@@ -32268,6 +32268,29 @@ result: i32
 insn_count: 55
 blocks: 7
 ratio: 7.86
+calls: 69 
+profile: {
+    "block": 1,
+    "br": 1,
+    "call": 1,
+    "drop": 1,
+    "else": 1,
+    "end": 5,
+    "get_local": 19,
+    "i32.add": 3,
+    "i32.and": 1,
+    "i32.const": 4,
+    "i32.gt_s": 1,
+    "i32.load8_s": 1,
+    "i32.lt_s": 2,
+    "i32.store8": 1,
+    "i32.sub": 3,
+    "if": 2,
+    "loop": 1,
+    "set_local": 5,
+    "tee_local": 2
+}
+
 instructions: 
   block -1
     get_local 1
@@ -32325,29 +32348,6 @@ instructions:
   end
 end
 
-calls: 69 
-profile: {
-    "block": 1,
-    "br": 1,
-    "call": 1,
-    "drop": 1,
-    "else": 1,
-    "end": 5,
-    "get_local": 19,
-    "i32.add": 3,
-    "i32.and": 1,
-    "i32.const": 4,
-    "i32.gt_s": 1,
-    "i32.load8_s": 1,
-    "i32.lt_s": 2,
-    "i32.store8": 1,
-    "i32.sub": 3,
-    "if": 2,
-    "loop": 1,
-    "set_local": 5,
-    "tee_local": 2
-}
-
 
 func_name: func_55
 param: i32 i32 
@@ -32355,14 +32355,6 @@ result: i32
 insn_count: 6
 blocks: 1
 ratio: 6.00
-instructions: 
-  get_local 1
-  get_local 0
-  i32.const 1
-  i32.and
-  call_indirect 2, 0
-end
-
 calls: 
 profile: {
     "call_indirect": 1,
@@ -32372,6 +32364,14 @@ profile: {
     "i32.const": 1
 }
 
+instructions: 
+  get_local 1
+  get_local 0
+  i32.const 1
+  i32.and
+  call_indirect 2, 0
+end
+
 
 func_name: func_56
 param: i32 i32 i32 i32 
@@ -32379,6 +32379,16 @@ result: i32
 insn_count: 10
 blocks: 1
 ratio: 10.00
+calls: 
+profile: {
+    "call_indirect": 1,
+    "end": 1,
+    "get_local": 4,
+    "i32.add": 1,
+    "i32.and": 1,
+    "i32.const": 2
+}
+
 instructions: 
   get_local 1
   get_local 2
@@ -32391,6 +32401,13 @@ instructions:
   call_indirect 1, 0
 end
 
+
+func_name: func_57
+param: i32 i32 i32 i32 
+result: 
+insn_count: 10
+blocks: 1
+ratio: 10.00
 calls: 
 profile: {
     "call_indirect": 1,
@@ -32401,13 +32418,6 @@ profile: {
     "i32.const": 2
 }
 
-
-func_name: func_57
-param: i32 i32 i32 i32 
-result: 
-insn_count: 10
-blocks: 1
-ratio: 10.00
 instructions: 
   get_local 1
   get_local 2
@@ -32420,16 +32430,6 @@ instructions:
   call_indirect 0, 0
 end
 
-calls: 
-profile: {
-    "call_indirect": 1,
-    "end": 1,
-    "get_local": 4,
-    "i32.add": 1,
-    "i32.and": 1,
-    "i32.const": 2
-}
-
 
 func_name: func_58
 param: i32 
@@ -32437,14 +32437,6 @@ result: i32
 insn_count: 6
 blocks: 2
 ratio: 3.00
-instructions: 
-  block -1
-    i32.const 0
-    call 0
-    i32.const 0
-  end
-end
-
 calls: 0 
 profile: {
     "block": 1,
@@ -32452,6 +32444,14 @@ profile: {
     "end": 2,
     "i32.const": 2
 }
+
+instructions: 
+  block -1
+    i32.const 0
+    call 0
+    i32.const 0
+  end
+end
 
 
 func_name: func_59
@@ -32460,14 +32460,6 @@ result: i32
 insn_count: 6
 blocks: 2
 ratio: 3.00
-instructions: 
-  block -1
-    i32.const 1
-    call 0
-    i32.const 0
-  end
-end
-
 calls: 0 
 profile: {
     "block": 1,
@@ -32476,6 +32468,14 @@ profile: {
     "i32.const": 2
 }
 
+instructions: 
+  block -1
+    i32.const 1
+    call 0
+    i32.const 0
+  end
+end
+
 
 func_name: func_60
 param: i32 i32 i32 
@@ -32483,16 +32483,16 @@ result:
 insn_count: 3
 blocks: 1
 ratio: 3.00
-instructions: 
-  i32.const 2
-  call 0
-end
-
 calls: 0 
 profile: {
     "call": 1,
     "end": 1,
     "i32.const": 1
 }
+
+instructions: 
+  i32.const 2
+  call 0
+end
 
 
