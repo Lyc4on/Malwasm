@@ -14,10 +14,6 @@ from wasm import (
     INSN_ENTER_BLOCK,
     INSN_LEAVE_BLOCK,)
 
-# Creates WModule object
-# class WModule:
-#     def __init__(self, func_body, func_type=None):
-
 class Module():
     func_objs = []
 
@@ -58,11 +54,6 @@ class Function():
         self.ratio = self.insn_count/self.profile['block']
     
     def __str__(self):
-        # returnStr = 'func_id: ' + str(self.id) + '\n' + 'param_sect: ' + self.param_section + '\n'
-        # returnStr += 'result_sect: ' + self.result_section + '\n'
-        # returnStr += 'local_sect: ' + self.local_section + '\n'
-        # returnStr += 'insn_count: ' + str(self.insn_count) + '\n'
-        # returnStr += 'profile: ' + str(self.profile) + '\n\n'
         returnStr = 'func_name: func_{id}\n'.format(id=self.id)
         returnStr += 'param: {p}\n'.format(p=''.join(pa+' ' for pa in self.param_section))
         returnStr += 'result: {r}\n'.format(r=self.result_section)

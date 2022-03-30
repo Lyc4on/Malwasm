@@ -66,7 +66,6 @@ def get_local_sect(func_body):
             for x in func_body.locals
         )))
     return local_section
-    # print(self.local_section)
 
 def get_insn_arr(func_body):
     # Extract func body
@@ -81,13 +80,11 @@ def get_insn_arr(func_body):
         if cur_insn.op.flags & INSN_ENTER_BLOCK:
             level += 1
     return insn_arr
-    # print(self.insn_arr)
 
 def get_profile(insn_arr):
     profile = {}
     # Strip whitespace and then split to keep only first string of each element in insn_arr
     insn_arr_strip = [x.strip().split(' ',1)[0] for x in insn_arr]
-    # print(insn_arr_strip)
     
     # Add block key into profile - every func has 1 block by default
     profile['block'] = profile.get('block', 1)
