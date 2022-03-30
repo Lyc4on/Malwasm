@@ -35,20 +35,27 @@ def bytecode_to_bytes(bytecode):
     return bytecode
 
 def get_param_sect(func_type):
-    param_section = ''
+    param_section = []
     # Extract func signature        
     if func_type is None:
         pass
     else:
-        param_section = 'param {}'.format(''.join(
+        p = '{}'.format(' '.join(
             map(format_lang_type, func_type.param_types)
-            )) if func_type.param_types else 'param empty'
-        
-        result_section = 'result {}'.format(
-            format_lang_type(func_type.return_type)
-        ) if func_type.return_type else 'result empty'
+            )) if func_type.param_types else ''
+    param_section = p.split(' ')
+
     return param_section
-    # print(self.param_section + ' ' + self.result_section)
+
+def get_result_sect(func_type):
+    result_section = ''
+    if func_type is None:
+        pass
+    else:
+        result_section = '{}'.format(
+            format_lang_type(func_type.return_type)
+            ) if func_type.return_type else ''
+    return result_section
 
 def get_local_sect(func_body):
     local_section = ''
@@ -82,6 +89,9 @@ def get_profile(insn_arr):
     insn_arr_strip = [x.strip().split(' ',1)[0] for x in insn_arr]
     # print(insn_arr_strip)
     
+    # Add block key into profile - every func has 1 block by default
+    profile['block'] = profile.get('block', 1)
+
     # Count each opcode in array
     for op in insn_arr_strip:
         profile[op] = profile.get(op, 0) + 1 # get op and add 1 to count; assign 0 if op(key) not found
