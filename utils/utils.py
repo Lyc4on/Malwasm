@@ -81,6 +81,11 @@ def get_insn_arr(func_body):
             level += 1
     return insn_arr
 
+def get_calls_arr(insn_arr):
+    returnArr = [x.strip().split(' ',1) for x in insn_arr] # Strip whitespace
+    returnArr = [x[-1] for x in returnArr if 'call' in x] # Filter to only keep call <funcID>
+    return returnArr
+
 def get_profile(insn_arr):
     profile = {}
     # Strip whitespace and then split to keep only first string of each element in insn_arr

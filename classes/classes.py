@@ -42,6 +42,8 @@ class Function():
     profile = {}
     id = 0
     ratio = 0.0
+    calls_arr = []
+    
 
     def __init__(self, id, func_body, func_type=None):
         self.id = id
@@ -52,6 +54,9 @@ class Function():
         self.insn_count = len(self.insn_arr)
         self.profile = utils.get_profile(self.insn_arr)
         self.ratio = self.insn_count/self.profile['block']
+        
+        # Add to call <func ID> if exist, else remain as None
+        self.calls_arr = utils.get_calls_arr(self.insn_arr)
     
     def __str__(self):
         returnStr = 'func_name: func_{id}\n'.format(id=self.id)
@@ -61,5 +66,6 @@ class Function():
         returnStr += 'blocks: {b}\n'.format(b=str(self.profile['block']))
         returnStr += 'ratio: {r}\n'.format(r=str(self.ratio))
         returnStr += 'instructions: \n{i}\n'.format(i=''.join(o+'\n' for o in self.insn_arr))
+        returnStr += 'calls: {c}\n'.format(c=''.join(str(ca)+' ' for ca in self.calls_arr))
         returnStr += 'profile: {j}\n\n'.format(j=json.dumps(self.profile, sort_keys=True, indent=4))
         return returnStr

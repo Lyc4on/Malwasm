@@ -22,6 +22,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 2,
     "end": 2,
@@ -45,6 +46,7 @@ instructions:
   get_global 6
 end
 
+calls: 
 profile: {
     "block": 1,
     "end": 1,
@@ -63,6 +65,7 @@ instructions:
   set_global 6
 end
 
+calls: 
 profile: {
     "block": 1,
     "end": 1,
@@ -86,6 +89,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 2,
     "end": 2,
@@ -111,6 +115,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 1,
     "end": 2,
@@ -133,6 +138,7 @@ instructions:
   set_global 10
 end
 
+calls: 
 profile: {
     "block": 1,
     "end": 1,
@@ -151,6 +157,7 @@ instructions:
   get_global 10
 end
 
+calls: 
 profile: {
     "block": 1,
     "end": 1,
@@ -174,6 +181,7 @@ instructions:
   call 36
 end
 
+calls: 36 
 profile: {
     "block": 1,
     "call": 1,
@@ -197,6 +205,7 @@ instructions:
   call 56
 end
 
+calls: 56 
 profile: {
     "block": 1,
     "call": 1,
@@ -223,6 +232,7 @@ instructions:
   end
 end
 
+calls: 52 55 
 profile: {
     "block": 2,
     "call": 2,
@@ -1120,6 +1130,7 @@ instructions:
   end
 end
 
+calls: 43 50 49 31 31 31 31 31 31 31 31 30 53 30 53 49 31 31 31 31 31 31 31 31 42 
 profile: {
     "block": 2,
     "br": 1,
@@ -1168,6 +1179,7 @@ instructions:
   call 35
 end
 
+calls: 35 
 profile: {
     "block": 1,
     "call": 1,
@@ -1201,6 +1213,7 @@ instructions:
   end
 end
 
+calls: 40 14 
 profile: {
     "block": 1,
     "call": 2,
@@ -1236,6 +1249,7 @@ instructions:
   end
 end
 
+calls: 44 14 
 profile: {
     "block": 1,
     "call": 2,
@@ -1459,6 +1473,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 2,
     "end": 2,
@@ -3239,6 +3254,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 2,
     "end": 2,
@@ -4343,6 +4359,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 2,
     "br_if": 2,
@@ -4534,6 +4551,7 @@ instructions:
   end
 end
 
+calls: 69 32 32 69 
 profile: {
     "block": 2,
     "br_if": 1,
@@ -4941,6 +4959,7 @@ instructions:
   end
 end
 
+calls: 33 33 33 33 33 33 
 profile: {
     "block": 2,
     "call": 6,
@@ -5038,6 +5057,7 @@ instructions:
   end
 end
 
+calls: 33 34 
 profile: {
     "block": 2,
     "call": 2,
@@ -5813,6 +5833,7 @@ instructions:
   end
 end
 
+calls: 37 37 37 38 38 38 38 38 38 38 38 38 38 
 profile: {
     "block": 4,
     "br": 2,
@@ -6308,6 +6329,7 @@ instructions:
   end
 end
 
+calls: 39 39 39 39 39 39 39 39 39 39 38 38 38 38 38 38 38 38 38 38 
 profile: {
     "block": 2,
     "br_if": 2,
@@ -8473,6 +8495,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 2,
     "end": 2,
@@ -10704,6 +10727,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 2,
     "end": 2,
@@ -11539,6 +11563,7 @@ instructions:
   end
 end
 
+calls: 41 69 69 41 67 67 41 41 
 profile: {
     "block": 15,
     "br": 4,
@@ -13986,6 +14011,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 2,
     "br": 7,
@@ -14776,6 +14802,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 2,
     "br": 1,
@@ -14936,6 +14963,7 @@ instructions:
   end
 end
 
+calls: 42 69 
 profile: {
     "block": 2,
     "call": 2,
@@ -17195,6 +17223,7 @@ instructions:
   end
 end
 
+calls: 45 46 69 45 45 69 69 45 45 69 69 47 47 69 69 47 47 69 69 46 46 69 69 46 46 69 69 45 45 69 69 47 47 69 69 46 46 69 67 45 45 69 67 47 47 69 67 46 46 69 
 profile: {
     "block": 23,
     "br": 13,
@@ -21403,6 +21432,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 2,
     "br": 1,
@@ -23116,6 +23146,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 2,
     "br": 2,
@@ -25314,6 +25345,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 2,
     "br": 1,
@@ -25755,6 +25787,7 @@ instructions:
   end
 end
 
+calls: 56 69 70 
 profile: {
     "block": 2,
     "br": 1,
@@ -25864,6 +25897,7 @@ instructions:
   end
 end
 
+calls: 55 55 55 56 56 69 48 
 profile: {
     "block": 2,
     "call": 7,
@@ -25995,6 +26029,7 @@ instructions:
   end
 end
 
+calls: 56 9 4 56 13 55 51 
 profile: {
     "block": 2,
     "call": 7,
@@ -26345,6 +26380,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 6,
     "br": 3,
@@ -26449,6 +26485,7 @@ instructions:
   end
 end
 
+calls: 55 55 55 55 
 profile: {
     "block": 2,
     "call": 4,
@@ -26529,6 +26566,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 2,
     "end": 2,
@@ -29899,6 +29937,7 @@ instructions:
   end
 end
 
+calls: 68 68 68 68 68 68 68 62 
 profile: {
     "block": 30,
     "br": 44,
@@ -30849,6 +30888,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 8,
     "br": 12,
@@ -30944,6 +30984,7 @@ instructions:
   end
 end
 
+calls: 54 67 
 profile: {
     "block": 2,
     "call": 2,
@@ -30978,6 +31019,7 @@ instructions:
   i32.const 11400
 end
 
+calls: 
 profile: {
     "block": 1,
     "end": 1,
@@ -31016,6 +31058,7 @@ instructions:
   end
 end
 
+calls: 6 61 
 profile: {
     "block": 2,
     "call": 2,
@@ -31091,6 +31134,7 @@ instructions:
   end
 end
 
+calls: 11 63 
 profile: {
     "block": 2,
     "call": 2,
@@ -31166,6 +31210,7 @@ instructions:
   end
 end
 
+calls: 12 61 
 profile: {
     "block": 2,
     "call": 2,
@@ -31207,6 +31252,7 @@ instructions:
   end
 end
 
+calls: 62 
 profile: {
     "block": 1,
     "call": 1,
@@ -31231,6 +31277,7 @@ instructions:
   i32.const 8204
 end
 
+calls: 
 profile: {
     "block": 1,
     "end": 1,
@@ -31441,6 +31488,7 @@ instructions:
   end
 end
 
+calls: 15 61 15 61 
 profile: {
     "block": 4,
     "br": 2,
@@ -31556,6 +31604,7 @@ instructions:
   end
 end
 
+calls: 65 65 64 5 65 8 
 profile: {
     "block": 6,
     "br": 1,
@@ -31665,6 +31714,7 @@ instructions:
   tee_local 0
 end
 
+calls: 
 profile: {
     "block": 3,
     "br": 1,
@@ -31696,6 +31746,7 @@ instructions:
   nop
 end
 
+calls: 
 profile: {
     "block": 1,
     "end": 1,
@@ -31856,6 +31907,7 @@ instructions:
   end
 end
 
+calls: 
 profile: {
     "block": 2,
     "br": 4,
@@ -31940,6 +31992,7 @@ instructions:
   end
 end
 
+calls: 3 7 2 1 7 
 profile: {
     "block": 2,
     "call": 5,
@@ -32194,6 +32247,7 @@ instructions:
   end
 end
 
+calls: 10 
 profile: {
     "block": 2,
     "br": 5,
@@ -32285,6 +32339,7 @@ instructions:
   end
 end
 
+calls: 69 
 profile: {
     "block": 2,
     "br": 1,
@@ -32322,6 +32377,7 @@ instructions:
   call_indirect 2, 0
 end
 
+calls: 
 profile: {
     "block": 1,
     "call_indirect": 1,
@@ -32350,6 +32406,7 @@ instructions:
   call_indirect 1, 0
 end
 
+calls: 
 profile: {
     "block": 1,
     "call_indirect": 1,
@@ -32379,6 +32436,7 @@ instructions:
   call_indirect 0, 0
 end
 
+calls: 
 profile: {
     "block": 1,
     "call_indirect": 1,
@@ -32404,6 +32462,7 @@ instructions:
   end
 end
 
+calls: 0 
 profile: {
     "block": 2,
     "call": 1,
@@ -32426,6 +32485,7 @@ instructions:
   end
 end
 
+calls: 0 
 profile: {
     "block": 2,
     "call": 1,
@@ -32445,6 +32505,7 @@ instructions:
   call 0
 end
 
+calls: 0 
 profile: {
     "block": 1,
     "call": 1,
