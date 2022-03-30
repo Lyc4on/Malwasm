@@ -86,13 +86,27 @@ def get_calls_arr(insn_arr):
     returnArr = [x[-1] for x in returnArr if 'call' in x] # Filter to only keep call <funcID>
     return returnArr
 
+def get_blocks_count(profile):
+    count = 0
+    block_insn = ['block', 'loop', 'if', 'else', 'br', 'br_if', 
+                    'br_table', 'return', 'call_indirect']
+    
+    for ins in block_insn:
+        if ins == 'call' or ins == 'call_indirect':
+            count += 1
+        else:
+            count += profile.get(ins, 0) # Get count, 0 if not exist
+    if count == 0:
+        count += 1
+    return count
+
 def get_profile(insn_arr):
     profile = {}
     # Strip whitespace and then split to keep only first string of each element in insn_arr
     insn_arr_strip = [x.strip().split(' ',1)[0] for x in insn_arr]
     
-    # Add block key into profile - every func has 1 block by default
-    profile['block'] = profile.get('block', 1)
+    # # Add block key into profile - every func has 1 block by default
+    # profile['block'] = profile.get('block', 1)
 
     # Count each opcode in array
     for op in insn_arr_strip:

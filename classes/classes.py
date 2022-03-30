@@ -41,6 +41,7 @@ class Function():
     insn_count = 0
     profile = {}
     id = 0
+    blocks_count = 0
     ratio = 0.0
     calls_arr = []
     
@@ -53,7 +54,9 @@ class Function():
         self.insn_arr = utils.get_insn_arr(func_body)
         self.insn_count = len(self.insn_arr)
         self.profile = utils.get_profile(self.insn_arr)
-        self.ratio = self.insn_count/self.profile['block']
+
+        self.blocks_count = utils.get_blocks_count(self.profile)
+        self.ratio = self.insn_count/self.blocks_count
         
         # Add to call <func ID> if exist, else remain as None
         self.calls_arr = utils.get_calls_arr(self.insn_arr)
@@ -63,8 +66,8 @@ class Function():
         returnStr += 'param: {p}\n'.format(p=''.join(pa+' ' for pa in self.param_section))
         returnStr += 'result: {r}\n'.format(r=self.result_section)
         returnStr += 'insn_count: {c}\n'.format(c=str(self.insn_count))
-        returnStr += 'blocks: {b}\n'.format(b=str(self.profile['block']))
-        returnStr += 'ratio: {r}\n'.format(r=str(self.ratio))
+        returnStr += 'blocks: {b}\n'.format(b=str(self.blocks_count))
+        returnStr += 'ratio: {:.2f}\n'.format(self.ratio)
         returnStr += 'instructions: \n{i}\n'.format(i=''.join(o+'\n' for o in self.insn_arr))
         returnStr += 'calls: {c}\n'.format(c=''.join(str(ca)+' ' for ca in self.calls_arr))
         returnStr += 'profile: {j}\n\n'.format(j=json.dumps(self.profile, sort_keys=True, indent=4))

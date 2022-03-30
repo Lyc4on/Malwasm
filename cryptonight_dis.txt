@@ -3,7 +3,7 @@ param: i32
 result: i32
 insn_count: 16
 blocks: 2
-ratio: 8.0
+ratio: 8.00
 instructions: 
   block -1
     get_global 6
@@ -24,7 +24,7 @@ end
 
 calls: 
 profile: {
-    "block": 2,
+    "block": 1,
     "end": 2,
     "get_global": 3,
     "get_local": 2,
@@ -41,14 +41,13 @@ param:
 result: i32
 insn_count: 2
 blocks: 1
-ratio: 2.0
+ratio: 2.00
 instructions: 
   get_global 6
 end
 
 calls: 
 profile: {
-    "block": 1,
     "end": 1,
     "get_global": 1
 }
@@ -59,7 +58,7 @@ param: i32
 result: 
 insn_count: 3
 blocks: 1
-ratio: 3.0
+ratio: 3.00
 instructions: 
   get_local 0
   set_global 6
@@ -67,7 +66,6 @@ end
 
 calls: 
 profile: {
-    "block": 1,
     "end": 1,
     "get_local": 1,
     "set_global": 1
@@ -79,7 +77,7 @@ param: i32 i32
 result: 
 insn_count: 7
 blocks: 2
-ratio: 3.5
+ratio: 3.50
 instructions: 
   block -64
     get_local 0
@@ -91,7 +89,7 @@ end
 
 calls: 
 profile: {
-    "block": 2,
+    "block": 1,
     "end": 2,
     "get_local": 2,
     "set_global": 2
@@ -102,8 +100,8 @@ func_name: func_4
 param: i32 i32 
 result: 
 insn_count: 9
-blocks: 1
-ratio: 9.0
+blocks: 2
+ratio: 4.50
 instructions: 
   get_global 8
   i32.eqz
@@ -117,7 +115,6 @@ end
 
 calls: 
 profile: {
-    "block": 1,
     "end": 2,
     "get_global": 1,
     "get_local": 2,
@@ -132,7 +129,7 @@ param: i32
 result: 
 insn_count: 3
 blocks: 1
-ratio: 3.0
+ratio: 3.00
 instructions: 
   get_local 0
   set_global 10
@@ -140,7 +137,6 @@ end
 
 calls: 
 profile: {
-    "block": 1,
     "end": 1,
     "get_local": 1,
     "set_global": 1
@@ -152,14 +148,13 @@ param:
 result: i32
 insn_count: 2
 blocks: 1
-ratio: 2.0
+ratio: 2.00
 instructions: 
   get_global 10
 end
 
 calls: 
 profile: {
-    "block": 1,
     "end": 1,
     "get_global": 1
 }
@@ -170,7 +165,7 @@ param: i32 i32 i32
 result: 
 insn_count: 8
 blocks: 1
-ratio: 8.0
+ratio: 8.00
 instructions: 
   get_local 0
   get_local 1
@@ -183,7 +178,6 @@ end
 
 calls: 36 
 profile: {
-    "block": 1,
     "call": 1,
     "end": 1,
     "get_local": 3,
@@ -198,7 +192,7 @@ param:
 result: i32
 insn_count: 4
 blocks: 1
-ratio: 4.0
+ratio: 4.00
 instructions: 
   i32.const 1
   i32.const 2097552
@@ -207,7 +201,6 @@ end
 
 calls: 56 
 profile: {
-    "block": 1,
     "call": 1,
     "end": 1,
     "i32.const": 2
@@ -219,7 +212,7 @@ param: i32
 result: 
 insn_count: 10
 blocks: 2
-ratio: 5.0
+ratio: 5.00
 instructions: 
   block -64
     get_local 0
@@ -234,7 +227,7 @@ end
 
 calls: 52 55 
 profile: {
-    "block": 2,
+    "block": 1,
     "call": 2,
     "drop": 1,
     "end": 2,
@@ -248,8 +241,8 @@ func_name: func_10
 param: i32 i32 i32 i32 
 result: 
 insn_count: 878
-blocks: 2
-ratio: 439.0
+blocks: 11
+ratio: 79.82
 instructions: 
   block -64
     get_global 6
@@ -1132,7 +1125,7 @@ end
 
 calls: 43 50 49 31 31 31 31 31 31 31 31 30 53 30 53 49 31 31 31 31 31 31 31 31 42 
 profile: {
-    "block": 2,
+    "block": 1,
     "br": 1,
     "br_if": 2,
     "call": 25,
@@ -1170,7 +1163,7 @@ param: i32 i32 i32
 result: 
 insn_count: 6
 blocks: 1
-ratio: 6.0
+ratio: 6.00
 instructions: 
   get_local 2
   get_local 0
@@ -1181,7 +1174,6 @@ end
 
 calls: 35 
 profile: {
-    "block": 1,
     "call": 1,
     "end": 1,
     "get_local": 3,
@@ -1193,8 +1185,8 @@ func_name: func_12
 param: i32 i32 i32 
 result: 
 insn_count: 16
-blocks: 1
-ratio: 16.0
+blocks: 2
+ratio: 8.00
 instructions: 
   i32.const 256
   get_local 0
@@ -1215,7 +1207,6 @@ end
 
 calls: 40 14 
 profile: {
-    "block": 1,
     "call": 2,
     "end": 2,
     "get_local": 3,
@@ -1230,8 +1221,8 @@ func_name: func_13
 param: i32 i32 i32 
 result: 
 insn_count: 15
-blocks: 1
-ratio: 15.0
+blocks: 2
+ratio: 7.50
 instructions: 
   i32.const 256
   get_local 0
@@ -1251,7 +1242,6 @@ end
 
 calls: 44 14 
 profile: {
-    "block": 1,
     "call": 2,
     "end": 2,
     "get_local": 3,
@@ -1266,7 +1256,7 @@ param: i32 i32 i32
 result: 
 insn_count: 204
 blocks: 2
-ratio: 102.0
+ratio: 102.00
 instructions: 
   block -64
     get_local 1
@@ -1475,7 +1465,7 @@ end
 
 calls: 
 profile: {
-    "block": 2,
+    "block": 1,
     "end": 2,
     "get_local": 24,
     "i32.add": 19,
@@ -1495,7 +1485,7 @@ param: i32 i32
 result: 
 insn_count: 1756
 blocks: 2
-ratio: 878.0
+ratio: 878.00
 instructions: 
   block -64
     get_local 0
@@ -3256,7 +3246,7 @@ end
 
 calls: 
 profile: {
-    "block": 2,
+    "block": 1,
     "end": 2,
     "get_local": 200,
     "i32.add": 163,
@@ -3275,8 +3265,8 @@ func_name: func_16
 param: i32 i32 
 result: 
 insn_count: 1080
-blocks: 2
-ratio: 540.0
+blocks: 8
+ratio: 135.00
 instructions: 
   block -64
     get_global 6
@@ -4361,7 +4351,7 @@ end
 
 calls: 
 profile: {
-    "block": 2,
+    "block": 1,
     "br_if": 2,
     "else": 1,
     "end": 5,
@@ -4391,8 +4381,8 @@ func_name: func_17
 param: i32 i32 i64 
 result: 
 insn_count: 156
-blocks: 2
-ratio: 78.0
+blocks: 12
+ratio: 13.00
 instructions: 
   block -64
     i32.const 64
@@ -4553,7 +4543,7 @@ end
 
 calls: 69 32 32 69 
 profile: {
-    "block": 2,
+    "block": 1,
     "br_if": 1,
     "call": 4,
     "drop": 2,
@@ -4592,8 +4582,8 @@ func_name: func_18
 param: i32 i32 i32 i32 
 result: 
 insn_count: 363
-blocks: 2
-ratio: 181.5
+blocks: 7
+ratio: 51.86
 instructions: 
   block -64
     get_global 6
@@ -4961,7 +4951,7 @@ end
 
 calls: 33 33 33 33 33 33 
 profile: {
-    "block": 2,
+    "block": 1,
     "call": 6,
     "else": 2,
     "end": 5,
@@ -4992,7 +4982,7 @@ param: i32 i32 i64
 result: 
 insn_count: 62
 blocks: 2
-ratio: 31.0
+ratio: 31.00
 instructions: 
   block -64
     get_global 6
@@ -5059,7 +5049,7 @@ end
 
 calls: 33 34 
 profile: {
-    "block": 2,
+    "block": 1,
     "call": 2,
     "end": 2,
     "get_global": 2,
@@ -5080,8 +5070,8 @@ func_name: func_20
 param: i32 i64 i32 
 result: 
 insn_count: 749
-blocks: 4
-ratio: 187.25
+blocks: 26
+ratio: 28.81
 instructions: 
   block -64
     get_global 6
@@ -5835,7 +5825,7 @@ end
 
 calls: 37 37 37 38 38 38 38 38 38 38 38 38 38 
 profile: {
-    "block": 4,
+    "block": 3,
     "br": 2,
     "br_if": 6,
     "call": 13,
@@ -5877,8 +5867,8 @@ func_name: func_21
 param: i32 i32 i32 
 result: 
 insn_count: 448
-blocks: 2
-ratio: 224.0
+blocks: 9
+ratio: 49.78
 instructions: 
   block -64
     get_global 6
@@ -6331,7 +6321,7 @@ end
 
 calls: 39 39 39 39 39 39 39 39 39 39 38 38 38 38 38 38 38 38 38 38 
 profile: {
-    "block": 2,
+    "block": 1,
     "br_if": 2,
     "call": 20,
     "end": 6,
@@ -6363,7 +6353,7 @@ param: i32 i32 i32
 result: 
 insn_count: 2129
 blocks: 2
-ratio: 1064.5
+ratio: 1064.50
 instructions: 
   block -64
     get_local 0
@@ -8497,7 +8487,7 @@ end
 
 calls: 
 profile: {
-    "block": 2,
+    "block": 1,
     "end": 2,
     "get_local": 323,
     "i32.add": 135,
@@ -8520,7 +8510,7 @@ param: i32 i32 i32
 result: 
 insn_count: 2204
 blocks: 2
-ratio: 1102.0
+ratio: 1102.00
 instructions: 
   block -64
     get_local 0
@@ -10729,7 +10719,7 @@ end
 
 calls: 
 profile: {
-    "block": 2,
+    "block": 1,
     "end": 2,
     "get_local": 340,
     "i32.add": 143,
@@ -10751,8 +10741,8 @@ func_name: func_24
 param: i32 i32 i64 i32 
 result: i32
 insn_count: 808
-blocks: 15
-ratio: 53.86666666666667
+blocks: 39
+ratio: 20.72
 instructions: 
   block -1
     get_global 6
@@ -11565,7 +11555,7 @@ end
 
 calls: 41 69 69 41 67 67 41 41 
 profile: {
-    "block": 15,
+    "block": 14,
     "br": 4,
     "br_if": 1,
     "br_table": 3,
@@ -11612,8 +11602,8 @@ func_name: func_25
 param: i32 
 result: 
 insn_count: 2395
-blocks: 2
-ratio: 1197.5
+blocks: 25
+ratio: 95.80
 instructions: 
   block -64
     get_local 0
@@ -14013,7 +14003,7 @@ end
 
 calls: 
 profile: {
-    "block": 2,
+    "block": 1,
     "br": 7,
     "br_if": 1,
     "end": 17,
@@ -14044,8 +14034,8 @@ func_name: func_26
 param: i32 i32 
 result: 
 insn_count: 754
-blocks: 2
-ratio: 377.0
+blocks: 9
+ratio: 83.78
 instructions: 
   block -64
     get_local 1
@@ -14804,7 +14794,7 @@ end
 
 calls: 
 profile: {
-    "block": 2,
+    "block": 1,
     "br": 1,
     "br_if": 1,
     "end": 6,
@@ -14838,7 +14828,7 @@ param: i32 i32 i32
 result: 
 insn_count: 122
 blocks: 2
-ratio: 61.0
+ratio: 61.00
 instructions: 
   block -64
     get_global 6
@@ -14965,7 +14955,7 @@ end
 
 calls: 42 69 
 profile: {
-    "block": 2,
+    "block": 1,
     "call": 2,
     "drop": 1,
     "end": 2,
@@ -14990,8 +14980,8 @@ func_name: func_28
 param: i32 i32 i32 i32 
 result: i32
 insn_count: 2229
-blocks: 23
-ratio: 96.91304347826087
+blocks: 121
+ratio: 18.42
 instructions: 
   block -1
     get_global 6
@@ -17225,7 +17215,7 @@ end
 
 calls: 45 46 69 45 45 69 69 45 45 69 69 47 47 69 69 47 47 69 69 46 46 69 69 46 46 69 69 45 45 69 69 47 47 69 69 46 46 69 67 45 45 69 67 47 47 69 67 46 46 69 
 profile: {
-    "block": 23,
+    "block": 22,
     "br": 13,
     "br_if": 7,
     "br_table": 4,
@@ -17271,8 +17261,8 @@ func_name: func_29
 param: i32 i32 i32 i32 
 result: 
 insn_count: 4157
-blocks: 2
-ratio: 2078.5
+blocks: 5
+ratio: 831.40
 instructions: 
   block -64
     get_local 2
@@ -21434,7 +21424,7 @@ end
 
 calls: 
 profile: {
-    "block": 2,
+    "block": 1,
     "br": 1,
     "end": 4,
     "get_local": 1224,
@@ -21462,8 +21452,8 @@ func_name: func_30
 param: i32 i32 i32 i32 
 result: 
 insn_count: 1680
-blocks: 2
-ratio: 840.0
+blocks: 8
+ratio: 210.00
 instructions: 
   block -64
     get_global 6
@@ -23148,7 +23138,7 @@ end
 
 calls: 
 profile: {
-    "block": 2,
+    "block": 1,
     "br": 2,
     "end": 6,
     "get_global": 2,
@@ -23179,8 +23169,8 @@ func_name: func_31
 param: i32 i32 i32 i32 
 result: 
 insn_count: 2162
-blocks: 2
-ratio: 1081.0
+blocks: 5
+ratio: 432.40
 instructions: 
   block -64
     get_local 2
@@ -25347,7 +25337,7 @@ end
 
 calls: 
 profile: {
-    "block": 2,
+    "block": 1,
     "br": 1,
     "end": 4,
     "get_local": 632,
@@ -25375,8 +25365,8 @@ func_name: func_32
 param: i32 
 result: 
 insn_count: 408
-blocks: 2
-ratio: 204.0
+blocks: 10
+ratio: 40.80
 instructions: 
   block -64
     get_global 6
@@ -25789,7 +25779,7 @@ end
 
 calls: 56 69 70 
 profile: {
-    "block": 2,
+    "block": 1,
     "br": 1,
     "call": 3,
     "drop": 2,
@@ -25829,8 +25819,8 @@ func_name: func_33
 param: i32 i32 i32 
 result: i32
 insn_count: 64
-blocks: 2
-ratio: 32.0
+blocks: 5
+ratio: 12.80
 instructions: 
   block -1
     get_local 0
@@ -25899,7 +25889,7 @@ end
 
 calls: 55 55 55 56 56 69 48 
 profile: {
-    "block": 2,
+    "block": 1,
     "call": 7,
     "drop": 1,
     "end": 5,
@@ -25917,8 +25907,8 @@ func_name: func_34
 param:  
 result: i32
 insn_count: 108
-blocks: 2
-ratio: 54.0
+blocks: 5
+ratio: 21.60
 instructions: 
   block -1
     get_global 6
@@ -26031,7 +26021,7 @@ end
 
 calls: 56 9 4 56 13 55 51 
 profile: {
-    "block": 2,
+    "block": 1,
     "call": 7,
     "drop": 2,
     "end": 4,
@@ -26057,8 +26047,8 @@ func_name: func_35
 param: i32 i32 i32 
 result: i32
 insn_count: 319
-blocks: 6
-ratio: 53.166666666666664
+blocks: 15
+ratio: 21.27
 instructions: 
   block -1
     get_local 0
@@ -26382,7 +26372,7 @@ end
 
 calls: 
 profile: {
-    "block": 6,
+    "block": 5,
     "br": 3,
     "br_table": 1,
     "else": 1,
@@ -26417,8 +26407,8 @@ func_name: func_36
 param: i32 
 result: i32
 insn_count: 64
-blocks: 2
-ratio: 32.0
+blocks: 9
+ratio: 7.11
 instructions: 
   block -1
     get_local 0
@@ -26487,7 +26477,7 @@ end
 
 calls: 55 55 55 55 
 profile: {
-    "block": 2,
+    "block": 1,
     "call": 4,
     "end": 7,
     "get_local": 16,
@@ -26507,7 +26497,7 @@ param: i64 i64 i32
 result: i64
 insn_count: 56
 blocks: 2
-ratio: 28.0
+ratio: 28.00
 instructions: 
   block -2
     get_local 1
@@ -26568,7 +26558,7 @@ end
 
 calls: 
 profile: {
-    "block": 2,
+    "block": 1,
     "end": 2,
     "get_local": 17,
     "i64.add": 5,
@@ -26589,8 +26579,8 @@ func_name: func_38
 param: i32 
 result: i32
 insn_count: 3344
-blocks: 30
-ratio: 111.46666666666667
+blocks: 316
+ratio: 10.58
 instructions: 
   block -1
     get_global 6
@@ -29939,7 +29929,7 @@ end
 
 calls: 68 68 68 68 68 68 68 62 
 profile: {
-    "block": 30,
+    "block": 29,
     "br": 44,
     "br_if": 26,
     "call": 8,
@@ -29981,8 +29971,8 @@ func_name: func_39
 param: i32 
 result: 
 insn_count: 903
-blocks: 8
-ratio: 112.875
+blocks: 105
+ratio: 8.60
 instructions: 
   block -64
     get_local 0
@@ -30890,7 +30880,7 @@ end
 
 calls: 
 profile: {
-    "block": 8,
+    "block": 7,
     "br": 12,
     "br_if": 5,
     "drop": 2,
@@ -30926,8 +30916,8 @@ func_name: func_40
 param: i32 i32 
 result: i32
 insn_count: 54
-blocks: 2
-ratio: 27.0
+blocks: 10
+ratio: 5.40
 instructions: 
   block -1
     get_local 0
@@ -30986,7 +30976,7 @@ end
 
 calls: 54 67 
 profile: {
-    "block": 2,
+    "block": 1,
     "call": 2,
     "drop": 1,
     "else": 1,
@@ -31014,14 +31004,13 @@ param:
 result: i32
 insn_count: 2
 blocks: 1
-ratio: 2.0
+ratio: 2.00
 instructions: 
   i32.const 11400
 end
 
 calls: 
 profile: {
-    "block": 1,
     "end": 1,
     "i32.const": 1
 }
@@ -31032,7 +31021,7 @@ param: i32
 result: i32
 insn_count: 23
 blocks: 2
-ratio: 11.5
+ratio: 11.50
 instructions: 
   block -1
     get_global 6
@@ -31060,7 +31049,7 @@ end
 
 calls: 6 61 
 profile: {
-    "block": 2,
+    "block": 1,
     "call": 2,
     "end": 2,
     "get_global": 2,
@@ -31079,8 +31068,8 @@ func_name: func_43
 param: i32 i32 i32 
 result: i32
 insn_count: 51
-blocks: 2
-ratio: 25.5
+blocks: 4
+ratio: 12.75
 instructions: 
   block -1
     get_global 6
@@ -31136,7 +31125,7 @@ end
 
 calls: 11 63 
 profile: {
-    "block": 2,
+    "block": 1,
     "call": 2,
     "end": 4,
     "get_global": 2,
@@ -31158,8 +31147,8 @@ func_name: func_44
 param: i32 i32 i32 
 result: i32
 insn_count: 48
-blocks: 2
-ratio: 24.0
+blocks: 4
+ratio: 12.00
 instructions: 
   block -1
     get_global 6
@@ -31212,7 +31201,7 @@ end
 
 calls: 12 61 
 profile: {
-    "block": 2,
+    "block": 1,
     "call": 2,
     "else": 1,
     "end": 3,
@@ -31234,8 +31223,8 @@ func_name: func_45
 param: i32 
 result: i32
 insn_count: 14
-blocks: 1
-ratio: 14.0
+blocks: 3
+ratio: 4.67
 instructions: 
   get_local 0
   i32.const -4096
@@ -31254,7 +31243,6 @@ end
 
 calls: 62 
 profile: {
-    "block": 1,
     "call": 1,
     "else": 1,
     "end": 2,
@@ -31272,14 +31260,13 @@ param:
 result: i32
 insn_count: 2
 blocks: 1
-ratio: 2.0
+ratio: 2.00
 instructions: 
   i32.const 8204
 end
 
 calls: 
 profile: {
-    "block": 1,
     "end": 1,
     "i32.const": 1
 }
@@ -31289,8 +31276,8 @@ func_name: func_47
 param: i32 i32 i32 
 result: i32
 insn_count: 195
-blocks: 4
-ratio: 48.75
+blocks: 15
+ratio: 13.00
 instructions: 
   block -1
     get_global 6
@@ -31490,7 +31477,7 @@ end
 
 calls: 15 61 15 61 
 profile: {
-    "block": 4,
+    "block": 3,
     "br": 2,
     "br_if": 2,
     "call": 4,
@@ -31521,8 +31508,8 @@ func_name: func_48
 param: i32 
 result: i32
 insn_count: 79
-blocks: 6
-ratio: 13.166666666666666
+blocks: 16
+ratio: 4.94
 instructions: 
   block -1
     block -64
@@ -31606,7 +31593,7 @@ end
 
 calls: 65 65 64 5 65 8 
 profile: {
-    "block": 6,
+    "block": 5,
     "br": 1,
     "br_if": 1,
     "call": 6,
@@ -31632,8 +31619,8 @@ func_name: func_49
 param: i32 
 result: i32
 insn_count: 78
-blocks: 3
-ratio: 26.0
+blocks: 7
+ratio: 11.14
 instructions: 
   block -1
     block -64
@@ -31716,7 +31703,7 @@ end
 
 calls: 
 profile: {
-    "block": 3,
+    "block": 2,
     "br": 1,
     "br_if": 2,
     "call_indirect": 2,
@@ -31741,14 +31728,13 @@ param:
 result: 
 insn_count: 2
 blocks: 1
-ratio: 2.0
+ratio: 2.00
 instructions: 
   nop
 end
 
 calls: 
 profile: {
-    "block": 1,
     "end": 1,
     "nop": 1
 }
@@ -31758,8 +31744,8 @@ func_name: func_51
 param: i32 i32 i32 
 result: i32
 insn_count: 145
-blocks: 2
-ratio: 72.5
+blocks: 15
+ratio: 9.67
 instructions: 
   block -1
     get_local 0
@@ -31909,7 +31895,7 @@ end
 
 calls: 
 profile: {
-    "block": 2,
+    "block": 1,
     "br": 4,
     "end": 11,
     "get_local": 60,
@@ -31935,8 +31921,8 @@ func_name: func_52
 param: i32 
 result: i32
 insn_count: 53
-blocks: 2
-ratio: 26.5
+blocks: 7
+ratio: 7.57
 instructions: 
   block -1
     get_global 5
@@ -31994,7 +31980,7 @@ end
 
 calls: 3 7 2 1 7 
 profile: {
-    "block": 2,
+    "block": 1,
     "call": 5,
     "drop": 1,
     "end": 5,
@@ -32020,8 +32006,8 @@ func_name: func_53
 param: i32 i32 i32 
 result: i32
 insn_count: 223
-blocks: 2
-ratio: 111.5
+blocks: 23
+ratio: 9.70
 instructions: 
   block -1
     get_local 2
@@ -32249,7 +32235,7 @@ end
 
 calls: 10 
 profile: {
-    "block": 2,
+    "block": 1,
     "br": 5,
     "call": 1,
     "else": 1,
@@ -32280,8 +32266,8 @@ func_name: func_54
 param: i32 i32 i32 
 result: i32
 insn_count: 55
-blocks: 2
-ratio: 27.5
+blocks: 7
+ratio: 7.86
 instructions: 
   block -1
     get_local 1
@@ -32341,7 +32327,7 @@ end
 
 calls: 69 
 profile: {
-    "block": 2,
+    "block": 1,
     "br": 1,
     "call": 1,
     "drop": 1,
@@ -32368,7 +32354,7 @@ param: i32 i32
 result: i32
 insn_count: 6
 blocks: 1
-ratio: 6.0
+ratio: 6.00
 instructions: 
   get_local 1
   get_local 0
@@ -32379,7 +32365,6 @@ end
 
 calls: 
 profile: {
-    "block": 1,
     "call_indirect": 1,
     "end": 1,
     "get_local": 2,
@@ -32393,7 +32378,7 @@ param: i32 i32 i32 i32
 result: i32
 insn_count: 10
 blocks: 1
-ratio: 10.0
+ratio: 10.00
 instructions: 
   get_local 1
   get_local 2
@@ -32408,7 +32393,6 @@ end
 
 calls: 
 profile: {
-    "block": 1,
     "call_indirect": 1,
     "end": 1,
     "get_local": 4,
@@ -32423,7 +32407,7 @@ param: i32 i32 i32 i32
 result: 
 insn_count: 10
 blocks: 1
-ratio: 10.0
+ratio: 10.00
 instructions: 
   get_local 1
   get_local 2
@@ -32438,7 +32422,6 @@ end
 
 calls: 
 profile: {
-    "block": 1,
     "call_indirect": 1,
     "end": 1,
     "get_local": 4,
@@ -32453,7 +32436,7 @@ param: i32
 result: i32
 insn_count: 6
 blocks: 2
-ratio: 3.0
+ratio: 3.00
 instructions: 
   block -1
     i32.const 0
@@ -32464,7 +32447,7 @@ end
 
 calls: 0 
 profile: {
-    "block": 2,
+    "block": 1,
     "call": 1,
     "end": 2,
     "i32.const": 2
@@ -32476,7 +32459,7 @@ param: i32 i32 i32
 result: i32
 insn_count: 6
 blocks: 2
-ratio: 3.0
+ratio: 3.00
 instructions: 
   block -1
     i32.const 1
@@ -32487,7 +32470,7 @@ end
 
 calls: 0 
 profile: {
-    "block": 2,
+    "block": 1,
     "call": 1,
     "end": 2,
     "i32.const": 2
@@ -32499,7 +32482,7 @@ param: i32 i32 i32
 result: 
 insn_count: 3
 blocks: 1
-ratio: 3.0
+ratio: 3.00
 instructions: 
   i32.const 2
   call 0
@@ -32507,7 +32490,6 @@ end
 
 calls: 0 
 profile: {
-    "block": 1,
     "call": 1,
     "end": 1,
     "i32.const": 1
