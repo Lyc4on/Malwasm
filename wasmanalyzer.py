@@ -3,7 +3,8 @@
 # Usage:
 # python3 wasmanalyzer.py -d -f nic_testbench/wasmwat_samples/cryptonight/cryptonight.wasm
 
-import argparse, sys, os
+import argparse, sys, os, json
+from operator import mod
 import graphviz
 from classes import classes
 from wasm import (
@@ -24,16 +25,23 @@ def main() -> None:
 
     inputs = parser.add_argument_group('IO arguments')
     inputs.add_argument('-f', '--file',
-                        help='binary file (.wasm)',
-                        metavar='WASMMODULE')
+                        help='binary file (.wasm)')
+    
+    inputs.add_argument('-r', '--rule', 
+                        help='rule file (.json)')
 
     features = parser.add_argument_group('Features')
     features.add_argument('-d', '--disassmble',
-                        action='store_true', help='disassmble .wasm to wat-like format')
+                        action='store_true', 
+                        help='disassmble .wasm to wat-like format')
 
     features.add_argument('-a', '--analyse',
                           action='store_true',
                           help='print Functions instructions analytics')
+                        
+    features.add_argument('-gr', '--genRule',
+                          action='store_true',
+                          help='generate JSON rule')
 
     args = parser.parse_args()
 
@@ -66,7 +74,7 @@ def main() -> None:
         mod_obj = classes.Module() # Module Object
 
         # Disassemble
-        if args.disassmble and code_sec is not None:
+        if (args.genRule or args.disassmble) and code_sec is not None:
             for i, func_body in enumerate(code_sec.bodies):
                 # If we have type info, use it.
                 func_type = type_sec.entries[func_sec.types[i]] if (
@@ -80,12 +88,29 @@ def main() -> None:
         mod_obj.analyse_cfg()
 
         # Save disassemble analysis results
-        of_str = args.file.split(os.sep)[-1] # Get the ../../<of_str.wasm>
-        of_str = of_str.split('.')[0] + '_dis.txt'
-        of_path = os.getcwd() + os.sep + of_str
-        mod_of = open(of_path, 'w')
-        mod_of.write(str(mod_obj))
-        mod_of.close()      
+        of_str_w = of_str_t = args.file.split(os.sep)[-1] # Get the ../../<of_str.wasm>
+        of_str_w = of_str_w.split('.')[0] + '_dis.wat'
+        of_str_t = of_str_t.split('.')[0] + '_dis.txt'
+        of_path_w = os.getcwd() + os.sep + of_str_w
+        of_path_t = os.getcwd() + os.sep + of_str_t
+
+        mod_of_w = open(of_path_w, 'w')
+        mod_of_w.write(mod_obj.get_wat())
+        mod_of_w.close()
+
+        mod_of_t = open(of_path_t, 'w')
+        mod_of_t.write(str(mod_obj))
+        mod_of_t.close()
+
+        # Save json rule
+        if args.genRule:
+            tmp_name = of_str = args.file.split(os.sep)[-1] # Get the ../../<of_str.wasm>
+            of_str = of_str.split('.')[0] + '_rule.json'
+            of_path = os.getcwd() + os.sep + of_str
+            with open(of_path, "w") as write_file:
+                json_to_write = mod_obj.export_rule(tmp_name)
+                json.dump(json_to_write, write_file, indent=2)
+                write_file.close()
 
         # Implement CFG function
 

@@ -1,8 +1,10 @@
+import profile
 from pyclbr import Function
 import re
 import itertools
 import json
 
+from collections import OrderedDict
 from utils import utils
 
 from wasm import (
@@ -14,6 +16,11 @@ from wasm import (
     INSN_ENTER_BLOCK,
     INSN_LEAVE_BLOCK,)
 
+class Rule():
+    def __init__(self, ruleJSON):
+        # Read/Parse rules into local variables
+        pass
+
 class Module():
     func_objs = []
     profile = {} 
@@ -21,6 +28,13 @@ class Module():
 
     def __init__(self):
         pass
+    
+    def get_wat(self):
+        returnStr = ''
+        if self.func_objs:
+            for func in self.func_objs:
+                returnStr += func.get_wat()
+        return returnStr
 
     def profile_module(self):
         if self.func_objs: # if arr is not empty
@@ -31,7 +45,8 @@ class Module():
                 func_id = self.func_objs[i].id
                 func_profile = self.func_objs[i].profile
                 func_insn_count = self.func_objs[i].insn_count
-                self.profile[func_id] = utils.get_mod_profile(func_profile, func_insn_count)
+                func_ratio = self.func_objs[i].ratio
+                self.profile[func_id] = utils.get_mod_profile(func_profile, func_insn_count, func_ratio)
 
     def analyse_cfg(self):
         if self.func_objs:
@@ -47,6 +62,20 @@ class Module():
                         self.called_by[called_id] = self.called_by.get(called_id, {}) # set if key not exist yet
                         current_count = self.called_by[called_id].get(caller_id, 0) # set 0 if not exist
                         self.called_by[called_id][caller_id] = current_count+1 if current_count > 0 else 1
+
+    def export_rule(self, input_file_name): # Returns json string
+        call_signature = {}
+        for key in self.profile.keys():
+            call_signature[key] = self.called_by.get(str(key), {})
+
+        call_signature = OrderedDict(sorted(call_signature.items()))
+
+        rule_json = { 
+            'name' : input_file_name, 
+            'profile' : self.profile,
+            'cfg' : call_signature
+            }
+        return rule_json
 
     def add_func(self, func):
         if not isinstance(func, Function):
@@ -101,4 +130,15 @@ class Function():
         returnStr += 'calls: {c}\n'.format(c=''.join(str(ca)+' ' for ca in self.calls_arr))
         returnStr += 'profile: {j}\n\n'.format(j=json.dumps(self.profile, sort_keys=True, indent=4))
         # returnStr += 'instructions: \n{i}\n'.format(i=''.join(o+'\n' for o in self.insn_arr))
+        return returnStr
+    
+    def get_wat(self):
+        returnStr = '(func (;{id};) '.format(id=self.id)
+        if self.param_section:
+            returnStr += '(param {p}) '.format(p=''.join(pa+' ' for pa in self.param_section))
+        if self.result_section:
+            returnStr += '(result {r})\n'.format(r=self.result_section)
+        if self.local_section:
+            returnStr += '(local {l})\n'.format(l=self.local_section)
+        returnStr += 'instructions: \n{i}\n'.format(i=''.join(o+'\n' for o in self.insn_arr))
         return returnStr

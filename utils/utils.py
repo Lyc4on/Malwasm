@@ -61,7 +61,7 @@ def get_local_sect(func_body):
     local_section = ''
     # Extract local variable declaration        
     if func_body.locals:
-        local_section = 'locals {}'.format(' '.join(itertools.chain.from_iterable(
+        local_section = '{}'.format(' '.join(itertools.chain.from_iterable(
             itertools.repeat(format_lang_type(x.type), x.count) 
             for x in func_body.locals
         )))
@@ -100,7 +100,7 @@ def get_blocks_count(profile):
         count += 1
     return count
 
-def get_mod_profile(profile, insn_count):
+def get_mod_profile(profile, insn_count, func_ratio):
     returnProfile = {}
     insn = ['i32.add', 'i32.and', 'i32.shl', 'i32.shr_u', 'i32.xor']
     total_insn_count = 0
@@ -116,6 +116,8 @@ def get_mod_profile(profile, insn_count):
 
     # Overall 'dist' = total_insn_count/insn_count
     returnProfile['global_dist'] = round(total_insn_count/insn_count, 2)
+    returnProfile['ratio'] = round(func_ratio, 2)
+    
         # returnProfile[ins] = round(value/insn_count, 2) if value > 0 else 0
 
     return returnProfile

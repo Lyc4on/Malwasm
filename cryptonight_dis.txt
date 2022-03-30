@@ -210,7 +210,8 @@ profile: {
         "i32.and": 0.17,
         "i32.shl": 0.22,
         "i32.shr_u": 0.17,
-        "i32.xor": 0.22
+        "i32.xor": 0.22,
+        "ratio": 878.0
     },
     "22": {
         "global_dist": 0.31,
@@ -218,7 +219,8 @@ profile: {
         "i32.and": 0.0,
         "i32.shl": 0.44,
         "i32.shr_u": 0.15,
-        "i32.xor": 0.2
+        "i32.xor": 0.2,
+        "ratio": 1064.5
     },
     "23": {
         "global_dist": 0.3,
@@ -226,7 +228,8 @@ profile: {
         "i32.and": 0.0,
         "i32.shl": 0.43,
         "i32.shr_u": 0.15,
-        "i32.xor": 0.2
+        "i32.xor": 0.2,
+        "ratio": 1102.0
     },
     "29": {
         "global_dist": 0.0,
@@ -234,7 +237,8 @@ profile: {
         "i32.and": 0,
         "i32.shl": 0,
         "i32.shr_u": 0,
-        "i32.xor": 0
+        "i32.xor": 0,
+        "ratio": 831.4
     },
     "31": {
         "global_dist": 0.0,
@@ -242,7 +246,8 @@ profile: {
         "i32.and": 0,
         "i32.shl": 0,
         "i32.shr_u": 0,
-        "i32.xor": 0
+        "i32.xor": 0,
+        "ratio": 432.4
     }
 }
 
