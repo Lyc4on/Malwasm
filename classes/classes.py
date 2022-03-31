@@ -121,19 +121,15 @@ class Module():
                 self.add_func(func_obj) # Add Function obj to module object
                 func_count += 1
 
-            self.sort_objs() # Sort func_objs
-
     def profile_module(self):
         if self.func_objs: # if arr is not empty
-            # self.sort_objs() # Sort func_objs
+            self.sort_objs() # Sort func_objs
+
             length = 5 if len(self.func_objs) >= 5 else len(self.func_objs)
-            
+                        
             for i in range(length):
                 func_id = self.func_objs[i].id
-                func_profile = self.func_objs[i].profile
-                func_insn_count = self.func_objs[i].insn_count
-                func_ratio = self.func_objs[i].ratio
-                self.profile[func_id] = utils.get_mod_profile(func_profile, func_insn_count, func_ratio)
+                self.profile[func_id] = self.func_objs[func_id].func_dist
 
     def analyse_cfg(self):
         if self.func_objs:
@@ -196,7 +192,7 @@ class Module():
             self.func_objs.append(func)
     
     def sort_objs(self):
-        self.func_objs.sort(key=lambda x: x.ratio, reverse=True)
+        self.func_objs.sort(key=lambda x: x.func_dist['func_dist'], reverse=True)
 
     def get_wat(self):
         returnStr = ''
@@ -222,7 +218,8 @@ class Function():
     insn_count = id = blocks_count = 0
     profile = {}
     ratio = 0.0
-
+    func_dist = {}
+    
     def __init__(self, id, func_body, func_type=None):
         self.id = id
         self.param_section = utils.get_param_sect(func_type)
@@ -237,6 +234,7 @@ class Function():
         
         # Add to call <func ID> if exist, else remain as None
         self.calls_arr = utils.get_calls_arr(self.insn_arr)
+        self.func_dist = utils.get_func_dist(self.profile, self.insn_count, self.ratio)
     
     def get_wat(self):
         returnStr = '(func (;{id};) '.format(id=self.id)
