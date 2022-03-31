@@ -3,38 +3,38 @@
 CFG - { called: caller_A : count, ... }:
 {
   "0": {
-    "58": 1,
-    "59": 1,
-    "60": 1
+    "74": 1,
+    "75": 1,
+    "76": 1
   },
   "1": {
-    "52": 1
+    "68": 1
   },
   "10": {
-    "53": 1
+    "69": 1
   },
   "11": {
-    "43": 1
+    "59": 1
   },
   "12": {
-    "44": 1
+    "60": 1
   },
   "13": {
-    "34": 1
+    "50": 1
   },
   "14": {
-    "12": 1,
-    "13": 1
+    "28": 1,
+    "29": 1
   },
   "15": {
-    "47": 2
+    "63": 2
   },
   "16": {},
   "17": {},
   "18": {},
   "19": {},
   "2": {
-    "52": 1
+    "68": 1
   },
   "20": {},
   "21": {},
@@ -47,164 +47,171 @@ CFG - { called: caller_A : count, ... }:
   "28": {},
   "29": {},
   "3": {
-    "52": 1
+    "68": 1
   },
   "30": {
-    "10": 2
+    "26": 2
   },
   "31": {
-    "10": 16
+    "26": 16
   },
   "32": {
-    "17": 2
+    "33": 2
   },
   "33": {
-    "18": 6,
-    "19": 1
+    "34": 6,
+    "35": 1
   },
   "34": {
-    "19": 1
+    "35": 1
   },
   "35": {
-    "11": 1
-  },
-  "36": {
-    "7": 1
-  },
-  "37": {
-    "20": 3
-  },
-  "38": {
-    "20": 10,
-    "21": 10
-  },
-  "39": {
-    "21": 10
-  },
-  "4": {
-    "34": 1
-  },
-  "40": {
-    "12": 1
-  },
-  "41": {
-    "24": 4
-  },
-  "42": {
-    "10": 1,
     "27": 1
   },
+  "36": {
+    "23": 1
+  },
+  "37": {
+    "36": 3
+  },
+  "38": {
+    "36": 10,
+    "37": 10
+  },
+  "39": {
+    "37": 10
+  },
+  "4": {
+    "50": 1
+  },
+  "40": {
+    "28": 1
+  },
+  "41": {
+    "40": 4
+  },
+  "42": {
+    "26": 1,
+    "43": 1
+  },
   "43": {
-    "10": 1
+    "26": 1
   },
   "44": {
-    "13": 1
+    "29": 1
   },
   "45": {
-    "28": 9
+    "44": 9
   },
   "46": {
-    "28": 9
+    "44": 9
   },
   "47": {
-    "28": 8
+    "44": 8
   },
   "48": {
-    "33": 1
+    "49": 1
   },
   "49": {
-    "10": 2
+    "26": 2
   },
   "5": {
-    "48": 1
+    "64": 1
   },
   "50": {
-    "10": 1
+    "26": 1
   },
   "51": {
-    "34": 1
+    "50": 1
   },
   "52": {
-    "9": 1
+    "25": 1
   },
   "53": {
-    "10": 2
+    "26": 2
   },
   "54": {
-    "40": 1
+    "56": 1
   },
   "55": {
-    "33": 3,
-    "34": 1,
-    "36": 4,
-    "9": 1
+    "25": 1,
+    "49": 3,
+    "50": 1,
+    "52": 4
   },
   "56": {
-    "32": 1,
-    "33": 2,
-    "34": 2,
-    "8": 1
+    "24": 1,
+    "48": 1,
+    "49": 2,
+    "50": 2
   },
   "57": {},
   "58": {},
   "59": {},
   "6": {
-    "42": 1
+    "58": 1
   },
   "60": {},
   "61": {
-    "42": 1,
-    "44": 1,
-    "47": 2
+    "58": 1,
+    "60": 1,
+    "63": 2
   },
   "62": {
-    "38": 1,
-    "45": 1
+    "54": 1,
+    "61": 1
   },
   "63": {
-    "43": 1
+    "59": 1
   },
   "64": {
-    "48": 1
+    "64": 1
   },
   "65": {
-    "48": 3
+    "64": 3
   },
+  "66": {},
   "67": {
-    "24": 2,
-    "28": 3,
-    "40": 1
+    "40": 2,
+    "44": 3,
+    "56": 1
   },
   "68": {
-    "38": 7
+    "54": 7
   },
   "69": {
-    "17": 2,
-    "24": 2,
-    "27": 1,
-    "28": 21,
-    "32": 1,
-    "33": 1,
-    "54": 1
+    "33": 2,
+    "40": 2,
+    "43": 1,
+    "44": 21,
+    "48": 1,
+    "49": 1,
+    "70": 1
   },
   "7": {
-    "52": 2
+    "68": 2
   },
   "70": {
-    "32": 1
-  },
-  "8": {
     "48": 1
   },
+  "71": {},
+  "72": {},
+  "73": {},
+  "74": {},
+  "75": {},
+  "76": {},
+  "8": {
+    "64": 1
+  },
   "9": {
-    "34": 1
+    "50": 1
   }
 }
 
 ========================== Module Profile ==========================
 
 profile: {
-    "15": {
+    "31": {
         "global_dist": 0.41,
         "i32.add": 0.23,
         "i32.and": 0.17,
@@ -213,7 +220,7 @@ profile: {
         "i32.xor": 0.22,
         "ratio": 878.0
     },
-    "22": {
+    "38": {
         "global_dist": 0.31,
         "i32.add": 0.21,
         "i32.and": 0.0,
@@ -222,7 +229,7 @@ profile: {
         "i32.xor": 0.2,
         "ratio": 1064.5
     },
-    "23": {
+    "39": {
         "global_dist": 0.3,
         "i32.add": 0.21,
         "i32.and": 0.0,
@@ -231,7 +238,7 @@ profile: {
         "i32.xor": 0.2,
         "ratio": 1102.0
     },
-    "29": {
+    "45": {
         "global_dist": 0.0,
         "i32.add": 1.0,
         "i32.and": 0,
@@ -240,7 +247,7 @@ profile: {
         "i32.xor": 0,
         "ratio": 831.4
     },
-    "31": {
+    "47": {
         "global_dist": 0.0,
         "i32.add": 1.0,
         "i32.and": 0,
@@ -253,7 +260,7 @@ profile: {
 
 ========================= Functions Profile =========================
 
-func_name: func_23
+func_name: func_39
 param: i32 i32 i32 
 result: 
 insn_count: 2204
@@ -279,7 +286,7 @@ profile: {
 }
 
 
-func_name: func_22
+func_name: func_38
 param: i32 i32 i32 
 result: 
 insn_count: 2129
@@ -305,7 +312,7 @@ profile: {
 }
 
 
-func_name: func_15
+func_name: func_31
 param: i32 i32 
 result: 
 insn_count: 1756
@@ -328,7 +335,7 @@ profile: {
 }
 
 
-func_name: func_29
+func_name: func_45
 param: i32 i32 i32 i32 
 result: 
 insn_count: 4157
@@ -360,7 +367,7 @@ profile: {
 }
 
 
-func_name: func_31
+func_name: func_47
 param: i32 i32 i32 i32 
 result: 
 insn_count: 2162
@@ -392,7 +399,7 @@ profile: {
 }
 
 
-func_name: func_30
+func_name: func_46
 param: i32 i32 i32 i32 
 result: 
 insn_count: 1680
@@ -427,7 +434,7 @@ profile: {
 }
 
 
-func_name: func_16
+func_name: func_32
 param: i32 i32 
 result: 
 insn_count: 1080
@@ -461,7 +468,7 @@ profile: {
 }
 
 
-func_name: func_14
+func_name: func_30
 param: i32 i32 i32 
 result: 
 insn_count: 204
@@ -484,7 +491,7 @@ profile: {
 }
 
 
-func_name: func_25
+func_name: func_41
 param: i32 
 result: 
 insn_count: 2395
@@ -519,7 +526,7 @@ profile: {
 }
 
 
-func_name: func_26
+func_name: func_42
 param: i32 i32 
 result: 
 insn_count: 754
@@ -556,7 +563,7 @@ profile: {
 }
 
 
-func_name: func_10
+func_name: func_26
 param: i32 i32 i32 i32 
 result: 
 insn_count: 878
@@ -597,7 +604,7 @@ profile: {
 }
 
 
-func_name: func_27
+func_name: func_43
 param: i32 i32 i32 
 result: 
 insn_count: 122
@@ -626,7 +633,7 @@ profile: {
 }
 
 
-func_name: func_18
+func_name: func_34
 param: i32 i32 i32 i32 
 result: 
 insn_count: 363
@@ -660,7 +667,7 @@ profile: {
 }
 
 
-func_name: func_21
+func_name: func_37
 param: i32 i32 i32 
 result: 
 insn_count: 448
@@ -695,7 +702,7 @@ profile: {
 }
 
 
-func_name: func_32
+func_name: func_48
 param: i32 
 result: 
 insn_count: 408
@@ -739,7 +746,7 @@ profile: {
 }
 
 
-func_name: func_19
+func_name: func_35
 param: i32 i32 i64 
 result: 
 insn_count: 62
@@ -764,7 +771,7 @@ profile: {
 }
 
 
-func_name: func_20
+func_name: func_36
 param: i32 i64 i32 
 result: 
 insn_count: 749
@@ -810,7 +817,7 @@ profile: {
 }
 
 
-func_name: func_37
+func_name: func_53
 param: i64 i64 i32 
 result: i64
 insn_count: 56
@@ -835,7 +842,7 @@ profile: {
 }
 
 
-func_name: func_34
+func_name: func_50
 param:  
 result: i32
 insn_count: 108
@@ -865,7 +872,7 @@ profile: {
 }
 
 
-func_name: func_35
+func_name: func_51
 param: i32 i32 i32 
 result: i32
 insn_count: 319
@@ -904,7 +911,7 @@ profile: {
 }
 
 
-func_name: func_24
+func_name: func_40
 param: i32 i32 i64 i32 
 result: i32
 insn_count: 808
@@ -955,7 +962,7 @@ profile: {
 }
 
 
-func_name: func_28
+func_name: func_44
 param: i32 i32 i32 i32 
 result: i32
 insn_count: 2229
@@ -1005,7 +1012,7 @@ profile: {
 }
 
 
-func_name: func_17
+func_name: func_33
 param: i32 i32 i64 
 result: 
 insn_count: 156
@@ -1048,7 +1055,7 @@ profile: {
 }
 
 
-func_name: func_47
+func_name: func_63
 param: i32 i32 i32 
 result: i32
 insn_count: 195
@@ -1083,7 +1090,7 @@ profile: {
 }
 
 
-func_name: func_33
+func_name: func_49
 param: i32 i32 i32 
 result: i32
 insn_count: 64
@@ -1105,7 +1112,7 @@ profile: {
 }
 
 
-func_name: func_43
+func_name: func_59
 param: i32 i32 i32 
 result: i32
 insn_count: 51
@@ -1131,7 +1138,7 @@ profile: {
 }
 
 
-func_name: func_44
+func_name: func_60
 param: i32 i32 i32 
 result: i32
 insn_count: 48
@@ -1157,7 +1164,7 @@ profile: {
 }
 
 
-func_name: func_42
+func_name: func_58
 param: i32 
 result: i32
 insn_count: 23
@@ -1180,7 +1187,7 @@ profile: {
 }
 
 
-func_name: func_49
+func_name: func_65
 param: i32 
 result: i32
 insn_count: 78
@@ -1208,7 +1215,7 @@ profile: {
 }
 
 
-func_name: func_38
+func_name: func_54
 param: i32 
 result: i32
 insn_count: 3344
@@ -1254,7 +1261,7 @@ profile: {
 }
 
 
-func_name: func_56
+func_name: func_72
 param: i32 i32 i32 i32 
 result: i32
 insn_count: 10
@@ -1271,7 +1278,7 @@ profile: {
 }
 
 
-func_name: func_57
+func_name: func_73
 param: i32 i32 i32 i32 
 result: 
 insn_count: 10
@@ -1288,7 +1295,7 @@ profile: {
 }
 
 
-func_name: func_53
+func_name: func_69
 param: i32 i32 i32 
 result: i32
 insn_count: 223
@@ -1323,7 +1330,7 @@ profile: {
 }
 
 
-func_name: func_51
+func_name: func_67
 param: i32 i32 i32 
 result: i32
 insn_count: 145
@@ -1353,7 +1360,7 @@ profile: {
 }
 
 
-func_name: func_39
+func_name: func_55
 param: i32 
 result: 
 insn_count: 903
@@ -1393,7 +1400,7 @@ profile: {
 }
 
 
-func_name: func_0
+func_name: func_16
 param: i32 
 result: i32
 insn_count: 16
@@ -1413,7 +1420,7 @@ profile: {
 }
 
 
-func_name: func_7
+func_name: func_23
 param: i32 i32 i32 
 result: 
 insn_count: 8
@@ -1430,7 +1437,7 @@ profile: {
 }
 
 
-func_name: func_12
+func_name: func_28
 param: i32 i32 i32 
 result: 
 insn_count: 16
@@ -1448,7 +1455,7 @@ profile: {
 }
 
 
-func_name: func_54
+func_name: func_70
 param: i32 i32 i32 
 result: i32
 insn_count: 55
@@ -1478,7 +1485,7 @@ profile: {
 }
 
 
-func_name: func_52
+func_name: func_68
 param: i32 
 result: i32
 insn_count: 53
@@ -1508,7 +1515,7 @@ profile: {
 }
 
 
-func_name: func_13
+func_name: func_29
 param: i32 i32 i32 
 result: 
 insn_count: 15
@@ -1525,7 +1532,7 @@ profile: {
 }
 
 
-func_name: func_36
+func_name: func_52
 param: i32 
 result: i32
 insn_count: 64
@@ -1548,7 +1555,7 @@ profile: {
 }
 
 
-func_name: func_11
+func_name: func_27
 param: i32 i32 i32 
 result: 
 insn_count: 6
@@ -1563,7 +1570,7 @@ profile: {
 }
 
 
-func_name: func_55
+func_name: func_71
 param: i32 i32 
 result: i32
 insn_count: 6
@@ -1579,7 +1586,7 @@ profile: {
 }
 
 
-func_name: func_40
+func_name: func_56
 param: i32 i32 
 result: i32
 insn_count: 54
@@ -1610,7 +1617,7 @@ profile: {
 }
 
 
-func_name: func_9
+func_name: func_25
 param: i32 
 result: 
 insn_count: 10
@@ -1628,7 +1635,7 @@ profile: {
 }
 
 
-func_name: func_48
+func_name: func_64
 param: i32 
 result: i32
 insn_count: 79
@@ -1658,7 +1665,7 @@ profile: {
 }
 
 
-func_name: func_45
+func_name: func_61
 param: i32 
 result: i32
 insn_count: 14
@@ -1678,7 +1685,7 @@ profile: {
 }
 
 
-func_name: func_4
+func_name: func_20
 param: i32 i32 
 result: 
 insn_count: 9
@@ -1695,7 +1702,7 @@ profile: {
 }
 
 
-func_name: func_8
+func_name: func_24
 param:  
 result: i32
 insn_count: 4
@@ -1709,7 +1716,7 @@ profile: {
 }
 
 
-func_name: func_3
+func_name: func_19
 param: i32 i32 
 result: 
 insn_count: 7
@@ -1724,7 +1731,7 @@ profile: {
 }
 
 
-func_name: func_2
+func_name: func_18
 param: i32 
 result: 
 insn_count: 3
@@ -1738,7 +1745,7 @@ profile: {
 }
 
 
-func_name: func_5
+func_name: func_21
 param: i32 
 result: 
 insn_count: 3
@@ -1752,7 +1759,7 @@ profile: {
 }
 
 
-func_name: func_58
+func_name: func_74
 param: i32 
 result: i32
 insn_count: 6
@@ -1767,7 +1774,7 @@ profile: {
 }
 
 
-func_name: func_59
+func_name: func_75
 param: i32 i32 i32 
 result: i32
 insn_count: 6
@@ -1782,7 +1789,7 @@ profile: {
 }
 
 
-func_name: func_60
+func_name: func_76
 param: i32 i32 i32 
 result: 
 insn_count: 3
@@ -1796,7 +1803,7 @@ profile: {
 }
 
 
-func_name: func_1
+func_name: func_17
 param:  
 result: i32
 insn_count: 2
@@ -1809,7 +1816,7 @@ profile: {
 }
 
 
-func_name: func_6
+func_name: func_22
 param:  
 result: i32
 insn_count: 2
@@ -1822,7 +1829,7 @@ profile: {
 }
 
 
-func_name: func_41
+func_name: func_57
 param:  
 result: i32
 insn_count: 2
@@ -1835,7 +1842,7 @@ profile: {
 }
 
 
-func_name: func_46
+func_name: func_62
 param:  
 result: i32
 insn_count: 2
@@ -1848,7 +1855,7 @@ profile: {
 }
 
 
-func_name: func_50
+func_name: func_66
 param:  
 result: 
 insn_count: 2
