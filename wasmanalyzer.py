@@ -54,8 +54,6 @@ def main() -> None:
         with open(args.rule) as rule_raw:
             rule_json = json.load(rule_raw)
             rule_obj.load_json(rule_json)
-            # print(rule_json)
-    # print(rule_obj)
 
     # Process input code
     if args.file:
@@ -66,57 +64,19 @@ def main() -> None:
             
         mod_iter = iter(decode_module(raw_read, decode_name_subsections=True))
         
-        code_sec = None
-        type_sec = None
-        func_sec = None
+        # Disassemble OR Generate JSON Rule
+        if args.genRule or args.disassmble:
+            mod_obj.disassemble(mod_iter) # disassemble    
+            mod_obj.profile_module() # 
+            mod_obj.analyse_cfg()
 
-        for cur_sec, cur_sec_data in mod_iter:
-            if type(cur_sec) == Section:
-                if cur_sec_data.id == SEC_CODE:
-                    code_sec = cur_sec_data.payload
-                elif cur_sec_data.id == SEC_TYPE:
-                    type_sec = cur_sec_data.payload
-                elif cur_sec_data.id == SEC_FUNCTION:
-                    func_sec = cur_sec_data.payload
-        
-        # Disassemble
-        if (args.genRule or args.disassmble) and code_sec is not None:
-            for i, func_body in enumerate(code_sec.bodies):
-                # If we have type info, use it.
-                func_type = type_sec.entries[func_sec.types[i]] if (
-                    None not in (type_sec, func_sec)
-                ) else None
-
-                func_obj = classes.Function(i, func_body, func_type) # Create Function object
-                mod_obj.add_func(func_obj) # Add Function obj to module object
-        
-        mod_obj.profile_module()
-        mod_obj.analyse_cfg()
-
-        # Save disassemble analysis results
-        of_str_w = of_str_t = args.file.split(os.sep)[-1] # Get the ../../<of_str.wasm>
-        of_str_w = of_str_w.split('.')[0] + '_dis.wat'
-        of_str_t = of_str_t.split('.')[0] + '_dis.txt'
-        of_path_w = os.getcwd() + os.sep + of_str_w
-        of_path_t = os.getcwd() + os.sep + of_str_t
-
-        mod_of_w = open(of_path_w, 'w')
-        mod_of_w.write(mod_obj.get_wat())
-        mod_of_w.close()
-
-        mod_of_t = open(of_path_t, 'w')
-        mod_of_t.write(str(mod_obj))
-        mod_of_t.close()
+            # Export disassemble results
+            mod_obj.export_dis_txt(args.file) # Write out Module information
+            mod_obj.export_dis_wat(args.file) # Write out Module pseudo wat
 
         # Save json rule
         if args.genRule:
-            tmp_name = of_str = args.file.split(os.sep)[-1] # Get the ../../<of_str.wasm>
-            of_str = of_str.split('.')[0] + '_rule.json'
-            of_path = os.getcwd() + os.sep + of_str
-            with open(of_path, "w") as write_file:
-                json_to_write = mod_obj.export_rule(tmp_name)
-                json.dump(json_to_write, write_file, indent=2)
-                write_file.close()
+            mod_obj.export_rule_json(args.file)
 
         # Implement CFG function
 
