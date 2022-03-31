@@ -46,8 +46,6 @@ def main() -> None:
     args = parser.parse_args()
 
     # Global Variables
-    in_raw = None
-    outfile = None
     mod_obj = classes.Module() # Module Object for -d, -a, -gr
     rule_obj = classes.Rule() # for -r
 
@@ -67,7 +65,6 @@ def main() -> None:
             raw.close()
             
         mod_iter = iter(decode_module(raw_read, decode_name_subsections=True))
-        hdr, hdr_data = next(mod_iter)
         
         code_sec = None
         type_sec = None
