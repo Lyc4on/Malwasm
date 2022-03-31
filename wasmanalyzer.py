@@ -146,8 +146,8 @@ def main() -> None:
                 return sha256_hash.hexdigest()
         
         
-        generate_CFG()
-        virustotal_scan()
+        # generate_CFG()
+        # virustotal_scan()
 
 
 if __name__ == '__main__':
