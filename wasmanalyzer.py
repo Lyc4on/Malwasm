@@ -112,9 +112,9 @@ def main() -> None:
         #                 graph.edge(d, i)    
         #     graph.render(directory='Output')
         # Method 2
-            subprocess.Popen(["./Resources/wasp.exe", "callgraph", args.file, "-o","Output/graph.dot"]).wait()
-            graph = pydot.graph_from_dot_file('Output/graph.dot')
-            graph[0].write_png('Resources/Images/Call_Graph.png')
+            subprocess.Popen(["./resources/executables/wasp.exe", "callgraph", args.file, "-o","output/graph.dot"]).wait()
+            graph = pydot.graph_from_dot_file('output/graph.dot')
+            graph[0].write_png('resources/images/Call_Graph.png')
         
                 
         #Virustotal Function
@@ -124,10 +124,16 @@ def main() -> None:
                 sys.exit(1)
             client = vt.Client(args.vt_api_key)
             with open(args.file, "rb") as f:
-                analysis = client.scan_file(f, wait_for_completion=True)
-                assert analysis.status == "completed"
-                report = client.get_json(f"/files/{get_hash(args.file)}")
-                print(report)
+                try:
+                    analysis = client.scan_file(f, wait_for_completion=True)
+                    assert analysis.status == "completed"
+                    report = client.get_json(f"/files/{get_hash(args.file)}")
+                except vt.error.APIError as e:
+                    print("Virustotal encounters an error code: {} with error message: {}".format(e.code, e.message))
+                    client.close()
+                    sys.exit(1)
+            
+            print(report["data"]["attributes"]["last_analysis_stats"]["malicious"])
             client.close()
         
         #Retrieve sha256 of file
@@ -136,6 +142,7 @@ def main() -> None:
             with open(file,"rb") as f:
                 for block in iter(lambda: f.read(65536),b""):
                     sha256_hash.update(block)
+               
                 return sha256_hash.hexdigest()
         
         
