@@ -1,4 +1,4 @@
-(func (;23;) (param i32 i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
+(func (;39;) (param i32 i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
 instructions: 
   block -64
     get_local 0
@@ -2205,7 +2205,7 @@ instructions:
   end
 end
 
-(func (;22;) (param i32 i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
+(func (;38;) (param i32 i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
 instructions: 
   block -64
     get_local 0
@@ -4337,7 +4337,7 @@ instructions:
   end
 end
 
-(func (;15;) (param i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
+(func (;31;) (param i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
 instructions: 
   block -64
     get_local 0
@@ -6096,7 +6096,7 @@ instructions:
   end
 end
 
-(func (;29;) (param i32 i32 i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64)
+(func (;45;) (param i32 i32 i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64)
 instructions: 
   block -64
     get_local 2
@@ -10256,7 +10256,7 @@ instructions:
   end
 end
 
-(func (;31;) (param i32 i32 i32 i32 ) (local i32 i32 i32 i32 i32 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64)
+(func (;47;) (param i32 i32 i32 i32 ) (local i32 i32 i32 i32 i32 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64)
 instructions: 
   block -64
     get_local 2
@@ -12421,7 +12421,7 @@ instructions:
   end
 end
 
-(func (;30;) (param i32 i32 i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64)
+(func (;46;) (param i32 i32 i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64)
 instructions: 
   block -64
     get_global 6
@@ -14104,7 +14104,7 @@ instructions:
   end
 end
 
-(func (;16;) (param i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
+(func (;32;) (param i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
 instructions: 
   block -64
     get_global 6
@@ -15187,7 +15187,7 @@ instructions:
   end
 end
 
-(func (;14;) (param i32 i32 i32 ) (local i32 i32 i32)
+(func (;30;) (param i32 i32 i32 ) (local i32 i32 i32)
 instructions: 
   block -64
     get_local 1
@@ -15394,7 +15394,7 @@ instructions:
   end
 end
 
-(func (;25;) (param i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64)
+(func (;41;) (param i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64)
 instructions: 
   block -64
     get_local 0
@@ -17792,7 +17792,7 @@ instructions:
   end
 end
 
-(func (;26;) (param i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64)
+(func (;42;) (param i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64 i64)
 instructions: 
   block -64
     get_local 1
@@ -18549,7 +18549,7 @@ instructions:
   end
 end
 
-(func (;10;) (param i32 i32 i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i64 i64)
+(func (;26;) (param i32 i32 i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i64 i64)
 instructions: 
   block -64
     get_global 6
@@ -19430,7 +19430,7 @@ instructions:
   end
 end
 
-(func (;27;) (param i32 i32 i32 ) (local i32)
+(func (;43;) (param i32 i32 i32 ) (local i32)
 instructions: 
   block -64
     get_global 6
@@ -19555,7 +19555,7 @@ instructions:
   end
 end
 
-(func (;18;) (param i32 i32 i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32)
+(func (;34;) (param i32 i32 i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32)
 instructions: 
   block -64
     get_global 6
@@ -19921,7 +19921,7 @@ instructions:
   end
 end
 
-(func (;21;) (param i32 i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
+(func (;37;) (param i32 i32 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
 instructions: 
   block -64
     get_global 6
@@ -20372,7 +20372,7 @@ instructions:
   end
 end
 
-(func (;32;) (param i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
+(func (;48;) (param i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
 instructions: 
   block -64
     get_global 6
@@ -20783,7 +20783,7 @@ instructions:
   end
 end
 
-(func (;19;) (param i32 i32 i64 ) (local i32 i32 i32)
+(func (;35;) (param i32 i32 i64 ) (local i32 i32 i32)
 instructions: 
   block -64
     get_global 6
@@ -20848,7 +20848,7 @@ instructions:
   end
 end
 
-(func (;20;) (param i32 i64 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
+(func (;36;) (param i32 i64 i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
 instructions: 
   block -64
     get_global 6
@@ -21600,7 +21600,7 @@ instructions:
   end
 end
 
-(func (;37;) (param i64 i64 i32 ) (result i64)
+(func (;53;) (param i64 i64 i32 ) (result i64)
 (local i64 i64 i64 i64)
 instructions: 
   block -2
@@ -21660,7 +21660,7 @@ instructions:
   end
 end
 
-(func (;34;) (param  ) (result i32)
+(func (;50;) (param  ) (result i32)
 (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
 instructions: 
   block -1
@@ -21772,7 +21772,7 @@ instructions:
   end
 end
 
-(func (;35;) (param i32 i32 i32 ) (result i32)
+(func (;51;) (param i32 i32 i32 ) (result i32)
 (local i32 i32 i32 i64)
 instructions: 
   block -1
@@ -22095,7 +22095,7 @@ instructions:
   end
 end
 
-(func (;24;) (param i32 i32 i64 i32 ) (result i32)
+(func (;40;) (param i32 i32 i64 i32 ) (result i32)
 (local i32 i32 i32 i32 i32 i64)
 instructions: 
   block -1
@@ -22907,7 +22907,7 @@ instructions:
   end
 end
 
-(func (;28;) (param i32 i32 i32 i32 ) (result i32)
+(func (;44;) (param i32 i32 i32 i32 ) (result i32)
 (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
 instructions: 
   block -1
@@ -25140,7 +25140,7 @@ instructions:
   end
 end
 
-(func (;17;) (param i32 i32 i64 ) (local i32 i32 i32 i32 i32)
+(func (;33;) (param i32 i32 i64 ) (local i32 i32 i32 i32 i32)
 instructions: 
   block -64
     i32.const 64
@@ -25299,7 +25299,7 @@ instructions:
   end
 end
 
-(func (;47;) (param i32 i32 i32 ) (result i32)
+(func (;63;) (param i32 i32 i32 ) (result i32)
 (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
 instructions: 
   block -1
@@ -25498,7 +25498,7 @@ instructions:
   end
 end
 
-(func (;33;) (param i32 i32 i32 ) (result i32)
+(func (;49;) (param i32 i32 i32 ) (result i32)
 (local i32 i32)
 instructions: 
   block -1
@@ -25566,7 +25566,7 @@ instructions:
   end
 end
 
-(func (;43;) (param i32 i32 i32 ) (result i32)
+(func (;59;) (param i32 i32 i32 ) (result i32)
 (local i32 i32 i32)
 instructions: 
   block -1
@@ -25621,7 +25621,7 @@ instructions:
   end
 end
 
-(func (;44;) (param i32 i32 i32 ) (result i32)
+(func (;60;) (param i32 i32 i32 ) (result i32)
 (local i32 i32)
 instructions: 
   block -1
@@ -25673,7 +25673,7 @@ instructions:
   end
 end
 
-(func (;42;) (param i32 ) (result i32)
+(func (;58;) (param i32 ) (result i32)
 (local i32 i32)
 instructions: 
   block -1
@@ -25700,7 +25700,7 @@ instructions:
   end
 end
 
-(func (;49;) (param i32 ) (result i32)
+(func (;65;) (param i32 ) (result i32)
 (local i32 i32 i32 i32 i32 i32)
 instructions: 
   block -1
@@ -25782,7 +25782,7 @@ instructions:
   tee_local 0
 end
 
-(func (;38;) (param i32 ) (result i32)
+(func (;54;) (param i32 ) (result i32)
 (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
 instructions: 
   block -1
@@ -29130,7 +29130,7 @@ instructions:
   end
 end
 
-(func (;56;) (param i32 i32 i32 i32 ) (result i32)
+(func (;72;) (param i32 i32 i32 i32 ) (result i32)
 instructions: 
   get_local 1
   get_local 2
@@ -29143,7 +29143,7 @@ instructions:
   call_indirect 1, 0
 end
 
-(func (;57;) (param i32 i32 i32 i32 ) instructions: 
+(func (;73;) (param i32 i32 i32 i32 ) instructions: 
   get_local 1
   get_local 2
   get_local 3
@@ -29155,7 +29155,7 @@ end
   call_indirect 0, 0
 end
 
-(func (;53;) (param i32 i32 i32 ) (result i32)
+(func (;69;) (param i32 i32 i32 ) (result i32)
 (local i32 i32 i32)
 instructions: 
   block -1
@@ -29382,7 +29382,7 @@ instructions:
   end
 end
 
-(func (;51;) (param i32 i32 i32 ) (result i32)
+(func (;67;) (param i32 i32 i32 ) (result i32)
 (local i32 i32 i32 i32)
 instructions: 
   block -1
@@ -29531,7 +29531,7 @@ instructions:
   end
 end
 
-(func (;39;) (param i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32)
+(func (;55;) (param i32 ) (local i32 i32 i32 i32 i32 i32 i32 i32)
 instructions: 
   block -64
     get_local 0
@@ -30437,7 +30437,7 @@ instructions:
   end
 end
 
-(func (;0;) (param i32 ) (result i32)
+(func (;16;) (param i32 ) (result i32)
 (local i32)
 instructions: 
   block -1
@@ -30457,7 +30457,7 @@ instructions:
   end
 end
 
-(func (;7;) (param i32 i32 i32 ) instructions: 
+(func (;23;) (param i32 i32 i32 ) instructions: 
   get_local 0
   get_local 1
   i32.const 3
@@ -30467,7 +30467,7 @@ end
   call 36
 end
 
-(func (;12;) (param i32 i32 i32 ) instructions: 
+(func (;28;) (param i32 i32 i32 ) instructions: 
   i32.const 256
   get_local 0
   get_local 1
@@ -30485,7 +30485,7 @@ end
   end
 end
 
-(func (;54;) (param i32 i32 i32 ) (result i32)
+(func (;70;) (param i32 i32 i32 ) (result i32)
 (local i32)
 instructions: 
   block -1
@@ -30544,7 +30544,7 @@ instructions:
   end
 end
 
-(func (;52;) (param i32 ) (result i32)
+(func (;68;) (param i32 ) (result i32)
 (local i32 i32)
 instructions: 
   block -1
@@ -30601,7 +30601,7 @@ instructions:
   end
 end
 
-(func (;13;) (param i32 i32 i32 ) instructions: 
+(func (;29;) (param i32 i32 i32 ) instructions: 
   i32.const 256
   get_local 0
   get_local 1
@@ -30618,7 +30618,7 @@ end
   end
 end
 
-(func (;36;) (param i32 ) (result i32)
+(func (;52;) (param i32 ) (result i32)
 (local i32 i32 i32)
 instructions: 
   block -1
@@ -30686,7 +30686,7 @@ instructions:
   end
 end
 
-(func (;11;) (param i32 i32 i32 ) instructions: 
+(func (;27;) (param i32 i32 i32 ) instructions: 
   get_local 2
   get_local 0
   get_local 1
@@ -30694,7 +30694,7 @@ end
   call 35
 end
 
-(func (;55;) (param i32 i32 ) (result i32)
+(func (;71;) (param i32 i32 ) (result i32)
 instructions: 
   get_local 1
   get_local 0
@@ -30703,7 +30703,7 @@ instructions:
   call_indirect 2, 0
 end
 
-(func (;40;) (param i32 i32 ) (result i32)
+(func (;56;) (param i32 i32 ) (result i32)
 (local i32)
 instructions: 
   block -1
@@ -30761,7 +30761,7 @@ instructions:
   end
 end
 
-(func (;9;) (param i32 ) instructions: 
+(func (;25;) (param i32 ) instructions: 
   block -64
     get_local 0
     i32.const 2097536
@@ -30773,7 +30773,7 @@ end
   end
 end
 
-(func (;48;) (param i32 ) (result i32)
+(func (;64;) (param i32 ) (result i32)
 (local i32 i32)
 instructions: 
   block -1
@@ -30856,7 +30856,7 @@ instructions:
   end
 end
 
-(func (;45;) (param i32 ) (result i32)
+(func (;61;) (param i32 ) (result i32)
 instructions: 
   get_local 0
   i32.const -4096
@@ -30873,7 +30873,7 @@ instructions:
   end
 end
 
-(func (;4;) (param i32 i32 ) instructions: 
+(func (;20;) (param i32 i32 ) instructions: 
   get_global 8
   i32.eqz
   if -64
@@ -30884,14 +30884,14 @@ end
   end
 end
 
-(func (;8;) (param  ) (result i32)
+(func (;24;) (param  ) (result i32)
 instructions: 
   i32.const 1
   i32.const 2097552
   call 56
 end
 
-(func (;3;) (param i32 i32 ) instructions: 
+(func (;19;) (param i32 i32 ) instructions: 
   block -64
     get_local 0
     set_global 6
@@ -30900,17 +30900,17 @@ end
   end
 end
 
-(func (;2;) (param i32 ) instructions: 
+(func (;18;) (param i32 ) instructions: 
   get_local 0
   set_global 6
 end
 
-(func (;5;) (param i32 ) instructions: 
+(func (;21;) (param i32 ) instructions: 
   get_local 0
   set_global 10
 end
 
-(func (;58;) (param i32 ) (result i32)
+(func (;74;) (param i32 ) (result i32)
 instructions: 
   block -1
     i32.const 0
@@ -30919,7 +30919,7 @@ instructions:
   end
 end
 
-(func (;59;) (param i32 i32 i32 ) (result i32)
+(func (;75;) (param i32 i32 i32 ) (result i32)
 instructions: 
   block -1
     i32.const 1
@@ -30928,32 +30928,32 @@ instructions:
   end
 end
 
-(func (;60;) (param i32 i32 i32 ) instructions: 
+(func (;76;) (param i32 i32 i32 ) instructions: 
   i32.const 2
   call 0
 end
 
-(func (;1;) (param  ) (result i32)
+(func (;17;) (param  ) (result i32)
 instructions: 
   get_global 6
 end
 
-(func (;6;) (param  ) (result i32)
+(func (;22;) (param  ) (result i32)
 instructions: 
   get_global 10
 end
 
-(func (;41;) (param  ) (result i32)
+(func (;57;) (param  ) (result i32)
 instructions: 
   i32.const 11400
 end
 
-(func (;46;) (param  ) (result i32)
+(func (;62;) (param  ) (result i32)
 instructions: 
   i32.const 8204
 end
 
-(func (;50;) (param  ) instructions: 
+(func (;66;) (param  ) instructions: 
   nop
 end
 

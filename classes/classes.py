@@ -1,3 +1,4 @@
+import enum
 import profile
 from pyclbr import Function
 import re
@@ -13,9 +14,29 @@ from wasm import (
     format_instruction, format_lang_type, 
     format_mutability, format_function,
     SEC_DATA, SEC_ELEMENT, SEC_GLOBAL,
-    SEC_CODE, SEC_TYPE, SEC_FUNCTION, Section,
+    SEC_CODE, SEC_TYPE, SEC_FUNCTION, 
+    SEC_IMPORT, SEC_EXPORT, Section,
     INSN_ENTER_BLOCK,
     INSN_LEAVE_BLOCK,)
+
+class Analysis():
+    buffer_ratio = 5 # Our buffer ratio offset
+    filtered_funcs = [] # Array to store filtered mod_obj functions to analyze
+
+    def __init__(self):
+        pass
+
+    def analyse(self, mod_obj, rule_obj):
+        """
+        1. Find smallest ratio in rule_obj
+        2. Find all func in mod_obj where ratio >= smallest ratio
+        3. Check filtered_funcs distribution for deep analysis
+        """
+        min_rule_ratio = min(rf['ratio'] for rf in rule_obj.profile.values()) # 1.
+        for func in mod_obj.func_objs:
+            if func.ratio >= (min_rule_ratio - self.buffer_ratio):
+                self.filtered_funcs.append(func)
+                # print(func)       
 
 class Rule():
     name = ''
@@ -52,18 +73,41 @@ class Module():
         pass
     
     def disassemble(self, mod_iter):
-        code_sec = None
-        type_sec = None
-        func_sec = None
+        code_sec = type_sec =  func_sec = None
+        import_sec = export_sec = None
+        func_id = 0
 
         for cur_sec, cur_sec_data in mod_iter:
             if type(cur_sec) == Section:
                 if cur_sec_data.id == SEC_CODE:
                     code_sec = cur_sec_data.payload
+                    
                 elif cur_sec_data.id == SEC_TYPE:
                     type_sec = cur_sec_data.payload
+
                 elif cur_sec_data.id == SEC_FUNCTION:
                     func_sec = cur_sec_data.payload
+
+                elif cur_sec_data.id == SEC_IMPORT:
+                    import_sec = cur_sec_data.payload
+
+                elif cur_sec_data.id == SEC_EXPORT:
+                    export_sec = cur_sec_data.payload
+
+        # TMP GET export - get function name export
+        if export_sec is not None:
+            # print('Export Section:')
+            for idx, entry in enumerate(export_sec.entries):
+                # entry.index = func id || entry.field_str = func export name eg. cryptonight...
+                # print('{a} {b}'.format(a=entry.index, b=entry.field_str.tobytes()))
+                pass
+
+        # GET starting id for func
+        if import_sec is not None:
+            func_count = 0
+            for idx, entry in enumerate(import_sec.entries):
+                func_count += 1 if entry.kind != 0 else 0
+            func_count = import_sec.count - func_count
         
         # Disassemble
         if code_sec is not None:
@@ -72,13 +116,16 @@ class Module():
                 func_type = type_sec.entries[func_sec.types[i]] if (
                     None not in (type_sec, func_sec)
                 ) else None
-        
-                func_obj = Function(i, func_body, func_type) # Create Function object
+                
+                func_obj = Function(func_count, func_body, func_type) # Create Function object
                 self.add_func(func_obj) # Add Function obj to module object
+                func_count += 1
+
+            self.sort_objs() # Sort func_objs
 
     def profile_module(self):
         if self.func_objs: # if arr is not empty
-            self.sort_objs() # Sort func_objs
+            # self.sort_objs() # Sort func_objs
             length = 5 if len(self.func_objs) >= 5 else len(self.func_objs)
             
             for i in range(length):

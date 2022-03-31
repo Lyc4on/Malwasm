@@ -27,10 +27,10 @@ def main() -> None:
         description='Malwasm - WebAssembly Scanner for potential malware')
 
     inputs = parser.add_argument_group('IO arguments')
-    inputs.add_argument('-f', '--file',
+    inputs.add_argument('-f', '--file', required=True,
                         help='binary file (.wasm)')
     
-    inputs.add_argument('-r', '--rule', 
+    inputs.add_argument('-r', '--rule',
                         help='rule file (.json)')
 
     features = parser.add_argument_group('Features')
@@ -54,14 +54,9 @@ def main() -> None:
 
     # Global Variables
     mod_obj = classes.Module() # Module Object for -d, -a, -gr
-    rule_obj = classes.Rule() # for -r
-
-    # Process Rule
-    if args.rule:
-        with open(args.rule) as rule_raw:
-            rule_json = json.load(rule_raw)
-            rule_obj.load_json(rule_json)
-
+    rule_obj = classes.Rule() # Rule Object for -r
+    an_obj = classes.Analysis() # Analysis Object for -a
+    
     # Process input code
     if args.file:
         # Read file
@@ -74,7 +69,7 @@ def main() -> None:
         # Disassemble OR Generate JSON Rule
         if args.genRule or args.disassmble:
             mod_obj.disassemble(mod_iter) # disassemble    
-            mod_obj.profile_module() # 
+            mod_obj.profile_module()
             mod_obj.analyse_cfg()
 
             # Export disassemble results
@@ -84,6 +79,25 @@ def main() -> None:
         # Save json rule
         if args.genRule:
             mod_obj.export_rule_json(args.file)
+
+        # Analyse .wasm against JSON
+        if args.analyse:
+            if not args.rule: # Temp check, need to fix in argparse
+                print('specify json rule with -r <filename.json>')
+                return
+
+            # Load rule in Rule obj
+            with open(args.rule) as rule_raw:
+                rule_json = json.load(rule_raw)
+                rule_obj.load_json(rule_json)
+
+            # Disassemble wasm -> profile -> analyse CFG
+            mod_obj.disassemble(mod_iter) # disassemble    
+            mod_obj.profile_module()
+            mod_obj.analyse_cfg()
+
+            an_obj.analyse(mod_obj, rule_obj)
+
 
         # Implement CFG function
         def generate_CFG():
