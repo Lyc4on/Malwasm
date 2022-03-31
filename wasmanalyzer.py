@@ -45,8 +45,10 @@ def main() -> None:
     features.add_argument('-gr', '--genRule',
                           action='store_true',
                           help='generate JSON rule')
+                        
     
-    features.add_argument('-vt', '--vt-api-key', default=None,
+    features.add_argument('-vt', '--vt-api-key',
+                          action='store_true',
                           help='enter virustotal API key')
 
 
@@ -118,10 +120,7 @@ def main() -> None:
         
                 
         #Virustotal Function
-        def virustotal_scan():
-            if not args.vt_api_key :
-                logging.error('Please enter your virustotal API key')
-                sys.exit(1)
+        if args.vt_api_key:
             client = vt.Client(args.vt_api_key)
             with open(args.file, "rb") as f:
                 try:
@@ -147,7 +146,6 @@ def main() -> None:
         
         
         generate_CFG()
-        virustotal_scan()
 
 
 if __name__ == '__main__':
