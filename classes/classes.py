@@ -17,9 +17,30 @@ from wasm import (
     INSN_LEAVE_BLOCK,)
 
 class Rule():
-    def __init__(self, ruleJSON):
+    name = ''
+    profile = {}
+    cfg = {}
+
+    def __init__(self):
         # Read/Parse rules into local variables
         pass
+
+    def load_json(self, in_json):
+        if in_json:
+            self.name = in_json.get('name', '')
+            self.profile = in_json.get('profile', {})
+            self.cfg = in_json.get('cfg', {})
+        pass
+
+    def __str__(self):
+        returnStr = '{b} {name} Rule {b}\n\n'.format(b="="*20, name=self.name)
+        returnStr += '{b} Rule Profile {b}\n\n'.format(b="="*26)
+        returnStr += 'profile: {j}\n\n'.format(j=json.dumps(self.profile, sort_keys=True, indent=4))
+        returnStr += '{b} CFG Information {b}\n\n'.format(b="="*26)
+        called_by = json.dumps(self.cfg, sort_keys=True, indent=2)
+        returnStr += 'CFG - {{ called: caller_A : count, ... }}:\n{j}\n\n'.format(j=called_by)
+        return returnStr
+        # returnStr += '{b} Functions Profile {b}\n\n'.format(b="="*25)
 
 class Module():
     func_objs = []

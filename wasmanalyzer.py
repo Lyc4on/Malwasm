@@ -45,10 +45,21 @@ def main() -> None:
 
     args = parser.parse_args()
 
+    # Global Variables
     in_raw = None
     outfile = None
+    mod_obj = classes.Module() # Module Object for -d, -a, -gr
+    rule_obj = classes.Rule() # for -r
 
-    # process input code
+    # Process Rule
+    if args.rule:
+        with open(args.rule) as rule_raw:
+            rule_json = json.load(rule_raw)
+            rule_obj.load_json(rule_json)
+            # print(rule_json)
+    # print(rule_obj)
+
+    # Process input code
     if args.file:
         # Read file
         with open(args.file, 'rb') as raw:
@@ -71,8 +82,6 @@ def main() -> None:
                 elif cur_sec_data.id == SEC_FUNCTION:
                     func_sec = cur_sec_data.payload
         
-        mod_obj = classes.Module() # Module Object
-
         # Disassemble
         if (args.genRule or args.disassmble) and code_sec is not None:
             for i, func_body in enumerate(code_sec.bodies):
