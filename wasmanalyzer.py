@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Usage:
-# python3 wasmanalyzer.py -d -f nic_testbench/wasmwat_samples/cryptonight/cryptonight.wasm
-
+# python3 wasmanalyzer.py -d -f nic_testbench/wasmwat_samples/cryptonight/cryptonight.wasm 
 import argparse, sys, os, json
 from operator import mod
-import graphviz
+from graphviz import Digraph
+import hashlib
+import vt
+import pydot
+import subprocess
 from classes import classes
 from wasm import (
     decode_module, decode_bytecode,
@@ -42,6 +45,10 @@ def main() -> None:
     features.add_argument('-gr', '--genRule',
                           action='store_true',
                           help='generate JSON rule')
+    
+    features.add_argument('-vt', '--vt-api-key', default=None,
+                          help='enter virustotal API key')
+
 
     args = parser.parse_args()
 
@@ -93,6 +100,54 @@ def main() -> None:
 
 
         # Implement CFG function
+        def generate_CFG():
+        # Method 1
+        #     graph = Digraph(filename='wasm_cfg',format='svg')
+        #     for d in mod_obj.called_by:
+        #         graph.node(d, d)
+        #         print(len(mod_obj.called_by[d]))
+        #         if len(mod_obj.called_by[d]) != 0:
+        #             for i in mod_obj.called_by[d]:
+        #                 print(i)
+        #                 graph.edge(d, i)    
+        #     graph.render(directory='Output')
+        # Method 2
+            subprocess.Popen(["./resources/executables/wasp.exe", "callgraph", args.file, "-o","output/graph.dot"]).wait()
+            graph = pydot.graph_from_dot_file('output/graph.dot')
+            graph[0].write_png('resources/images/Call_Graph.png')
+        
+                
+        #Virustotal Function
+        def virustotal_scan():
+            if not args.vt_api_key :
+                logging.error('Please enter your virustotal API key')
+                sys.exit(1)
+            client = vt.Client(args.vt_api_key)
+            with open(args.file, "rb") as f:
+                try:
+                    analysis = client.scan_file(f, wait_for_completion=True)
+                    assert analysis.status == "completed"
+                    report = client.get_json(f"/files/{get_hash(args.file)}")
+                except vt.error.APIError as e:
+                    print("Virustotal encounters an error code: {} with error message: {}".format(e.code, e.message))
+                    client.close()
+                    sys.exit(1)
+            
+            print(report["data"]["attributes"]["last_analysis_stats"]["malicious"])
+            client.close()
+        
+        #Retrieve sha256 of file
+        def get_hash(file):
+            sha256_hash = hashlib.sha256()
+            with open(file,"rb") as f:
+                for block in iter(lambda: f.read(65536),b""):
+                    sha256_hash.update(block)
+               
+                return sha256_hash.hexdigest()
+        
+        
+        generate_CFG()
+        virustotal_scan()
 
 
 if __name__ == '__main__':

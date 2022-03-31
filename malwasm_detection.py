@@ -27,7 +27,7 @@ ascii_banner = pyfiglet.figlet_format("Malwasm")
 print(ascii_banner)
 print("Detecting WASM files...")
 # Specify path to chromedriver and set specified options
-driver = webdriver.Chrome("chromedriver", options=chrome_options)
+driver = webdriver.Chrome("resources/executable/chromedriver", options=chrome_options)
 # Navigate to the specified URL
 driver.get(args.URL)
 
