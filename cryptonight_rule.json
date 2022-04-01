@@ -2,49 +2,49 @@
   "name": "cryptonight.wasm",
   "profile": {
     "31": {
-      "i32.add": 0.67,
-      "i32.and": 0.33,
-      "i32.shl": 0,
-      "i32.shr_u": 0,
-      "i32.xor": 0,
-      "func_dist": 0.06,
-      "ratio": 12.75
+      "i32.add": 0.23,
+      "i32.and": 0.17,
+      "i32.shl": 0.22,
+      "i32.shr_u": 0.17,
+      "i32.xor": 0.22,
+      "func_dist": 0.41,
+      "ratio": 878.0
     },
     "30": {
-      "i32.add": 0.77,
-      "i32.and": 0,
-      "i32.shl": 0.23,
-      "i32.shr_u": 0,
-      "i32.xor": 0,
-      "func_dist": 0.06,
-      "ratio": 210.0
+      "i32.add": 0.25,
+      "i32.and": 0.16,
+      "i32.shl": 0.21,
+      "i32.shr_u": 0.16,
+      "i32.xor": 0.21,
+      "func_dist": 0.37,
+      "ratio": 102.0
     },
     "38": {
-      "i32.add": 1.0,
-      "i32.and": 0,
-      "i32.shl": 0,
-      "i32.shr_u": 0,
-      "i32.xor": 0,
-      "func_dist": 0.02,
-      "ratio": 61.0
+      "i32.add": 0.21,
+      "i32.and": 0.0,
+      "i32.shl": 0.44,
+      "i32.shr_u": 0.15,
+      "i32.xor": 0.2,
+      "func_dist": 0.31,
+      "ratio": 1064.5
     },
     "39": {
-      "i32.add": 0.57,
-      "i32.and": 0.29,
-      "i32.shl": 0.14,
-      "i32.shr_u": 0,
-      "i32.xor": 0,
-      "func_dist": 0.02,
-      "ratio": 21.27
+      "i32.add": 0.21,
+      "i32.and": 0.0,
+      "i32.shl": 0.43,
+      "i32.shr_u": 0.15,
+      "i32.xor": 0.2,
+      "func_dist": 0.3,
+      "ratio": 1102.0
     },
     "32": {
-      "i32.add": 0.88,
+      "i32.add": 0.37,
       "i32.and": 0,
-      "i32.shl": 0.12,
-      "i32.shr_u": 0,
-      "i32.xor": 0,
-      "func_dist": 0.05,
-      "ratio": 83.78
+      "i32.shl": 0.27,
+      "i32.shr_u": 0.1,
+      "i32.xor": 0.25,
+      "func_dist": 0.29,
+      "ratio": 135.0
     }
   },
   "cfg": {

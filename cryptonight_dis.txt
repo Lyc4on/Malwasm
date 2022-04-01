@@ -212,61 +212,62 @@ CFG - { called: caller_A : count, ... }:
 
 profile: {
     "30": {
-        "func_dist": 0.06,
-        "i32.add": 0.77,
-        "i32.and": 0,
-        "i32.shl": 0.23,
-        "i32.shr_u": 0,
-        "i32.xor": 0,
-        "ratio": 210.0
+        "func_dist": 0.37,
+        "i32.add": 0.25,
+        "i32.and": 0.16,
+        "i32.shl": 0.21,
+        "i32.shr_u": 0.16,
+        "i32.xor": 0.21,
+        "ratio": 102.0
     },
     "31": {
-        "func_dist": 0.06,
-        "i32.add": 0.67,
-        "i32.and": 0.33,
-        "i32.shl": 0,
-        "i32.shr_u": 0,
-        "i32.xor": 0,
-        "ratio": 12.75
+        "func_dist": 0.41,
+        "i32.add": 0.23,
+        "i32.and": 0.17,
+        "i32.shl": 0.22,
+        "i32.shr_u": 0.17,
+        "i32.xor": 0.22,
+        "ratio": 878.0
     },
     "32": {
-        "func_dist": 0.05,
-        "i32.add": 0.88,
+        "func_dist": 0.29,
+        "i32.add": 0.37,
         "i32.and": 0,
-        "i32.shl": 0.12,
-        "i32.shr_u": 0,
-        "i32.xor": 0,
-        "ratio": 83.78
+        "i32.shl": 0.27,
+        "i32.shr_u": 0.1,
+        "i32.xor": 0.25,
+        "ratio": 135.0
     },
     "38": {
-        "func_dist": 0.02,
-        "i32.add": 1.0,
-        "i32.and": 0,
-        "i32.shl": 0,
-        "i32.shr_u": 0,
-        "i32.xor": 0,
-        "ratio": 61.0
+        "func_dist": 0.31,
+        "i32.add": 0.21,
+        "i32.and": 0.0,
+        "i32.shl": 0.44,
+        "i32.shr_u": 0.15,
+        "i32.xor": 0.2,
+        "ratio": 1064.5
     },
     "39": {
-        "func_dist": 0.02,
-        "i32.add": 0.57,
-        "i32.and": 0.29,
-        "i32.shl": 0.14,
-        "i32.shr_u": 0,
-        "i32.xor": 0,
-        "ratio": 21.27
+        "func_dist": 0.3,
+        "i32.add": 0.21,
+        "i32.and": 0.0,
+        "i32.shl": 0.43,
+        "i32.shr_u": 0.15,
+        "i32.xor": 0.2,
+        "ratio": 1102.0
     }
 }
 
 ========================= Functions Profile =========================
 
 func_name: func_31
-param: i32 i32 
-result: 
 insn_count: 1756
 blocks: 2
 ratio: 878.00
+func_dist: 0.41
 calls: 
+param: i32 i32 
+result: 
 profile: {
     "block": 1,
     "end": 2,
@@ -284,12 +285,13 @@ profile: {
 
 
 func_name: func_30
-param: i32 i32 i32 
-result: 
 insn_count: 204
 blocks: 2
 ratio: 102.00
+func_dist: 0.37
 calls: 
+param: i32 i32 i32 
+result: 
 profile: {
     "block": 1,
     "end": 2,
@@ -307,12 +309,13 @@ profile: {
 
 
 func_name: func_38
-param: i32 i32 i32 
-result: 
 insn_count: 2129
 blocks: 2
 ratio: 1064.50
+func_dist: 0.31
 calls: 
+param: i32 i32 i32 
+result: 
 profile: {
     "block": 1,
     "end": 2,
@@ -333,12 +336,13 @@ profile: {
 
 
 func_name: func_39
-param: i32 i32 i32 
-result: 
 insn_count: 2204
 blocks: 2
 ratio: 1102.00
+func_dist: 0.30
 calls: 
+param: i32 i32 i32 
+result: 
 profile: {
     "block": 1,
     "end": 2,
@@ -359,12 +363,13 @@ profile: {
 
 
 func_name: func_32
-param: i32 i32 
-result: 
 insn_count: 1080
 blocks: 8
 ratio: 135.00
+func_dist: 0.29
 calls: 
+param: i32 i32 
+result: 
 profile: {
     "block": 1,
     "br_if": 2,
@@ -393,12 +398,13 @@ profile: {
 
 
 func_name: func_48
-param: i32 
-result: 
 insn_count: 408
 blocks: 10
 ratio: 40.80
+func_dist: 0.21
 calls: 56 69 70 
+param: i32 
+result: 
 profile: {
     "block": 1,
     "br": 1,
@@ -437,12 +443,13 @@ profile: {
 
 
 func_name: func_72
-param: i32 i32 i32 i32 
-result: i32
 insn_count: 10
 blocks: 1
 ratio: 10.00
+func_dist: 0.20
 calls: 
+param: i32 i32 i32 i32 
+result: i32
 profile: {
     "call_indirect": 1,
     "end": 1,
@@ -454,12 +461,13 @@ profile: {
 
 
 func_name: func_73
-param: i32 i32 i32 i32 
-result: 
 insn_count: 10
 blocks: 1
 ratio: 10.00
+func_dist: 0.20
 calls: 
+param: i32 i32 i32 i32 
+result: 
 profile: {
     "call_indirect": 1,
     "end": 1,
@@ -471,12 +479,13 @@ profile: {
 
 
 func_name: func_16
-param: i32 
-result: i32
 insn_count: 16
 blocks: 2
 ratio: 8.00
+func_dist: 0.19
 calls: 
+param: i32 
+result: i32
 profile: {
     "block": 1,
     "end": 2,
@@ -491,12 +500,13 @@ profile: {
 
 
 func_name: func_71
-param: i32 i32 
-result: i32
 insn_count: 6
 blocks: 1
 ratio: 6.00
+func_dist: 0.17
 calls: 
+param: i32 i32 
+result: i32
 profile: {
     "call_indirect": 1,
     "end": 1,
@@ -507,12 +517,13 @@ profile: {
 
 
 func_name: func_37
-param: i32 i32 i32 
-result: 
 insn_count: 448
 blocks: 9
 ratio: 49.78
+func_dist: 0.15
 calls: 39 39 39 39 39 39 39 39 39 39 38 38 38 38 38 38 38 38 38 38 
+param: i32 i32 i32 
+result: 
 profile: {
     "block": 1,
     "br_if": 2,
@@ -542,12 +553,13 @@ profile: {
 
 
 func_name: func_34
-param: i32 i32 i32 i32 
-result: 
 insn_count: 363
 blocks: 7
 ratio: 51.86
+func_dist: 0.13
 calls: 33 33 33 33 33 33 
+param: i32 i32 i32 i32 
+result: 
 profile: {
     "block": 1,
     "call": 6,
@@ -576,12 +588,13 @@ profile: {
 
 
 func_name: func_54
-param: i32 
-result: i32
 insn_count: 3344
 blocks: 316
 ratio: 10.58
+func_dist: 0.13
 calls: 68 68 68 68 68 68 68 62 
+param: i32 
+result: i32
 profile: {
     "block": 29,
     "br": 44,
@@ -622,12 +635,13 @@ profile: {
 
 
 func_name: func_23
-param: i32 i32 i32 
-result: 
 insn_count: 8
 blocks: 1
 ratio: 8.00
+func_dist: 0.12
 calls: 36 
+param: i32 i32 i32 
+result: 
 profile: {
     "call": 1,
     "end": 1,
@@ -639,12 +653,13 @@ profile: {
 
 
 func_name: func_33
-param: i32 i32 i64 
-result: 
 insn_count: 156
 blocks: 12
 ratio: 13.00
+func_dist: 0.12
 calls: 69 32 32 69 
+param: i32 i32 i64 
+result: 
 profile: {
     "block": 1,
     "br_if": 1,
@@ -682,12 +697,13 @@ profile: {
 
 
 func_name: func_36
-param: i32 i64 i32 
-result: 
 insn_count: 749
 blocks: 26
 ratio: 28.81
+func_dist: 0.12
 calls: 37 37 37 38 38 38 38 38 38 38 38 38 38 
+param: i32 i64 i32 
+result: 
 profile: {
     "block": 3,
     "br": 2,
@@ -728,12 +744,13 @@ profile: {
 
 
 func_name: func_50
-param:  
-result: i32
 insn_count: 108
 blocks: 5
 ratio: 21.60
+func_dist: 0.12
 calls: 56 9 4 56 13 55 51 
+param:  
+result: i32
 profile: {
     "block": 1,
     "call": 7,
@@ -758,12 +775,13 @@ profile: {
 
 
 func_name: func_55
-param: i32 
-result: 
 insn_count: 903
 blocks: 105
 ratio: 8.60
+func_dist: 0.11
 calls: 
+param: i32 
+result: 
 profile: {
     "block": 7,
     "br": 12,
@@ -798,12 +816,13 @@ profile: {
 
 
 func_name: func_25
-param: i32 
-result: 
 insn_count: 10
 blocks: 2
 ratio: 5.00
+func_dist: 0.10
 calls: 52 55 
+param: i32 
+result: 
 profile: {
     "block": 1,
     "call": 2,
@@ -816,12 +835,13 @@ profile: {
 
 
 func_name: func_41
-param: i32 
-result: 
 insn_count: 2395
 blocks: 25
 ratio: 95.80
+func_dist: 0.10
 calls: 
+param: i32 
+result: 
 profile: {
     "block": 1,
     "br": 7,
@@ -851,12 +871,13 @@ profile: {
 
 
 func_name: func_65
-param: i32 
-result: i32
 insn_count: 78
 blocks: 7
 ratio: 11.14
+func_dist: 0.10
 calls: 
+param: i32 
+result: i32
 profile: {
     "block": 2,
     "br": 1,
@@ -879,12 +900,13 @@ profile: {
 
 
 func_name: func_44
-param: i32 i32 i32 i32 
-result: i32
 insn_count: 2229
 blocks: 121
 ratio: 18.42
+func_dist: 0.09
 calls: 45 46 69 45 45 69 69 45 45 69 69 47 47 69 69 47 47 69 69 46 46 69 69 46 46 69 69 45 45 69 69 47 47 69 69 46 46 69 67 45 45 69 67 47 47 69 67 46 46 69 
+param: i32 i32 i32 i32 
+result: i32
 profile: {
     "block": 22,
     "br": 13,
@@ -929,12 +951,13 @@ profile: {
 
 
 func_name: func_67
-param: i32 i32 i32 
-result: i32
 insn_count: 145
 blocks: 15
 ratio: 9.67
+func_dist: 0.08
 calls: 
+param: i32 i32 i32 
+result: i32
 profile: {
     "block": 1,
     "br": 4,
@@ -959,12 +982,13 @@ profile: {
 
 
 func_name: func_68
-param: i32 
-result: i32
 insn_count: 53
 blocks: 7
 ratio: 7.57
+func_dist: 0.08
 calls: 3 7 2 1 7 
+param: i32 
+result: i32
 profile: {
     "block": 1,
     "call": 5,
@@ -989,12 +1013,13 @@ profile: {
 
 
 func_name: func_26
-param: i32 i32 i32 i32 
-result: 
 insn_count: 878
 blocks: 11
 ratio: 79.82
+func_dist: 0.07
 calls: 43 50 49 31 31 31 31 31 31 31 31 30 53 30 53 49 31 31 31 31 31 31 31 31 42 
+param: i32 i32 i32 i32 
+result: 
 profile: {
     "block": 1,
     "br": 1,
@@ -1030,12 +1055,13 @@ profile: {
 
 
 func_name: func_29
-param: i32 i32 i32 
-result: 
 insn_count: 15
 blocks: 2
 ratio: 7.50
+func_dist: 0.07
 calls: 44 14 
+param: i32 i32 i32 
+result: 
 profile: {
     "call": 2,
     "end": 2,
@@ -1047,12 +1073,13 @@ profile: {
 
 
 func_name: func_63
-param: i32 i32 i32 
-result: i32
 insn_count: 195
 blocks: 15
 ratio: 13.00
+func_dist: 0.07
 calls: 15 61 15 61 
+param: i32 i32 i32 
+result: i32
 profile: {
     "block": 3,
     "br": 2,
@@ -1082,12 +1109,13 @@ profile: {
 
 
 func_name: func_69
-param: i32 i32 i32 
-result: i32
 insn_count: 223
 blocks: 23
 ratio: 9.70
+func_dist: 0.07
 calls: 10 
+param: i32 i32 i32 
+result: i32
 profile: {
     "block": 1,
     "br": 5,
@@ -1117,12 +1145,13 @@ profile: {
 
 
 func_name: func_70
-param: i32 i32 i32 
-result: i32
 insn_count: 55
 blocks: 7
 ratio: 7.86
+func_dist: 0.07
 calls: 69 
+param: i32 i32 i32 
+result: i32
 profile: {
     "block": 1,
     "br": 1,
@@ -1147,12 +1176,13 @@ profile: {
 
 
 func_name: func_28
-param: i32 i32 i32 
-result: 
 insn_count: 16
 blocks: 2
 ratio: 8.00
+func_dist: 0.06
 calls: 40 14 
+param: i32 i32 i32 
+result: 
 profile: {
     "call": 2,
     "end": 2,
@@ -1165,12 +1195,13 @@ profile: {
 
 
 func_name: func_46
-param: i32 i32 i32 i32 
-result: 
 insn_count: 1680
 blocks: 8
 ratio: 210.00
+func_dist: 0.06
 calls: 
+param: i32 i32 i32 i32 
+result: 
 profile: {
     "block": 1,
     "br": 2,
@@ -1200,12 +1231,13 @@ profile: {
 
 
 func_name: func_59
-param: i32 i32 i32 
-result: i32
 insn_count: 51
 blocks: 4
 ratio: 12.75
+func_dist: 0.06
 calls: 11 63 
+param: i32 i32 i32 
+result: i32
 profile: {
     "block": 1,
     "call": 2,
@@ -1226,12 +1258,13 @@ profile: {
 
 
 func_name: func_42
-param: i32 i32 
-result: 
 insn_count: 754
 blocks: 9
 ratio: 83.78
+func_dist: 0.05
 calls: 
+param: i32 i32 
+result: 
 profile: {
     "block": 1,
     "br": 1,
@@ -1263,12 +1296,13 @@ profile: {
 
 
 func_name: func_40
-param: i32 i32 i64 i32 
-result: i32
 insn_count: 808
 blocks: 39
 ratio: 20.72
+func_dist: 0.04
 calls: 41 69 69 41 67 67 41 41 
+param: i32 i32 i64 i32 
+result: i32
 profile: {
     "block": 14,
     "br": 4,
@@ -1314,12 +1348,13 @@ profile: {
 
 
 func_name: func_56
-param: i32 i32 
-result: i32
 insn_count: 54
 blocks: 10
 ratio: 5.40
+func_dist: 0.04
 calls: 54 67 
+param: i32 i32 
+result: i32
 profile: {
     "block": 1,
     "call": 2,
@@ -1345,12 +1380,13 @@ profile: {
 
 
 func_name: func_58
-param: i32 
-result: i32
 insn_count: 23
 blocks: 2
 ratio: 11.50
+func_dist: 0.04
 calls: 6 61 
+param: i32 
+result: i32
 profile: {
     "block": 1,
     "call": 2,
@@ -1368,12 +1404,13 @@ profile: {
 
 
 func_name: func_60
-param: i32 i32 i32 
-result: i32
 insn_count: 48
 blocks: 4
 ratio: 12.00
+func_dist: 0.04
 calls: 12 61 
+param: i32 i32 i32 
+result: i32
 profile: {
     "block": 1,
     "call": 2,
@@ -1394,12 +1431,13 @@ profile: {
 
 
 func_name: func_35
-param: i32 i32 i64 
-result: 
 insn_count: 62
 blocks: 2
 ratio: 31.00
+func_dist: 0.03
 calls: 33 34 
+param: i32 i32 i64 
+result: 
 profile: {
     "block": 1,
     "call": 2,
@@ -1419,12 +1457,13 @@ profile: {
 
 
 func_name: func_43
-param: i32 i32 i32 
-result: 
 insn_count: 122
 blocks: 2
 ratio: 61.00
+func_dist: 0.02
 calls: 42 69 
+param: i32 i32 i32 
+result: 
 profile: {
     "block": 1,
     "call": 2,
@@ -1448,12 +1487,13 @@ profile: {
 
 
 func_name: func_51
-param: i32 i32 i32 
-result: i32
 insn_count: 319
 blocks: 15
 ratio: 21.27
+func_dist: 0.02
 calls: 
+param: i32 i32 i32 
+result: i32
 profile: {
     "block": 5,
     "br": 3,
@@ -1487,12 +1527,13 @@ profile: {
 
 
 func_name: func_17
-param:  
-result: i32
 insn_count: 2
 blocks: 1
 ratio: 2.00
+func_dist: 0.00
 calls: 
+param:  
+result: i32
 profile: {
     "end": 1,
     "get_global": 1
@@ -1500,12 +1541,13 @@ profile: {
 
 
 func_name: func_18
-param: i32 
-result: 
 insn_count: 3
 blocks: 1
 ratio: 3.00
+func_dist: 0.00
 calls: 
+param: i32 
+result: 
 profile: {
     "end": 1,
     "get_local": 1,
@@ -1514,12 +1556,13 @@ profile: {
 
 
 func_name: func_19
-param: i32 i32 
-result: 
 insn_count: 7
 blocks: 2
 ratio: 3.50
+func_dist: 0.00
 calls: 
+param: i32 i32 
+result: 
 profile: {
     "block": 1,
     "end": 2,
@@ -1529,12 +1572,13 @@ profile: {
 
 
 func_name: func_20
-param: i32 i32 
-result: 
 insn_count: 9
 blocks: 2
 ratio: 4.50
+func_dist: 0.00
 calls: 
+param: i32 i32 
+result: 
 profile: {
     "end": 2,
     "get_global": 1,
@@ -1546,12 +1590,13 @@ profile: {
 
 
 func_name: func_21
-param: i32 
-result: 
 insn_count: 3
 blocks: 1
 ratio: 3.00
+func_dist: 0.00
 calls: 
+param: i32 
+result: 
 profile: {
     "end": 1,
     "get_local": 1,
@@ -1560,12 +1605,13 @@ profile: {
 
 
 func_name: func_22
-param:  
-result: i32
 insn_count: 2
 blocks: 1
 ratio: 2.00
+func_dist: 0.00
 calls: 
+param:  
+result: i32
 profile: {
     "end": 1,
     "get_global": 1
@@ -1573,12 +1619,13 @@ profile: {
 
 
 func_name: func_24
-param:  
-result: i32
 insn_count: 4
 blocks: 1
 ratio: 4.00
+func_dist: 0.00
 calls: 56 
+param:  
+result: i32
 profile: {
     "call": 1,
     "end": 1,
@@ -1587,12 +1634,13 @@ profile: {
 
 
 func_name: func_27
-param: i32 i32 i32 
-result: 
 insn_count: 6
 blocks: 1
 ratio: 6.00
+func_dist: 0.00
 calls: 35 
+param: i32 i32 i32 
+result: 
 profile: {
     "call": 1,
     "end": 1,
@@ -1602,12 +1650,13 @@ profile: {
 
 
 func_name: func_45
-param: i32 i32 i32 i32 
-result: 
 insn_count: 4157
 blocks: 5
 ratio: 831.40
+func_dist: 0.00
 calls: 
+param: i32 i32 i32 i32 
+result: 
 profile: {
     "block": 1,
     "br": 1,
@@ -1634,12 +1683,13 @@ profile: {
 
 
 func_name: func_47
-param: i32 i32 i32 i32 
-result: 
 insn_count: 2162
 blocks: 5
 ratio: 432.40
+func_dist: 0.00
 calls: 
+param: i32 i32 i32 i32 
+result: 
 profile: {
     "block": 1,
     "br": 1,
@@ -1666,12 +1716,13 @@ profile: {
 
 
 func_name: func_49
-param: i32 i32 i32 
-result: i32
 insn_count: 64
 blocks: 5
 ratio: 12.80
+func_dist: 0.00
 calls: 55 55 55 56 56 69 48 
+param: i32 i32 i32 
+result: i32
 profile: {
     "block": 1,
     "call": 7,
@@ -1688,12 +1739,13 @@ profile: {
 
 
 func_name: func_52
-param: i32 
-result: i32
 insn_count: 64
 blocks: 9
 ratio: 7.11
+func_dist: 0.00
 calls: 55 55 55 55 
+param: i32 
+result: i32
 profile: {
     "block": 1,
     "call": 4,
@@ -1711,12 +1763,13 @@ profile: {
 
 
 func_name: func_53
-param: i64 i64 i32 
-result: i64
 insn_count: 56
 blocks: 2
 ratio: 28.00
+func_dist: 0.00
 calls: 
+param: i64 i64 i32 
+result: i64
 profile: {
     "block": 1,
     "end": 2,
@@ -1736,12 +1789,13 @@ profile: {
 
 
 func_name: func_57
-param:  
-result: i32
 insn_count: 2
 blocks: 1
 ratio: 2.00
+func_dist: 0.00
 calls: 
+param:  
+result: i32
 profile: {
     "end": 1,
     "i32.const": 1
@@ -1749,12 +1803,13 @@ profile: {
 
 
 func_name: func_61
-param: i32 
-result: i32
 insn_count: 14
 blocks: 3
 ratio: 4.67
+func_dist: 0.00
 calls: 62 
+param: i32 
+result: i32
 profile: {
     "call": 1,
     "else": 1,
@@ -1769,12 +1824,13 @@ profile: {
 
 
 func_name: func_62
-param:  
-result: i32
 insn_count: 2
 blocks: 1
 ratio: 2.00
+func_dist: 0.00
 calls: 
+param:  
+result: i32
 profile: {
     "end": 1,
     "i32.const": 1
@@ -1782,12 +1838,13 @@ profile: {
 
 
 func_name: func_64
-param: i32 
-result: i32
 insn_count: 79
 blocks: 16
 ratio: 4.94
+func_dist: 0.00
 calls: 65 65 64 5 65 8 
+param: i32 
+result: i32
 profile: {
     "block": 5,
     "br": 1,
@@ -1812,12 +1869,13 @@ profile: {
 
 
 func_name: func_66
-param:  
-result: 
 insn_count: 2
 blocks: 1
 ratio: 2.00
+func_dist: 0.00
 calls: 
+param:  
+result: 
 profile: {
     "end": 1,
     "nop": 1
@@ -1825,12 +1883,13 @@ profile: {
 
 
 func_name: func_74
-param: i32 
-result: i32
 insn_count: 6
 blocks: 2
 ratio: 3.00
+func_dist: 0.00
 calls: 0 
+param: i32 
+result: i32
 profile: {
     "block": 1,
     "call": 1,
@@ -1840,12 +1899,13 @@ profile: {
 
 
 func_name: func_75
-param: i32 i32 i32 
-result: i32
 insn_count: 6
 blocks: 2
 ratio: 3.00
+func_dist: 0.00
 calls: 0 
+param: i32 i32 i32 
+result: i32
 profile: {
     "block": 1,
     "call": 1,
@@ -1855,12 +1915,13 @@ profile: {
 
 
 func_name: func_76
-param: i32 i32 i32 
-result: 
 insn_count: 3
 blocks: 1
 ratio: 3.00
+func_dist: 0.00
 calls: 0 
+param: i32 i32 i32 
+result: 
 profile: {
     "call": 1,
     "end": 1,

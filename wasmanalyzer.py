@@ -78,9 +78,9 @@ def main() -> None:
             mod_obj.export_dis_txt(args.file) # Write out Module information
             mod_obj.export_dis_wat(args.file) # Write out Module pseudo wat
 
-        # Save json rule
-        if args.genRule:
-            mod_obj.export_rule_json(args.file)
+            # Save json rule
+            if args.genRule:
+                mod_obj.export_rule_json(args.file)
 
         # Analyse .wasm against JSON
         if args.analyse:
@@ -99,6 +99,7 @@ def main() -> None:
             mod_obj.analyse_cfg()
 
             an_obj.analyse(mod_obj, rule_obj)
+            # print(rule_obj)
 
 
         # Implement CFG function
