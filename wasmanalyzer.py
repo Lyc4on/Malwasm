@@ -4,7 +4,7 @@
 # python3 wasmanalyzer.py -d -f nic_testbench/wasmwat_samples/cryptonight/cryptonight.wasm 
 import argparse, sys, os, json
 from operator import mod
-from graphviz import Digraph
+from graphviz import Digraph, render
 import hashlib
 import vt
 import pydot
@@ -43,6 +43,9 @@ def main() -> None:
     inputs.add_argument('-r', '--rule',
                         help='rule file (.json)')
 
+    inputs.add_argument('-fn', '--func',
+                        help='function name for CFG & DFG')     
+
     features = parser.add_argument_group('Features')
     features.add_argument('-d', '--disassmble',
                         action='store_true', 
@@ -63,6 +66,15 @@ def main() -> None:
     features.add_argument('-cg', '--gen-callgraph',
                           action='store_true',
                           help='generate callgraph')
+    
+    features.add_argument('-cfg', '--gen-control-flow-graph',
+                            action='store_true',
+                          help='generate control-flow-graph with specified function name')
+    
+    features.add_argument('-dfg', '--gen-data-flow-graph',
+                            action='store_true',    
+                          help='generate data-flow-graph with specified function name')
+
 
 
     args = parser.parse_args()
@@ -115,7 +127,7 @@ def main() -> None:
             # print(rule_obj)
 
 
-        # Implement CFG function
+        # Implement CG function
         if args.gen_callgraph:
         # Method 1
         #     graph = Digraph(filename='wasm_cfg',format='svg')
@@ -131,9 +143,32 @@ def main() -> None:
             subprocess.Popen(["./resources/executables/wasp.exe", "callgraph", args.file, "-o","output/graph.dot"], 
                                 stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait()
             graph = pydot.graph_from_dot_file('output/graph.dot')
-            graph[0].write_svg('output/images/Call_Graph.svg')
+            graph[0].write_svg('output/Call_Graph.svg')
+
+        # Implement CFG function
+        if args.gen_control_flow_graph:
+            if args.func:
+                subprocess.Popen(["./resources/executables/wasp.exe", "cfg", "-f", args.func, args.file, "-o","output/{}_cfg.dot".format(args.func)],
+                                    stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait()
+                # graph2 = pydot.graph_from_dot_file('output/crypto.dot')
+                # graph2[0].create_svg('output/images/crypto.png')
+                render('dot', 'svg', "output/{}_cfg.dot".format(args.func))
+            else: 
+                logging.error('specify function name with the parameter -func <func_name>')
+                sys.exit(1)
         
-                
+        # Implement DFG function
+        if args.gen_data_flow_graph:
+            if args.func:
+                subprocess.Popen(["./resources/executables/wasp.exe", "dfg", "-f", args.func, args.file, "-o","output/{}_dfg.dot".format(args.func)],
+                                    stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait()
+                # graph2 = pydot.graph_from_dot_file('output/crypto.dot')
+                # graph2[0].create_svg('output/images/crypto.png')
+                render('dot', 'svg', "output/{}_dfg.dot".format(args.func))
+            else: 
+                logging.error('specify function name with the parameter -func <func_name>')
+                sys.exit(1)
+
         #Virustotal Function
         if args.vt_api_key:
             client = vt.Client(args.vt_api_key)
