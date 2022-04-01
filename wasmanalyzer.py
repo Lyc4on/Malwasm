@@ -128,12 +128,8 @@ def main() -> None:
         #                 graph.edge(d, i)    
         #     graph.render(directory='Output')
         # Method 2
-<<<<<<< HEAD
-            subprocess.Popen(["./resources/executables/wasp.exe", "callgraph", args.file, "-o","output/graph.dot"], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait()
-=======
             subprocess.Popen(["./resources/executables/wasp.exe", "callgraph", args.file, "-o","output/graph.dot"], 
                                 stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait()
->>>>>>> be6b385fd62163259fd1f14ad4d1c8f63ba04cdb
             graph = pydot.graph_from_dot_file('output/graph.dot')
             graph[0].write_svg('output/images/Call_Graph.svg')
         
