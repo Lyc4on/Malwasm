@@ -22,6 +22,16 @@ from wasm import (
 from logging import getLogger
 logging = getLogger(__name__)
 
+#Retrieve sha256 of file
+def get_hash(file) -> hex:
+    sha256_hash = hashlib.sha256()
+    with open(file,"rb") as f:
+        for block in iter(lambda: f.read(65536),b""):
+            sha256_hash.update(block)
+        
+        return sha256_hash.hexdigest()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description='Malwasm - WebAssembly Scanner for potential malware')
@@ -46,10 +56,13 @@ def main() -> None:
                           action='store_true',
                           help='generate JSON rule')
                         
-    
     features.add_argument('-vt', '--vt-api-key',
                           action='store_true',
                           help='enter virustotal API key')
+    
+    features.add_argument('-cg', '--gen-callgraph',
+                          action='store_true',
+                          help='generate callgraph')
 
 
     args = parser.parse_args()
@@ -102,7 +115,7 @@ def main() -> None:
 
 
         # Implement CFG function
-        def generate_CFG():
+        if args.gen_callgraph:
         # Method 1
         #     graph = Digraph(filename='wasm_cfg',format='svg')
         #     for d in mod_obj.called_by:
@@ -114,9 +127,9 @@ def main() -> None:
         #                 graph.edge(d, i)    
         #     graph.render(directory='Output')
         # Method 2
-            subprocess.Popen(["./resources/executables/wasp.exe", "callgraph", args.file, "-o","output/graph.dot"]).wait()
+            subprocess.Popen(["./resources/executables/wasp.exe", "callgraph", args.file, "-o","output/graph.dot"], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait()
             graph = pydot.graph_from_dot_file('output/graph.dot')
-            graph[0].write_svg('resources/images/Call_Graph.svg')
+            graph[0].write_svg('output/images/Call_Graph.svg')
         
                 
         #Virustotal Function
@@ -134,19 +147,7 @@ def main() -> None:
             
             print(report["data"]["attributes"]["last_analysis_stats"]["malicious"])
             client.close()
-        
-        #Retrieve sha256 of file
-        def get_hash(file):
-            sha256_hash = hashlib.sha256()
-            with open(file,"rb") as f:
-                for block in iter(lambda: f.read(65536),b""):
-                    sha256_hash.update(block)
-               
-                return sha256_hash.hexdigest()
-        
-        
-        generate_CFG()
-
+    
 
 if __name__ == '__main__':
     main()
