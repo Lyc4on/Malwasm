@@ -4,10 +4,9 @@
 # python3 wasmanalyzer.py -d -f nic_testbench/wasmwat_samples/cryptonight/cryptonight.wasm 
 import argparse, sys, os, json
 from operator import mod
-from graphviz import Digraph
+from graphviz import Digraph, render
 import hashlib
 import vt
-import pydot
 import subprocess
 from classes import classes
 from wasm import (
@@ -22,6 +21,16 @@ from wasm import (
 from logging import getLogger
 logging = getLogger(__name__)
 
+#Retrieve sha256 of file
+def get_hash(file) -> hex:
+    sha256_hash = hashlib.sha256()
+    with open(file,"rb") as f:
+        for block in iter(lambda: f.read(65536),b""):
+            sha256_hash.update(block)
+        
+        return sha256_hash.hexdigest()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description='Malwasm - WebAssembly Scanner for potential malware')
@@ -32,6 +41,9 @@ def main() -> None:
     
     inputs.add_argument('-r', '--rule',
                         help='rule file (.json)')
+
+    inputs.add_argument('-fn', '--func',
+                        help='function name for CFG & DFG')     
 
     features = parser.add_argument_group('Features')
     features.add_argument('-d', '--disassmble',
@@ -46,10 +58,22 @@ def main() -> None:
                           action='store_true',
                           help='generate JSON rule')
                         
-    
     features.add_argument('-vt', '--vt-api-key',
                           action='store_true',
                           help='enter virustotal API key')
+    
+    features.add_argument('-cg', '--gen-callgraph',
+                          action='store_true',
+                          help='generate callgraph')
+    
+    features.add_argument('-cfg', '--gen-control-flow-graph',
+                            action='store_true',
+                          help='generate control-flow-graph with specified function name')
+    
+    features.add_argument('-dfg', '--gen-data-flow-graph',
+                            action='store_true',    
+                          help='generate data-flow-graph with specified function name')
+
 
 
     args = parser.parse_args()
@@ -102,8 +126,8 @@ def main() -> None:
             # print(rule_obj)
 
 
-        # Implement CFG function
-        def generate_CFG():
+        # Implement CG function
+        if args.gen_callgraph:
         # Method 1
         #     graph = Digraph(filename='wasm_cfg',format='svg')
         #     for d in mod_obj.called_by:
@@ -117,10 +141,28 @@ def main() -> None:
         # Method 2
             subprocess.Popen(["./resources/executables/wasp.exe", "callgraph", args.file, "-o","output/graph.dot"], 
                                 stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait()
-            graph = pydot.graph_from_dot_file('output/graph.dot')
-            graph[0].write_svg('resources/images/Call_Graph.svg')
+            render('dot', 'svg', "output/graph.dot")
+
+        # Implement CFG function
+        if args.gen_control_flow_graph:
+            if args.func:
+                subprocess.Popen(["./resources/executables/wasp.exe", "cfg", "-f", args.func, args.file, "-o","output/{}_cfg.dot".format(args.func)],
+                                    stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait()
+                render('dot', 'svg', "output/{}_cfg.dot".format(args.func))
+            else: 
+                logging.error('specify function name with the parameter -func <func_name>')
+                sys.exit(1)
         
-                
+        # Implement DFG function
+        if args.gen_data_flow_graph:
+            if args.func:
+                subprocess.Popen(["./resources/executables/wasp.exe", "dfg", "-f", args.func, args.file, "-o","output/{}_dfg.dot".format(args.func)],
+                                    stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait()
+                render('dot', 'svg', "output/{}_dfg.dot".format(args.func))
+            else: 
+                logging.error('specify function name with the parameter -func <func_name>')
+                sys.exit(1)
+
         #Virustotal Function
         if args.vt_api_key:
             client = vt.Client(args.vt_api_key)
@@ -136,19 +178,7 @@ def main() -> None:
             
             print(report["data"]["attributes"]["last_analysis_stats"]["malicious"])
             client.close()
-        
-        #Retrieve sha256 of file
-        def get_hash(file):
-            sha256_hash = hashlib.sha256()
-            with open(file,"rb") as f:
-                for block in iter(lambda: f.read(65536),b""):
-                    sha256_hash.update(block)
-               
-                return sha256_hash.hexdigest()
-        
-        
-        generate_CFG()
-
+    
 
 if __name__ == '__main__':
     main()
