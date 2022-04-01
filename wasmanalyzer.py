@@ -7,7 +7,6 @@ from operator import mod
 from graphviz import Digraph, render
 import hashlib
 import vt
-import pydot
 import subprocess
 from classes import classes
 from wasm import (
@@ -142,16 +141,13 @@ def main() -> None:
         # Method 2
             subprocess.Popen(["./resources/executables/wasp.exe", "callgraph", args.file, "-o","output/graph.dot"], 
                                 stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait()
-            graph = pydot.graph_from_dot_file('output/graph.dot')
-            graph[0].write_svg('output/Call_Graph.svg')
+            render('dot', 'svg', "output/graph.dot")
 
         # Implement CFG function
         if args.gen_control_flow_graph:
             if args.func:
                 subprocess.Popen(["./resources/executables/wasp.exe", "cfg", "-f", args.func, args.file, "-o","output/{}_cfg.dot".format(args.func)],
                                     stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait()
-                # graph2 = pydot.graph_from_dot_file('output/crypto.dot')
-                # graph2[0].create_svg('output/images/crypto.png')
                 render('dot', 'svg', "output/{}_cfg.dot".format(args.func))
             else: 
                 logging.error('specify function name with the parameter -func <func_name>')
@@ -162,8 +158,6 @@ def main() -> None:
             if args.func:
                 subprocess.Popen(["./resources/executables/wasp.exe", "dfg", "-f", args.func, args.file, "-o","output/{}_dfg.dot".format(args.func)],
                                     stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait()
-                # graph2 = pydot.graph_from_dot_file('output/crypto.dot')
-                # graph2[0].create_svg('output/images/crypto.png')
                 render('dot', 'svg', "output/{}_dfg.dot".format(args.func))
             else: 
                 logging.error('specify function name with the parameter -func <func_name>')
