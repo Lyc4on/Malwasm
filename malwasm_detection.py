@@ -4,7 +4,9 @@ import os
 import time
 import urllib
 import pyfiglet
+import shutil
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from pathlib import Path
 
@@ -22,16 +24,18 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
 chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
+ser = Service("Resources\\executables\\chromedriver")
 
+# Create banner
 ascii_banner = pyfiglet.figlet_format("Malwasm")
 print(ascii_banner)
+
 print("Detecting WASM files...")
 # Specify path to chromedriver and set specified options
-driver = webdriver.Chrome("resources/executable/chromedriver", options=chrome_options)
+driver = webdriver.Chrome(service=ser, options=chrome_options)
 # Navigate to the specified URL
 driver.get(args.URL)
-
-# Wait for 5 seconds for all the files to arrive
+# Wait for 5 seconds for the network requests to be made
 time.sleep(5)
 # Get output of all network requests made
 timings = driver.execute_script("return window.performance.getEntries();")
@@ -42,9 +46,7 @@ driver.quit()
 current_working_directory = os.getcwd() + "\\Temp\\"
 print("WASM files found:")
 wasm_arr = []
-counter = 0
 for i in range(len(timings)):
-    # print(timings[i]['name'])
     # Find .wasm files
     if ".wasm" in timings[i]['name']:
         print(timings[i]['name'])
@@ -53,6 +55,11 @@ for i in range(len(timings)):
         wasm_arr.append(full_filename)
         # Save the .wasm file into Temp folder
         urllib.request.urlretrieve(timings[i]['name'], filename=full_filename)
-        counter += 1
-if counter == 0:
-    print("No WASM files detected")
+
+if len(wasm_arr) == 0:
+    print("No WASM files detected!")
+
+print("\nPerforming analysis...")
+
+# Clean up by deleting Temp folder
+shutil.rmtree(current_working_directory)

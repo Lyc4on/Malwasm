@@ -17,6 +17,7 @@ numpy==1.22.3
 outcome==1.1.0
 pycparser==2.21
 pydot==1.4.2
+pyfiglet==0.8.post1
 pyOpenSSL==22.0.0
 pyparsing==3.0.7
 PySocks==1.7.1
