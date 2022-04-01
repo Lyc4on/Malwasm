@@ -20,7 +20,7 @@ from wasm import (
     INSN_LEAVE_BLOCK,)
 
 class Analysis():
-    buffer_ratio = 5 # Our buffer ratio offset
+    buffer_ratio = 0 # Our buffer ratio offset
     filtered_funcs = [] # Array to store filtered mod_obj functions to analyze
 
     def __init__(self):
@@ -32,11 +32,11 @@ class Analysis():
         2. Find all func in mod_obj where ratio >= smallest ratio
         3. Check filtered_funcs distribution for deep analysis
         """
-        min_rule_ratio = min(rf['ratio'] for rf in rule_obj.profile.values()) # 1.
+        min_rule_dist = min(rf['func_dist'] for rf in rule_obj.profile.values()) # 1.
         for func in mod_obj.func_objs:
-            if func.ratio >= (min_rule_ratio - self.buffer_ratio):
+            if func.ratio >= (min_rule_dist - self.buffer_ratio):
                 self.filtered_funcs.append(func)
-                # print(func)       
+                print(func)       
 
 class Rule():
     name = ''
@@ -66,7 +66,7 @@ class Rule():
 
 class Module():
     func_objs = []
-    profile = {} 
+    profile = {} # 
     called_by = {} # { called_id: {caller_id: count,...}, ...}
 
     def __init__(self):
@@ -121,19 +121,15 @@ class Module():
                 self.add_func(func_obj) # Add Function obj to module object
                 func_count += 1
 
-            self.sort_objs() # Sort func_objs
 
     def profile_module(self):
         if self.func_objs: # if arr is not empty
-            # self.sort_objs() # Sort func_objs
-            length = 5 if len(self.func_objs) >= 5 else len(self.func_objs)
-            
-            for i in range(length):
-                func_id = self.func_objs[i].id
-                func_profile = self.func_objs[i].profile
-                func_insn_count = self.func_objs[i].insn_count
-                func_ratio = self.func_objs[i].ratio
-                self.profile[func_id] = utils.get_mod_profile(func_profile, func_insn_count, func_ratio)
+            self.func_objs.sort(key=lambda x: x.func_dist['func_dist'], reverse=True)
+            # Debug
+            # print(''.join(['id: {id}\nprofile: {p}\n'.format(id=str(i.id), p=i.func_dist) for i in self.func_objs[:5]]))
+            length = 5 if len(self.func_objs) >= 5 else len(self.func_objs)            
+            for func in self.func_objs[:length]:
+                self.profile[func.id] = func.func_dist
 
     def analyse_cfg(self):
         if self.func_objs:
@@ -177,11 +173,12 @@ class Module():
 
     def generate_rule(self, input_file_name): # Returns json string
         call_signature = {}
+        # print(''.join(['id: {id}\nprofile: {p}\n'.format(id=str(i.id), p=i.func_dist) for i in self.func_objs[:5]]))
         for key in self.profile.keys():
             call_signature[key] = self.called_by.get(str(key), {})
 
         call_signature = OrderedDict(sorted(call_signature.items()))
-
+        # print(self.profile)
         rule_json = { 
             'name' : input_file_name, 
             'profile' : self.profile,
@@ -195,9 +192,6 @@ class Module():
         else:
             self.func_objs.append(func)
     
-    def sort_objs(self):
-        self.func_objs.sort(key=lambda x: x.ratio, reverse=True)
-
     def get_wat(self):
         returnStr = ''
         if self.func_objs:
@@ -222,7 +216,8 @@ class Function():
     insn_count = id = blocks_count = 0
     profile = {}
     ratio = 0.0
-
+    func_dist = {}
+    
     def __init__(self, id, func_body, func_type=None):
         self.id = id
         self.param_section = utils.get_param_sect(func_type)
@@ -237,6 +232,7 @@ class Function():
         
         # Add to call <func ID> if exist, else remain as None
         self.calls_arr = utils.get_calls_arr(self.insn_arr)
+        self.func_dist = utils.get_func_dist(self.profile, self.insn_count, self.ratio)
     
     def get_wat(self):
         returnStr = '(func (;{id};) '.format(id=self.id)
@@ -251,12 +247,13 @@ class Function():
 
     def __str__(self):
         returnStr = 'func_name: func_{id}\n'.format(id=self.id)
-        returnStr += 'param: {p}\n'.format(p=''.join(pa+' ' for pa in self.param_section))
-        returnStr += 'result: {r}\n'.format(r=self.result_section)
         returnStr += 'insn_count: {c}\n'.format(c=str(self.insn_count))
         returnStr += 'blocks: {b}\n'.format(b=str(self.blocks_count))
         returnStr += 'ratio: {:.2f}\n'.format(self.ratio)
+        returnStr += 'func_dist: {:.2f}\n'.format(self.func_dist['func_dist'])
         returnStr += 'calls: {c}\n'.format(c=''.join(str(ca)+' ' for ca in self.calls_arr))
+        returnStr += 'param: {p}\n'.format(p=''.join(pa+' ' for pa in self.param_section))
+        returnStr += 'result: {r}\n'.format(r=self.result_section)
         returnStr += 'profile: {j}\n\n'.format(j=json.dumps(self.profile, sort_keys=True, indent=4))
         # returnStr += 'instructions: \n{i}\n'.format(i=''.join(o+'\n' for o in self.insn_arr))
         return returnStr
