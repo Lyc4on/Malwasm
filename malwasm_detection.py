@@ -63,16 +63,16 @@ driver.quit()
 print("[+] Detection Results: ")
 # Print out all WASM files that were detected
 if len(wasm_arr) == 0:
-    print("\t - No WASM files detected!")
+    print("No WASM files detected!")
 else:
     print("Number of WASM files detected: " + str(len(wasm_arr)))
     print("WASM files detected:")
     for wasm_file in wasm_arr:
         print("- " + wasm_file)
 
-# To-do: Perform analysis
-print("\n[+] Performing analysis")
-print("[+] Analysis Results: ")
+    # To-do: Perform analysis
+    print("\n[+] Performing analysis")
+    print("[+] Analysis Results: ")
 
 # Clean up by deleting Temp folder
 print("\n[+] Cleaning up")
