@@ -98,7 +98,7 @@ def main() -> None:
             mod_obj.profile_module()
             mod_obj.analyse_cfg()
 
-            an_obj.analyse(mod_obj, rule_obj)
+            an_obj.analyse(mod_obj, rule_obj) # Conduct analysis
             # print(rule_obj)
 
 

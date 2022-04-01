@@ -20,23 +20,83 @@ from wasm import (
     INSN_LEAVE_BLOCK,)
 
 class Analysis():
-    buffer_ratio = 0 # Our buffer ratio offset
-    filtered_funcs = [] # Array to store filtered mod_obj functions to analyze
+    buffer_fd = 0.02 # Our buffer offset for function dist
+    filtered_funcs = [] # Store filtered mod_obj functions to analyze
+    rule_func_dist_arr = [] # Store rule's func_dist
+    rule_func_id_arr = [] # Store rule's func_id
+    opcode_arr = ['i32.add', 'i32.and', 'i32.shl', 'i32.shr_u', 'i32.xor'] # For semantic profiling
 
     def __init__(self):
         pass
 
-    def analyse(self, mod_obj, rule_obj):
+    def analyse(self, mod_obj, rule_obj, level=0): # level = how deep to analyse
         """
-        1. Find smallest ratio in rule_obj
-        2. Find all func in mod_obj where ratio >= smallest ratio
-        3. Check filtered_funcs distribution for deep analysis
+        1. Build Rule func_dist_arr and rule_func_id_arr
+        2. Get minimum rule's name & func_dist from Rule obj
+        3. Analyse mod_obj against rule_obj
         """
-        min_rule_dist = min(rf['func_dist'] for rf in rule_obj.profile.values()) # 1.
-        for func in mod_obj.func_objs:
-            if func.ratio >= (min_rule_dist - self.buffer_ratio):
-                self.filtered_funcs.append(func)
-                print(func)       
+        # 1. Extract each rule's func_dist & func_id into rule_func_dist_arr and rule_func_id_arr respectively
+        for rp_key, rp_value in rule_obj.profile.items():
+            self.rule_func_dist_arr.append(rp_value['func_dist'])
+            self.rule_func_id_arr.append(int(rp_key))
+
+        # 2. Get minimum rule's name & func_dist from Rule obj
+        rule_name = rule_obj.name
+        min_func_dist = min(self.rule_func_dist_arr)
+        min_func_id = self.rule_func_dist_arr.index(min_func_dist)
+        # print('min_index: {}\tmin_value: {}'.format(min_func_id, min_func_dist))
+        
+        # 3. Analyse function with higher or equals func_dist than min_func_dist
+        """
+        3.1. Surface level analysis based on func_dist
+        3.2. Deep analysis based on Semantic profile of opcodes
+        """
+        for m_func in mod_obj.func_objs: # Check for each func in mod_obj
+            # 3.1. Surface level - Filter out Module's func >= rule's min_func_dist
+            if m_func.func_dist['func_dist'] >= min_func_dist:   
+
+                # Iterate over each value in rule's func_dist
+                for i in range(len(self.rule_func_dist_arr)):
+                    rule_func_dist = self.rule_func_dist_arr[i]
+                    rule_func_id = self.rule_func_id_arr[i]
+                    s_ub = rule_func_dist + self.buffer_fd # Surface level upper bound
+                    s_lb = rule_func_dist - self.buffer_fd # Surface level lower bound
+
+                    if s_lb < m_func.func_dist['func_dist'] < s_ub: # 3.1. Surface level analysis implementation
+                        m_func_dist = m_func.func_dist['func_dist']
+                        s_similar_perc = m_func_dist/rule_func_dist # Similarity percentage = Module's func_dist / rule_func_dist in 0.XX --> xx%
+                        s_similar_perc = 1.0 if s_similar_perc > 1 else s_similar_perc
+                        print('Quick analysis result:')
+                        print('Module\'s func_{} is {:.0%} similar to {}\'s func_{}\n'.format(
+                            str(m_func.id), s_similar_perc, rule_name, str(rule_func_id)))
+
+                        level = 1 # delete after
+                        if level: # 3.2. Deep level analysis
+                            print('Performing Deep analysis on Module\'s func_{} against {}\'s func_{}'.format(
+                                str(m_func.id), rule_name, str(rule_func_id)))
+
+                            d_similar_perc = 0.0 # Stores total similar perc of opcodes
+
+                            for opcode in self.opcode_arr: # Check each function opcode distribution
+                                m_func_op = m_func.func_dist[opcode] # Current Module's func opcode distribution value
+                                r_func_op = rule_obj.profile[str(rule_func_id)][opcode] # Current Rule's func opcode distribution value
+                                # print(m_func_op, r_func_op)
+
+                                d_ub = r_func_op + self.buffer_fd # Deep level upper bound
+                                d_lb = r_func_op - self.buffer_fd # Deep level lower bound
+
+                                if d_lb < m_func_op < d_ub: # Deep level analysis implementation
+                                    if m_func_op and r_func_op > 0:
+                                        d_similar_perc += m_func_op/r_func_op
+                            
+                            # Average out d_similar_perc
+                            avg_similar_perc = d_similar_perc/len(self.opcode_arr)
+                            
+                            print('Deep analysis result:')
+                            print('Module\'s func_{} is {:.0%} similar to {}\'s func_{}\n'.format(
+                            str(m_func.id), avg_similar_perc, rule_name, str(rule_func_id)))
+
+                        print('{}'.format('='*80)) # Console seperator
 
 class Rule():
     name = ''
