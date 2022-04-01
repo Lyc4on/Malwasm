@@ -25,11 +25,12 @@ class Analysis():
     rule_func_dist_arr = [] # Store rule's func_dist
     rule_func_id_arr = [] # Store rule's func_id
     opcode_arr = ['i32.add', 'i32.and', 'i32.shl', 'i32.shr_u', 'i32.xor'] # For semantic profiling
+    result_str = ''
 
     def __init__(self):
         pass
 
-    def analyse(self, mod_obj, rule_obj, level=0): # level = how deep to analyse
+    def analyse(self, mod_obj, rule_obj, level=1): # level = how deep to analyse
         """
         1. Build Rule func_dist_arr and rule_func_id_arr
         2. Get minimum rule's name & func_dist from Rule obj
@@ -66,14 +67,13 @@ class Analysis():
                         m_func_dist = m_func.func_dist['func_dist']
                         s_similar_perc = m_func_dist/rule_func_dist # Similarity percentage = Module's func_dist / rule_func_dist in 0.XX --> xx%
                         s_similar_perc = 1.0 if s_similar_perc > 1 else s_similar_perc
-                        print('Quick analysis result:')
-                        print('Module\'s func_{} is {:.0%} similar to {}\'s func_{}\n'.format(
-                            str(m_func.id), s_similar_perc, rule_name, str(rule_func_id)))
+                        self.result_str += 'Quick analysis result:\n'
+                        self.result_str += 'Module\'s func_{} is {:.0%} similar to {}\'s func_{}\n\n'.format(
+                            str(m_func.id), s_similar_perc, rule_name, str(rule_func_id))
 
-                        level = 1 # delete after
-                        if level: # 3.2. Deep level analysis
-                            print('Performing Deep analysis on Module\'s func_{} against {}\'s func_{}'.format(
-                                str(m_func.id), rule_name, str(rule_func_id)))
+                        if level == 2: # 3.2. Deep level analysis
+                            self.result_str += 'Performing Deep analysis on Module\'s func_{} against {}\'s func_{}\n'.format(
+                                str(m_func.id), rule_name, str(rule_func_id))
 
                             d_similar_perc = 0.0 # Stores total similar perc of opcodes
 
@@ -92,11 +92,19 @@ class Analysis():
                             # Average out d_similar_perc
                             avg_similar_perc = d_similar_perc/len(self.opcode_arr)
                             
-                            print('Deep analysis result:')
-                            print('Module\'s func_{} is {:.0%} similar to {}\'s func_{}\n'.format(
-                            str(m_func.id), avg_similar_perc, rule_name, str(rule_func_id)))
+                            self.result_str += 'Deep analysis result:\n'
+                            self.result_str += 'Module\'s func_{} is {:.0%} similar to {}\'s func_{}\n\n'.format(
+                            str(m_func.id), avg_similar_perc, rule_name, str(rule_func_id))
 
-                        print('{}'.format('='*80)) # Console seperator
+                        self.result_str += '{}\n'.format('='*80) # Console seperator
+
+    def export_results(self, abs_path):
+        of_str_t = abs_path.split(os.sep)[-1] # Get the ../../<of_str.wasm>
+        of_str_t = of_str_t.split('.')[0] + '_analysis.txt'
+        of_path_t = os.getcwd() + os.sep + of_str_t
+        mod_of_t = open(of_path_t, 'w')
+        mod_of_t.write(self.result_str)
+        mod_of_t.close()
 
 class Rule():
     name = ''

@@ -50,9 +50,12 @@ def main() -> None:
                         action='store_true', 
                         help='disassmble .wasm to wat-like format')
 
-    features.add_argument('-a', '--analyse',
-                          action='store_true',
-                          help='print Functions instructions analytics')
+    # features.add_argument('-a', '--analyse',
+    #                       action='store_true',
+    #                       help='print Functions instructions analytics')
+
+    features.add_argument('-a', '--analyse', nargs='?', default='default', const='1',
+                          help='[ANALYSE] : 1 - surface, 2 - deep | -a [1,2] -f <wasm> module against -r <rule.json>')
                         
     features.add_argument('-gr', '--genRule',
                           action='store_true',
@@ -73,8 +76,6 @@ def main() -> None:
     features.add_argument('-dfg', '--gen-data-flow-graph',
                             action='store_true',    
                           help='generate data-flow-graph with specified function name')
-
-
 
     args = parser.parse_args()
 
@@ -108,6 +109,7 @@ def main() -> None:
 
         # Analyse .wasm against JSON
         if args.analyse:
+            analyse_level = int(args.analyse) if args.analyse == '1' or '2' else 1
             if not args.rule: # Temp check, need to fix in argparse
                 print('specify json rule with -r <filename.json>')
                 return
@@ -122,9 +124,8 @@ def main() -> None:
             mod_obj.profile_module()
             mod_obj.analyse_cfg()
 
-            an_obj.analyse(mod_obj, rule_obj) # Conduct analysis
-            # print(rule_obj)
-
+            an_obj.analyse(mod_obj, rule_obj, analyse_level) # Conduct analysis
+            an_obj.export_results(args.file)
 
         # Implement CG function
         if args.gen_callgraph:
