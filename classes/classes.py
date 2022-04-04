@@ -76,27 +76,45 @@ class Analysis():
                                 str(m_func.id), rule_name, str(rule_func_id))
 
                             d_similar_perc = 0.0 # Stores total similar perc of opcodes
+                            len_opcode_arr = len(self.opcode_arr) # Get len of opcode_arr
 
                             for opcode in self.opcode_arr: # Check each function opcode distribution
                                 m_func_op = m_func.func_dist[opcode] # Current Module's func opcode distribution value
                                 r_func_op = rule_obj.profile[str(rule_func_id)][opcode] # Current Rule's func opcode distribution value
-                                # print(m_func_op, r_func_op)
+                                
+                                print(m_func_op, r_func_op)
 
                                 d_ub = r_func_op + self.buffer_fd # Deep level upper bound
                                 d_lb = r_func_op - self.buffer_fd # Deep level lower bound
 
                                 if d_lb < m_func_op < d_ub: # Deep level analysis implementation
-                                    if m_func_op and r_func_op > 0:
-                                        d_similar_perc += m_func_op/r_func_op
+                                    if m_func_op == 0 and r_func_op == 0: # if both 0 then 100% match
+                                        len_opcode_arr -= 1
+                                    # Prevent division by 0
+                                    elif (m_func_op > 0 and r_func_op <= 0) or (m_func_op <= 0 and r_func_op > 0):
+                                        continue
+                                    else: # Ensure smaller value/larger value or same/same
+                                        if m_func_op >= r_func_op:
+                                            d_similar_perc += r_func_op/m_func_op
+                                        elif m_func_op <= r_func_op:
+                                            d_similar_perc += m_func_op/r_func_op           
                             
                             # Average out d_similar_perc
-                            avg_similar_perc = d_similar_perc/len(self.opcode_arr)
+                            avg_similar_perc = d_similar_perc/len_opcode_arr
+                            avg_similar_perc = avg_similar_perc if avg_similar_perc <= 1 else 1 # Upper bound to 1
+                            # print('len: {}'.format(len_opcode_arr))
+                            # print('{} = {}/{}'.format(avg_similar_perc, d_similar_perc, len_opcode_arr))
                             
+                            # print('Deep analysis result:')
+                            # print('Module\'s func_{} is {:.0%} similar to {}\'s func_{}\n'.format(
+                            # str(m_func.id), avg_similar_perc, rule_name, str(rule_func_id)))
+
                             self.result_str += 'Deep analysis result:\n'
                             self.result_str += 'Module\'s func_{} is {:.0%} similar to {}\'s func_{}\n\n'.format(
                             str(m_func.id), avg_similar_perc, rule_name, str(rule_func_id))
 
                         self.result_str += '{}\n'.format('='*80) # Console seperator
+                        print('{}\n'.format('='*80)) # Console seperator
 
     def export_results(self, abs_path):
         of_str_t = abs_path.split(os.sep)[-1] # Get the ../../<of_str.wasm>
