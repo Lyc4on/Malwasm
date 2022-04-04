@@ -54,7 +54,7 @@ def main() -> None:
     #                       action='store_true',
     #                       help='print Functions instructions analytics')
 
-    features.add_argument('-a', '--analyse', nargs='?', default='default', const='1',
+    features.add_argument('-a', '--analyse', nargs='?', default=None, const='1',
                           help='[ANALYSE] : 1 - surface, 2 - deep | -a [1,2] -f <wasm> module against -r <rule.json>')
                         
     features.add_argument('-gr', '--genRule',
