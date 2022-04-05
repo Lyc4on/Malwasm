@@ -40,7 +40,7 @@ ascii_banner = pyfiglet.figlet_format("Malwasm")
 print(ascii_banner)
 
 # Get absolute path to Temp directory
-working_directory = os.getcwd() + "/Temp/"
+working_directory = os.getcwd() + os.sep + "Temp" + os.sep
 wasm_arr = []
 
 print("[+] Detecting WASM files in " + args.URL)

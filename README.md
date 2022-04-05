@@ -4,7 +4,6 @@ Malwasm is a command-line tool that detects the usage of WASM in websites and pe
 
 ## Requirements
 - Python 3
-- Linux Environment
 - Google Chrome 
 
 ## Command-Line Usage
