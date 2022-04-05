@@ -52,6 +52,8 @@ class Analysis():
         3.1. Surface level analysis based on func_dist
         3.2. Deep analysis based on Semantic profile of opcodes
         """
+        self.result_str += ('{:15}{:15}{:15}{:15}\n'.format('Module', 'Rule', 'Quick', 'Deep'))
+        self.result_str += ('{}\n'.format('-'*60))
         for m_func in mod_obj.func_objs: # Check for each func in mod_obj
             # 3.1. Surface level - Filter out Module's func >= rule's min_func_dist
             if m_func.func_dist['func_dist'] >= min_func_dist:   
@@ -60,20 +62,27 @@ class Analysis():
                 for i in range(len(self.rule_func_dist_arr)):
                     rule_func_dist = self.rule_func_dist_arr[i]
                     rule_func_id = self.rule_func_id_arr[i]
-                    s_ub = rule_func_dist + self.buffer_fd # Surface level upper bound
-                    s_lb = rule_func_dist - self.buffer_fd # Surface level lower bound
+                    q_ub = rule_func_dist + self.buffer_fd # Surface level upper bound
+                    q_lb = rule_func_dist - self.buffer_fd # Surface level lower bound
 
-                    if s_lb < m_func.func_dist['func_dist'] < s_ub: # 3.1. Surface level analysis implementation
+                    if q_lb < m_func.func_dist['func_dist'] < q_ub: # 3.1. Surface level analysis implementation
                         m_func_dist = m_func.func_dist['func_dist']
-                        s_similar_perc = m_func_dist/rule_func_dist # Similarity percentage = Module's func_dist / rule_func_dist in 0.XX --> xx%
-                        s_similar_perc = 1.0 if s_similar_perc > 1 else s_similar_perc
-                        self.result_str += 'Quick analysis result:\n'
-                        self.result_str += 'Module\'s func_{} is {:.0%} similar to {}\'s func_{}\n\n'.format(
-                            str(m_func.id), s_similar_perc, rule_name, str(rule_func_id))
+                        q_similar_perc = m_func_dist/rule_func_dist # Similarity percentage = Module's func_dist / rule_func_dist in 0.XX --> xx%
+                        q_similar_perc = 1.0 if q_similar_perc > 1 else q_similar_perc
+                        # self.result_str += 'Quick analysis result:\n'
+                        # self.result_str += 'Module\'s func_{} is {:.0%} similar to {}\'s func_{}\n\n'.format(
+                        #     str(m_func.id), q_similar_perc, rule_name, str(rule_func_id))
+                        
+                        m_func_id_str = 'func_' + str(m_func.id)
+                        r_func_id_str = 'func_' + str(rule_func_id)
+                        q_simi_perc_str = '{:.0%}'.format(q_similar_perc)
+                        
+                        if level == 1:
+                            self.result_str += ('{:15}{:15}{:15}{:15}\n'.format(m_func_id_str, r_func_id_str, q_simi_perc_str, '-'))
 
                         if level == 2: # 3.2. Deep level analysis
-                            self.result_str += 'Performing Deep analysis on Module\'s func_{} against {}\'s func_{}\n'.format(
-                                str(m_func.id), rule_name, str(rule_func_id))
+                            # self.result_str += 'Performing Deep analysis on Module\'s func_{} against {}\'s func_{}\n'.format(
+                            #     str(m_func.id), rule_name, str(rule_func_id))
 
                             d_similar_perc = 0.0 # Stores total similar perc of opcodes
                             len_opcode_arr = len(self.opcode_arr) # Get len of opcode_arr
@@ -109,11 +118,14 @@ class Analysis():
                             # print('Module\'s func_{} is {:.0%} similar to {}\'s func_{}\n'.format(
                             # str(m_func.id), avg_similar_perc, rule_name, str(rule_func_id)))
 
-                            self.result_str += 'Deep analysis result:\n'
-                            self.result_str += 'Module\'s func_{} is {:.0%} similar to {}\'s func_{}\n\n'.format(
-                            str(m_func.id), avg_similar_perc, rule_name, str(rule_func_id))
+                            # self.result_str += 'Deep analysis result:\n'
+                            # self.result_str += 'Module\'s func_{} is {:.0%} similar to {}\'s func_{}\n\n'.format(
+                            # str(m_func.id), avg_similar_perc, rule_name, str(rule_func_id))
 
-                        self.result_str += '{}\n'.format('='*80) # Console seperator
+                            d_simi_perc_str = '{:.0%}'.format(avg_similar_perc)
+                            self.result_str += ('{:15}{:15}{:15}{:15}\n'.format(m_func_id_str, r_func_id_str, q_simi_perc_str, d_simi_perc_str))
+
+                        # self.result_str += '{}\n'.format('='*80) # Console seperator
                         # print('{}\n'.format('='*80)) # Console seperator
 
     def export_results(self, abs_path):

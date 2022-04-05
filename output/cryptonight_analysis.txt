@@ -1,72 +1,11 @@
-Quick analysis result:
-Module's func_31 is 100% similar to cryptonight.wasm's func_31
-
-Performing Deep analysis on Module's func_31 against cryptonight.wasm's func_31
-Deep analysis result:
-Module's func_31 is 100% similar to cryptonight.wasm's func_31
-
-================================================================================
-Quick analysis result:
-Module's func_30 is 100% similar to cryptonight.wasm's func_30
-
-Performing Deep analysis on Module's func_30 against cryptonight.wasm's func_30
-Deep analysis result:
-Module's func_30 is 100% similar to cryptonight.wasm's func_30
-
-================================================================================
-Quick analysis result:
-Module's func_38 is 100% similar to cryptonight.wasm's func_38
-
-Performing Deep analysis on Module's func_38 against cryptonight.wasm's func_38
-Deep analysis result:
-Module's func_38 is 100% similar to cryptonight.wasm's func_38
-
-================================================================================
-Quick analysis result:
-Module's func_38 is 100% similar to cryptonight.wasm's func_39
-
-Performing Deep analysis on Module's func_38 against cryptonight.wasm's func_39
-Deep analysis result:
-Module's func_38 is 99% similar to cryptonight.wasm's func_39
-
-================================================================================
-Quick analysis result:
-Module's func_39 is 97% similar to cryptonight.wasm's func_38
-
-Performing Deep analysis on Module's func_39 against cryptonight.wasm's func_38
-Deep analysis result:
-Module's func_39 is 99% similar to cryptonight.wasm's func_38
-
-================================================================================
-Quick analysis result:
-Module's func_39 is 100% similar to cryptonight.wasm's func_39
-
-Performing Deep analysis on Module's func_39 against cryptonight.wasm's func_39
-Deep analysis result:
-Module's func_39 is 100% similar to cryptonight.wasm's func_39
-
-================================================================================
-Quick analysis result:
-Module's func_39 is 100% similar to cryptonight.wasm's func_32
-
-Performing Deep analysis on Module's func_39 against cryptonight.wasm's func_32
-Deep analysis result:
-Module's func_39 is 0% similar to cryptonight.wasm's func_32
-
-================================================================================
-Quick analysis result:
-Module's func_32 is 97% similar to cryptonight.wasm's func_39
-
-Performing Deep analysis on Module's func_32 against cryptonight.wasm's func_39
-Deep analysis result:
-Module's func_32 is 0% similar to cryptonight.wasm's func_39
-
-================================================================================
-Quick analysis result:
-Module's func_32 is 100% similar to cryptonight.wasm's func_32
-
-Performing Deep analysis on Module's func_32 against cryptonight.wasm's func_32
-Deep analysis result:
-Module's func_32 is 100% similar to cryptonight.wasm's func_32
-
-================================================================================
+Module         Rule           Quick          Deep           
+------------------------------------------------------------
+func_31        func_31        100%           100%           
+func_30        func_30        100%           100%           
+func_38        func_38        100%           100%           
+func_38        func_39        100%           99%            
+func_39        func_38        97%            99%            
+func_39        func_39        100%           100%           
+func_39        func_32        100%           0%             
+func_32        func_39        97%            0%             
+func_32        func_32        100%           100%           

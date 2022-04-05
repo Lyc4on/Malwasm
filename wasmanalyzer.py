@@ -110,24 +110,24 @@ def main() -> None:
                 mod_obj.export_rule_json(args.file)
 
         # Analyse .wasm against JSON
-        # if args.analyse:
-        #     analyse_level = int(args.analyse) if args.analyse == '1' or '2' else 1
-        #     if not args.rule: # Temp check, need to fix in argparse
-        #         print('specify json rule with -r <filename.json>')
-        #         return
+        if args.analyse:
+            analyse_level = int(args.analyse) if args.analyse == '1' or '2' else 1
+            if not args.rule: # Temp check, need to fix in argparse
+                print('specify json rule with -r <filename.json>')
+                return
 
-        #     # Load rule in Rule obj
-        #     with open(args.rule) as rule_raw:
-        #         rule_json = json.load(rule_raw)
-        #         rule_obj.load_json(rule_json)
+            # Load rule in Rule obj
+            with open(args.rule) as rule_raw:
+                rule_json = json.load(rule_raw)
+                rule_obj.load_json(rule_json)
 
-        #     # Disassemble wasm -> profile -> analyse CFG
-        #     mod_obj.disassemble(mod_iter) # disassemble    
-        #     mod_obj.profile_module()
-        #     mod_obj.analyse_cfg()
+            # Disassemble wasm -> profile -> analyse CFG
+            mod_obj.disassemble(mod_iter) # disassemble    
+            mod_obj.profile_module()
+            mod_obj.analyse_cfg()
 
-        #     an_obj.analyse(mod_obj, rule_obj, analyse_level) # Conduct analysis
-        #     an_obj.export_results(args.file)
+            an_obj.analyse(mod_obj, rule_obj, analyse_level) # Conduct analysis
+            an_obj.export_results(args.file)
 
         # Implement CG function
         if args.gen_callgraph:
