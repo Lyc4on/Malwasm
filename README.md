@@ -38,9 +38,18 @@ python3 wasmanalyzer -gr -f cryptonight.wasm
 # Deep analysis [-a 2] (Semantic Profiling) of game.wasm based on cryptonight_rule.json 
 python3 wasmanalyzer -a 2 -f game.wasm -r cryptonight_rule.json
 
-# Insert cfg, dfg, cg
+# Gnerate Call Graph from wasm file 
+python3 wasmanalyzer -cg -f cryptonight.wasm 
 
-# Insert yara
+# Gnerate Control Flow Graph from wasm file 
+python3 wasmanalyzer -cfg -fn <function name> -f cryptonight.wasm 
+
+# Gnerate Data Flow Graph from wasm file 
+python3 wasmanalyzer -dfg -fn <function name> -f cryptonight.wasm 
+
+# Run yara program against wasm file for malicious signature
+# custom rules can be added to resources/yara_rules/ directory and the program will compile the rules
+python3 wasmanalyzer -y -f cryptonight.wasm 
 ```
 
 
@@ -55,10 +64,9 @@ Options:
                 Quick Analysis based on function's total instructions/block count
                 Deep Analysis based on function's semantic profiling
     -r          specify .json rule for analysis
-    -fn         <Insert description>
-    -vt         <Insert description>
-    -y          <Insert description>
-    -cg         <Insert description>
-    -cfg        <Insert description>
-    -dfg        <Insert description>
+    -fn         specify the function name for generation of the control flow and data flow graph
+    -y          specify yara malware detection program to run
+    -cg         generate call graph from specified wasm file
+    -cfg        generate control flow graph from specified wasm file with the specified function name
+    -dfg        generate data flow graph from specified wasm file with the specified function name
 ```

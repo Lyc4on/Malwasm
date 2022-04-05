@@ -26,16 +26,6 @@ from wasm import (
 from logging import getLogger
 logging = getLogger(__name__)
 
-#Retrieve sha256 of file
-# def get_hash(file) -> hex:
-#     sha256_hash = hashlib.sha256()
-#     with open(file,"rb") as f:
-#         for block in iter(lambda: f.read(65536),b""):
-#             sha256_hash.update(block)
-        
-#         return sha256_hash.hexdigest()
-
-
 def main() -> None:
     parser = argparse.ArgumentParser(
         description='Malwasm - WebAssembly Scanner for potential malware')
@@ -63,10 +53,6 @@ def main() -> None:
     features.add_argument('-gr', '--genRule',
                           action='store_true',
                           help='generate JSON rule')
-                        
-    # features.add_argument('-vt', '--vt-api-key',
-    #                       action='store_true',
-    #                       help='enter virustotal API key')
     
     features.add_argument('-y', '--yara-rules',
                             action='store_true',    
@@ -186,16 +172,10 @@ def main() -> None:
 
         # Analyse .wasm against JSON
         if args.analyse:
-<<<<<<< HEAD
-            analyse_level = int(args.analyse) if args.analyse == '1' or '2' else 1
-            if not args.rule: # Temp check, need to fix in argparse
-                print('specify json rule with -r <filename.json>')
-=======
             print('[+] {} Analyzing {}'.format('Quick' if args.analyse == '1' else 'Deep', str(args.file)))
             analyse_level = int(args.analyse) if args.analyse == '1' or '2' else 1
             if not args.rule: # Temp check, need to fix in argparse
                 print('    [!] specify json rule with -r <filename.json>')
->>>>>>> eff43fb67f0e9a52df41408754b45ffed8be7bf8
                 return
 
             # Load rule in Rule obj
@@ -204,14 +184,6 @@ def main() -> None:
                 rule_obj.load_json(rule_json)
 
             # Disassemble wasm -> profile -> analyse CFG
-<<<<<<< HEAD
-            mod_obj.disassemble(mod_iter) # disassemble    
-            mod_obj.profile_module()
-            mod_obj.analyse_cfg()
-
-            an_obj.analyse(mod_obj, rule_obj, analyse_level) # Conduct analysis
-            an_obj.export_results(args.file)
-=======
             print('    Disassembling .wasm...')
             mod_obj.disassemble(mod_iter) # disassemble
             print('    Profiling .wasm...')
@@ -223,70 +195,45 @@ def main() -> None:
             an_obj.analyse(mod_obj, rule_obj, analyse_level) # Conduct analysis
             an_obj.export_results(args.file)
             print('- Anaylsis completed, output saved in Output/ folder')
->>>>>>> eff43fb67f0e9a52df41408754b45ffed8be7bf8
 
-        # Implement CG function
+        # Implementation of Call Graph Function 
         if args.gen_callgraph:
-        # Method 1
-        #     graph = Digraph(filename='wasm_cfg',format='svg')
-        #     for d in mod_obj.called_by:
-        #         graph.node(d, d)
-        #         print(len(mod_obj.called_by[d]))
-        #         if len(mod_obj.called_by[d]) != 0:
-        #             for i in mod_obj.called_by[d]:
-        #                 print(i)
-        #                 graph.edge(d, i)    
-        #     graph.render(directory='Output')
-        # Method 2
-            subprocess.Popen(["./resources/executables/wasp.exe", "callgraph", args.file, "-o","output/graph.dot"], 
-                                stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait()
-            render('dot', 'svg', "output/graph.dot")
+            subprocess.Popen(["./resources/executables/wasp.exe", "callgraph", args.file, "-o","output/graph.dot"],  
+                                stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait() # Run wasp.exe to generate call graph and output to a file
+            render('dot', 'svg', "output/graph.dot") # Convert dot file to svg file  
+            logging.info("call graph is generated as graph.dot in the output directory\n")
 
-        # Implement CFG function
+        # Implementation of Control Flow Graph Function 
         if args.gen_control_flow_graph:
-            if args.func:
+            if args.func: # Check if user supplied a function name 
                 subprocess.Popen(["./resources/executables/wasp.exe", "cfg", "-f", args.func, args.file, "-o","output/{}_cfg.dot".format(args.func)],
-                                    stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait()
-                render('dot', 'svg', "output/{}_cfg.dot".format(args.func))
+                                    stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait() # Run wasp.exe to generate control flow graph and output to a file
+                render('dot', 'svg', "output/{}_cfg.dot".format(args.func)) # Convert dot file to svg file  
+                logging.info("control flow graph is generated as {}_cfg.dot in the output directory\n".format(args.func))
             else: 
                 logging.error('specify function name with the parameter -func <func_name>')
                 sys.exit(1)
         
-        # Implement DFG function
+        # Implementation of Data Flow Graph Function 
         if args.gen_data_flow_graph:
-            if args.func:
+            if args.func: # Check if user supplied a function name f 
                 subprocess.Popen(["./resources/executables/wasp.exe", "dfg", "-f", args.func, args.file, "-o","output/{}_dfg.dot".format(args.func)],
-                                    stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait()
-                render('dot', 'svg', "output/{}_dfg.dot".format(args.func))
+                                    stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait() # Run wasp.exe to generate control flow graph and output to a file
+                render('dot', 'svg', "output/{}_dfg.dot".format(args.func))  # Convert dot file to svg file 
+                logging.info("data flow graph is generated as {}_dfg.dot in the output directory\n".format(args.func))
             else: 
                 logging.error('specify function name with the parameter -func <func_name>')
                 sys.exit(1)
-
-        #Virustotal Function
-        # if args.vt_api_key:
-        #     client = vt.Client(args.vt_api_key)
-        #     with open(args.file, "rb") as f:
-        #         try:
-        #             analysis = client.scan_file(f, wait_for_completion=True)
-        #             assert analysis.status == "completed"
-        #             report = client.get_json(f"/files/{get_hash(args.file)}")
-        #         except vt.error.APIError as e:
-        #             print("Virustotal encounters an error code: {} with error message: {}".format(e.code, e.message))
-        #             client.close()
-        #             sys.exit(1)
-            
-        #     print(report["data"]["attributes"]["last_analysis_stats"]["malicious"])
-        #     client.close()
-
-        #
+        
+        # Implementation of yara malware detection
         if args.yara_rules:
-            filepath_dict = {}
+            filepath_dict = {} # Dictionary to store filepaths
             i = 0
-            for filename in glob.iglob(f'{"resources/yara_rules"}/*.yar'):
-                filepath_dict["rule_file"+str(i)] = filename
+            for filename in glob.iglob(f'{"resources/yara_rules"}/*.yar'): # loop thorough resource/yara_rules directory
+                filepath_dict["rule_file"+str(i)] = filename # Add filepath to dictionary
                 i+=1
-            matches = yara.compile(filepaths=filepath_dict).match(filepath=args.file)
-            print("yara rules that matches": matches)
+            matches = yara.compile(filepaths=filepath_dict).match(filepath=args.file) # Compile yara rules and match against the wasm file
+            print("yara rules that matches: {} \n".format(matches)) 
         
 
 if __name__ == '__main__':
