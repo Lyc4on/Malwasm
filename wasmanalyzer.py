@@ -233,8 +233,8 @@ def main() -> None:
                 filepath_dict["rule_file"+str(i)] = filename # Add filepath to dictionary
                 i+=1
             matches = yara.compile(filepaths=filepath_dict).match(filepath=args.file) # Compile yara rules and match against the wasm file
-            print("[+] Yara rules that matches: {} \n".format(matches)) 
-        
+            print("[+] Yara rules that matches: ")
+            for match in matches: print("... [+] Rule name: {}".format(match))
 
 if __name__ == '__main__':
     main()
