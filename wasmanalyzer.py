@@ -7,6 +7,8 @@ from operator import mod
 from graphviz import Digraph, render
 import hashlib
 import vt
+import yara
+import glob
 import subprocess
 from classes import classes
 from wasm import (
@@ -61,6 +63,10 @@ def main() -> None:
                           action='store_true',
                           help='enter virustotal API key')
     
+    features.add_argument('-y', '--yara-rules',
+                            action='store_true',    
+                          help='enter yara rules file directory path')
+    
     features.add_argument('-cg', '--gen-callgraph',
                           action='store_true',
                           help='generate callgraph')
@@ -104,24 +110,24 @@ def main() -> None:
                 mod_obj.export_rule_json(args.file)
 
         # Analyse .wasm against JSON
-        if args.analyse:
-            analyse_level = int(args.analyse) if args.analyse == '1' or '2' else 1
-            if not args.rule: # Temp check, need to fix in argparse
-                print('specify json rule with -r <filename.json>')
-                return
+        # if args.analyse:
+        #     analyse_level = int(args.analyse) if args.analyse == '1' or '2' else 1
+        #     if not args.rule: # Temp check, need to fix in argparse
+        #         print('specify json rule with -r <filename.json>')
+        #         return
 
-            # Load rule in Rule obj
-            with open(args.rule) as rule_raw:
-                rule_json = json.load(rule_raw)
-                rule_obj.load_json(rule_json)
+        #     # Load rule in Rule obj
+        #     with open(args.rule) as rule_raw:
+        #         rule_json = json.load(rule_raw)
+        #         rule_obj.load_json(rule_json)
 
-            # Disassemble wasm -> profile -> analyse CFG
-            mod_obj.disassemble(mod_iter) # disassemble    
-            mod_obj.profile_module()
-            mod_obj.analyse_cfg()
+        #     # Disassemble wasm -> profile -> analyse CFG
+        #     mod_obj.disassemble(mod_iter) # disassemble    
+        #     mod_obj.profile_module()
+        #     mod_obj.analyse_cfg()
 
-            an_obj.analyse(mod_obj, rule_obj, analyse_level) # Conduct analysis
-            an_obj.export_results(args.file)
+        #     an_obj.analyse(mod_obj, rule_obj, analyse_level) # Conduct analysis
+        #     an_obj.export_results(args.file)
 
         # Implement CG function
         if args.gen_callgraph:
@@ -175,7 +181,16 @@ def main() -> None:
             
             print(report["data"]["attributes"]["last_analysis_stats"]["malicious"])
             client.close()
-    
+
+        if args.yara_rules:
+            filepath_dict = {}
+            i = 0
+            for filename in glob.iglob(f'{"resources/yara_rules"}/*.yar'):
+                filepath_dict["rule_file"+str(i)] = filename
+                i+=1
+            matches = yara.compile(filepaths=filepath_dict).match(filepath=args.file)
+            print(matches)
+        
 
 if __name__ == '__main__':
     main()
