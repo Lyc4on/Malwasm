@@ -24,13 +24,13 @@ from logging import getLogger
 logging = getLogger(__name__)
 
 #Retrieve sha256 of file
-def get_hash(file) -> hex:
-    sha256_hash = hashlib.sha256()
-    with open(file,"rb") as f:
-        for block in iter(lambda: f.read(65536),b""):
-            sha256_hash.update(block)
+# def get_hash(file) -> hex:
+#     sha256_hash = hashlib.sha256()
+#     with open(file,"rb") as f:
+#         for block in iter(lambda: f.read(65536),b""):
+#             sha256_hash.update(block)
         
-        return sha256_hash.hexdigest()
+#         return sha256_hash.hexdigest()
 
 
 def main() -> None:
@@ -63,9 +63,9 @@ def main() -> None:
                           action='store_true',
                           help='generate JSON rule')
                         
-    features.add_argument('-vt', '--vt-api-key',
-                          action='store_true',
-                          help='enter virustotal API key')
+    # features.add_argument('-vt', '--vt-api-key',
+    #                       action='store_true',
+    #                       help='enter virustotal API key')
     
     features.add_argument('-y', '--yara-rules',
                             action='store_true',    
@@ -114,24 +114,24 @@ def main() -> None:
                 mod_obj.export_rule_json(args.file)
 
         # Analyse .wasm against JSON
-        # if args.analyse:
-        #     analyse_level = int(args.analyse) if args.analyse == '1' or '2' else 1
-        #     if not args.rule: # Temp check, need to fix in argparse
-        #         print('specify json rule with -r <filename.json>')
-        #         return
+        if args.analyse:
+            analyse_level = int(args.analyse) if args.analyse == '1' or '2' else 1
+            if not args.rule: # Temp check, need to fix in argparse
+                print('specify json rule with -r <filename.json>')
+                return
 
-        #     # Load rule in Rule obj
-        #     with open(args.rule) as rule_raw:
-        #         rule_json = json.load(rule_raw)
-        #         rule_obj.load_json(rule_json)
+            # Load rule in Rule obj
+            with open(args.rule) as rule_raw:
+                rule_json = json.load(rule_raw)
+                rule_obj.load_json(rule_json)
 
-        #     # Disassemble wasm -> profile -> analyse CFG
-        #     mod_obj.disassemble(mod_iter) # disassemble    
-        #     mod_obj.profile_module()
-        #     mod_obj.analyse_cfg()
+            # Disassemble wasm -> profile -> analyse CFG
+            mod_obj.disassemble(mod_iter) # disassemble    
+            mod_obj.profile_module()
+            mod_obj.analyse_cfg()
 
-        #     an_obj.analyse(mod_obj, rule_obj, analyse_level) # Conduct analysis
-        #     an_obj.export_results(args.file)
+            an_obj.analyse(mod_obj, rule_obj, analyse_level) # Conduct analysis
+            an_obj.export_results(args.file)
 
         # Implement CG function
         if args.gen_callgraph:
@@ -171,21 +171,22 @@ def main() -> None:
                 sys.exit(1)
 
         #Virustotal Function
-        if args.vt_api_key:
-            client = vt.Client(args.vt_api_key)
-            with open(args.file, "rb") as f:
-                try:
-                    analysis = client.scan_file(f, wait_for_completion=True)
-                    assert analysis.status == "completed"
-                    report = client.get_json(f"/files/{get_hash(args.file)}")
-                except vt.error.APIError as e:
-                    print("Virustotal encounters an error code: {} with error message: {}".format(e.code, e.message))
-                    client.close()
-                    sys.exit(1)
+        # if args.vt_api_key:
+        #     client = vt.Client(args.vt_api_key)
+        #     with open(args.file, "rb") as f:
+        #         try:
+        #             analysis = client.scan_file(f, wait_for_completion=True)
+        #             assert analysis.status == "completed"
+        #             report = client.get_json(f"/files/{get_hash(args.file)}")
+        #         except vt.error.APIError as e:
+        #             print("Virustotal encounters an error code: {} with error message: {}".format(e.code, e.message))
+        #             client.close()
+        #             sys.exit(1)
             
-            print(report["data"]["attributes"]["last_analysis_stats"]["malicious"])
-            client.close()
+        #     print(report["data"]["attributes"]["last_analysis_stats"]["malicious"])
+        #     client.close()
 
+        #
         if args.yara_rules:
             filepath_dict = {}
             i = 0
@@ -193,7 +194,7 @@ def main() -> None:
                 filepath_dict["rule_file"+str(i)] = filename
                 i+=1
             matches = yara.compile(filepaths=filepath_dict).match(filepath=args.file)
-            print(matches)
+            print("yara rules that matches": matches)
         
 
 if __name__ == '__main__':
