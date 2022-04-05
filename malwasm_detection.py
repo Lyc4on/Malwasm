@@ -40,7 +40,7 @@ ascii_banner = pyfiglet.figlet_format("Malwasm")
 print(ascii_banner)
 
 # Get absolute path to Temp directory
-working_directory = os.getcwd() + "/Temp/"
+working_directory = os.getcwd() + os.sep + "Temp" + os.sep
 wasm_arr = []
 
 print("[+] Detecting WASM files in " + args.URL)
@@ -59,6 +59,7 @@ for request in driver.requests:
         full_filename = os.path.join(working_directory, filename)
         # Save the .wasm file into Temp folder
         urllib.request.urlretrieve(request.url, filename=full_filename)
+        break
 
 # Close all windows and end driver's process
 driver.quit()
@@ -79,4 +80,4 @@ else:
 
 # Clean up by deleting Temp folder
 print("\n[+] Cleaning up")
-shutil.rmtree(working_directory)
+# shutil.rmtree(working_directory)
