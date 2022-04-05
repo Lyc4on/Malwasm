@@ -5,7 +5,7 @@
 import argparse, sys, os, json, subprocess, time
 from operator import mod
 from graphviz import Digraph, render
-import hashlib, vt, yara, glob
+import glob, yara
 import pyfiglet, shutil, urllib
 from pathlib import Path
 from seleniumwire import webdriver
@@ -23,8 +23,8 @@ from wasm import (
     INSN_ENTER_BLOCK,
     INSN_LEAVE_BLOCK,)
 
-from logging import getLogger
-logging = getLogger(__name__)
+import logging
+log = logging.getLogger("Malwasm")
 
 def main() -> None:
     parser = argparse.ArgumentParser(
@@ -201,7 +201,7 @@ def main() -> None:
             subprocess.Popen(["./resources/executables/wasp.exe", "callgraph", args.file, "-o","output/graph.dot"],  
                                 stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait() # Run wasp.exe to generate call graph and output to a file
             render('dot', 'svg', "output/graph.dot") # Convert dot file to svg file  
-            logging.info("call graph is generated as graph.dot in the output directory\n")
+            print("[+] Call graph is generated as graph.dot in the output directory\n")
 
         # Implementation of Control Flow Graph Function 
         if args.gen_control_flow_graph:
@@ -209,7 +209,7 @@ def main() -> None:
                 subprocess.Popen(["./resources/executables/wasp.exe", "cfg", "-f", args.func, args.file, "-o","output/{}_cfg.dot".format(args.func)],
                                     stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait() # Run wasp.exe to generate control flow graph and output to a file
                 render('dot', 'svg', "output/{}_cfg.dot".format(args.func)) # Convert dot file to svg file  
-                logging.info("control flow graph is generated as {}_cfg.dot in the output directory\n".format(args.func))
+                print("[+] Control flow graph is generated as {}_cfg.dot in the output directory\n".format(args.func))
             else: 
                 logging.error('specify function name with the parameter -func <func_name>')
                 sys.exit(1)
@@ -220,7 +220,7 @@ def main() -> None:
                 subprocess.Popen(["./resources/executables/wasp.exe", "dfg", "-f", args.func, args.file, "-o","output/{}_dfg.dot".format(args.func)],
                                     stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT).wait() # Run wasp.exe to generate control flow graph and output to a file
                 render('dot', 'svg', "output/{}_dfg.dot".format(args.func))  # Convert dot file to svg file 
-                logging.info("data flow graph is generated as {}_dfg.dot in the output directory\n".format(args.func))
+                print("[+] Data flow graph is generated as {}_dfg.dot in the output directory\n".format(args.func))
             else: 
                 logging.error('specify function name with the parameter -func <func_name>')
                 sys.exit(1)
@@ -233,7 +233,7 @@ def main() -> None:
                 filepath_dict["rule_file"+str(i)] = filename # Add filepath to dictionary
                 i+=1
             matches = yara.compile(filepaths=filepath_dict).match(filepath=args.file) # Compile yara rules and match against the wasm file
-            print("yara rules that matches: {} \n".format(matches)) 
+            print("[+] Yara rules that matches: {} \n".format(matches)) 
         
 
 if __name__ == '__main__':
