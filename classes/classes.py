@@ -82,7 +82,7 @@ class Analysis():
                                 m_func_op = m_func.func_dist[opcode] # Current Module's func opcode distribution value
                                 r_func_op = rule_obj.profile[str(rule_func_id)][opcode] # Current Rule's func opcode distribution value
                                 
-                                print(m_func_op, r_func_op)
+                                # print(m_func_op, r_func_op)
 
                                 d_ub = r_func_op + self.buffer_fd # Deep level upper bound
                                 d_lb = r_func_op - self.buffer_fd # Deep level lower bound
@@ -114,12 +114,12 @@ class Analysis():
                             str(m_func.id), avg_similar_perc, rule_name, str(rule_func_id))
 
                         self.result_str += '{}\n'.format('='*80) # Console seperator
-                        print('{}\n'.format('='*80)) # Console seperator
+                        # print('{}\n'.format('='*80)) # Console seperator
 
     def export_results(self, abs_path):
         of_str_t = abs_path.split(os.sep)[-1] # Get the ../../<of_str.wasm>
         of_str_t = of_str_t.split('.')[0] + '_analysis.txt'
-        of_path_t = os.getcwd() + os.sep + of_str_t
+        of_path_t = os.getcwd() + os.sep + 'Output' + os.sep + of_str_t
         mod_of_t = open(of_path_t, 'w')
         mod_of_t.write(self.result_str)
         mod_of_t.close()
@@ -235,7 +235,7 @@ class Module():
     def export_dis_txt(self, abs_path):
         of_str_t = abs_path.split(os.sep)[-1] # Get the ../../<of_str.wasm>
         of_str_t = of_str_t.split('.')[0] + '_dis.txt'
-        of_path_t = os.getcwd() + os.sep + of_str_t
+        of_path_t = os.getcwd() + os.sep + 'Output' + os.sep + of_str_t
         mod_of_t = open(of_path_t, 'w')
         mod_of_t.write(str(self))
         mod_of_t.close()
@@ -243,7 +243,7 @@ class Module():
     def export_dis_wat(self, abs_path):
         of_str_w = abs_path.split(os.sep)[-1] # Get the ../../<of_str.wasm>
         of_str_w = of_str_w.split('.')[0] + '_dis.wat'
-        of_path_w = os.getcwd() + os.sep + of_str_w
+        of_path_w = os.getcwd() + os.sep + 'Output' + os.sep + of_str_w
         mod_of_w = open(of_path_w, 'w')
         mod_of_w.write(self.get_wat())
         mod_of_w.close()
@@ -251,7 +251,7 @@ class Module():
     def export_rule_json(self, abs_path):
         tmp_name = of_str = abs_path.split(os.sep)[-1] # Get the ../../<of_str.wasm>
         of_str = of_str.split('.')[0] + '_rule.json'
-        of_path = os.getcwd() + os.sep + of_str
+        of_path = os.getcwd() + os.sep + 'Output' + os.sep + of_str
         with open(of_path, "w") as write_file:
             json_to_write = self.generate_rule(tmp_name)
             json.dump(json_to_write, write_file, indent=2)

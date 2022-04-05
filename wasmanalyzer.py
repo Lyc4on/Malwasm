@@ -50,10 +50,6 @@ def main() -> None:
                         action='store_true', 
                         help='disassmble .wasm to wat-like format')
 
-    # features.add_argument('-a', '--analyse',
-    #                       action='store_true',
-    #                       help='print Functions instructions analytics')
-
     features.add_argument('-a', '--analyse', nargs='?', default=None, const='1',
                           help='[ANALYSE] : 1 - surface, 2 - deep | -a [1,2] -f <wasm> module against -r <rule.json>')
                         
