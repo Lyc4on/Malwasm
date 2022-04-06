@@ -127,6 +127,7 @@ class Analysis():
 
                         # self.result_str += '{}\n'.format('='*80) # Console seperator
                         # print('{}\n'.format('='*80)) # Console seperator
+        print(self.result_str)
 
     def export_results(self, abs_path):
         of_str_t = abs_path.split(os.sep)[-1] # Get the ../../<of_str.wasm>
