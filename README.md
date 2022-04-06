@@ -74,29 +74,30 @@ Options:
 ```
 
 ## Sample Usage
+Scrape wasm file from URL
 ![](src/01_url.png)
 
-
+Disassebmle wasm file
 ![](src/02_dis.png)
 
-
+Generate semantic profile rule from wasm file
 ![](src/03_gr.png)
 
-
+Quick analysis of wasm file against generated rule
 ![](src/04_a_1.png)
 
-
+Deep analysis of wasm file against generated rule
 ![](src/05_a_2.png)
 
-
+Generate Call Graph of wasm file
 ![](src/06_cg.png)
 
-
+Generate Control Flow Graph of specified function in wasm file
 ![](src/07_cfg.png)
 
-
+Generate Data Flow Graph of specified function in wasm file
 ![](src/08_dfg.png)
 
-
+Scan wasm file againsts YARA rule
 ![](src/09_yara.png)
 
