@@ -85,11 +85,3 @@ else:
         	print('File ' + wasm_file.split('/')[-1] + ' magic matches Web Assembly Binary Format')
         else:
         	print('File ' + wasm_file.split('/')[-1] + ' magic does not match Web Assembly Binary Format')
-
-    
-    
-    print("[+] Analysis Results: ")
-
-# Clean up by deleting Temp folder
-print("\n[+] Cleaning up")
-#shutil.rmtree(working_directory)
