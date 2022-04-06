@@ -130,7 +130,7 @@ def main() -> None:
             print("    Number of WASM files detected: " + str(len(wasm_arr)))
             print("    WASM files detected:")
             for wasm_file in wasm_arr:
-                print("    - " + wasm_file + ':')
+                print("    - " + wasm_file, end=": ")
                 try:
         	        retrievedFile = open(working_directory + wasm_file.split('/')[-1], 'rb')
                 except IOError:
