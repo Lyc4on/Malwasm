@@ -73,6 +73,9 @@ Options:
     -dfg        generate data flow graph from specified wasm file with the specified function name
 ```
 
+## Demo
+https://user-images.githubusercontent.com/56181271/162015233-f190f4c3-54da-4c8a-ab30-740d80edea09.mp4
+
 ## Sample Usage
 Scrape wasm file from URL
 ![](src/01_url.png)
