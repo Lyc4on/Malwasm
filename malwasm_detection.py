@@ -70,13 +70,24 @@ if len(wasm_arr) == 0:
     print("No WASM files detected!")
 else:
     print("Number of WASM files detected: " + str(len(wasm_arr)))
-    print("WASM files detected:")
-    for wasm_file in wasm_arr:
-        print("- " + wasm_file)
-
     # Perform analysis
     print("\n[+] Performing analysis")
+    print("WASM files detected:")
+    for wasm_file in wasm_arr:
+        print(wasm_file)
+        try:
+        	retrievedFile = open(working_directory + wasm_file.split('/')[-1], 'rb')
+        except IOError:
+        	print(wasm_file.split('/')[-1] + "file not found!\n Exiting")
+        	sys.exit(0)
+        if(fileHead.startswith(bytes([0x00, 0x61, 0x73, 0x6D]))):
+        	print('File' + wasm_file.split('/')[-1] + ' Magic matches Web Assembly Binary Format')
+        else:
+        	print('File Magic does not match Web Assembly Binary Format')
+            
     print("[+] Analysis Results: ")
+    
+    
 
 # Clean up by deleting Temp folder
 print("\n[+] Cleaning up")
