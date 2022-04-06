@@ -40,7 +40,7 @@ ascii_banner = pyfiglet.figlet_format("Malwasm")
 print(ascii_banner)
 
 # Get absolute path to Temp directory
-working_directory = os.getcwd() + os.sep + "Temp" + os.sep
+working_directory = os.getcwd() + "/Temp/"
 wasm_arr = []
 
 print("[+] Detecting WASM files in " + args.URL)
@@ -59,7 +59,6 @@ for request in driver.requests:
         full_filename = os.path.join(working_directory, filename)
         # Save the .wasm file into Temp folder
         urllib.request.urlretrieve(request.url, filename=full_filename)
-        break
 
 # Close all windows and end driver's process
 driver.quit()
@@ -73,22 +72,24 @@ else:
     # Perform analysis
     print("\n[+] Performing analysis")
     print("WASM files detected:")
+    
     for wasm_file in wasm_arr:
-        print(wasm_file)
+        print("- " + wasm_file, end=": ")
         try:
         	retrievedFile = open(working_directory + wasm_file.split('/')[-1], 'rb')
         except IOError:
         	print(wasm_file.split('/')[-1] + "file not found!\n Exiting")
         	sys.exit(0)
+        fileHead = retrievedFile.read(4)
         if(fileHead.startswith(bytes([0x00, 0x61, 0x73, 0x6D]))):
-        	print('File' + wasm_file.split('/')[-1] + ' Magic matches Web Assembly Binary Format')
+        	print('File ' + wasm_file.split('/')[-1] + ' magic matches Web Assembly Binary Format')
         else:
-        	print('File Magic does not match Web Assembly Binary Format')
-            
+        	print('File ' + wasm_file.split('/')[-1] + ' magic does not match Web Assembly Binary Format')
+
+    
+    
     print("[+] Analysis Results: ")
-    
-    
 
 # Clean up by deleting Temp folder
 print("\n[+] Cleaning up")
-# shutil.rmtree(working_directory)
+#shutil.rmtree(working_directory)
