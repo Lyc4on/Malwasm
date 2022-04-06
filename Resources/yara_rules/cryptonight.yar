@@ -1,6 +1,6 @@
-rule cryptonight_signatures {
+rule CryptoNight {
    meta:
-      description = "cryptonight detection"
+      description = "CryptoNight malware detection"
       author = "Lycaon"
       date = "2022-04-4"
    strings:
