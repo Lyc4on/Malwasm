@@ -6,8 +6,7 @@ Malwasm is a command-line tool that detects the usage of WASM in websites and pe
 - Python 3
 - Google Chrome 
 
-## Command-Line Usage
-### Installation
+## Installation
 
 ```bash
 git clone https://github.com/Lyc4on/Malwasm.git
@@ -20,7 +19,10 @@ sudo apt install ./google-chrome-stable_current_amd64.deb
 rm google-chrome-stable_current_amd64.deb
 ```
 
-### Usage
+## System Architecture
+![](src/System_Architecture.png)
+
+## Usage
 Run Malwasm using **wasmanalyzer.py**:
 
 ```bash
@@ -70,3 +72,31 @@ Options:
     -cfg        generate control flow graph from specified wasm file with the specified function name
     -dfg        generate data flow graph from specified wasm file with the specified function name
 ```
+
+## Sample Usage
+![](src/01_url.png)
+
+
+![](src/02_dis.png)
+
+
+![](src/03_gr.png)
+
+
+![](src/04_a_1.png)
+
+
+![](src/05_a_2.png)
+
+
+![](src/06_cg.png)
+
+
+![](src/07_cfg.png)
+
+
+![](src/08_dfg.png)
+
+
+![](src/09_yara.png)
+
