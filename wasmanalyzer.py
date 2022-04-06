@@ -2,11 +2,8 @@
 # -*- coding: utf-8 -*-
 # Usage:
 # python3 wasmanalyzer.py -d -f nic_testbench/wasmwat_samples/cryptonight/cryptonight.wasm 
-import argparse, sys, os, json, subprocess, time
-from operator import mod
-from graphviz import Digraph, render
-import glob, yara
-import pyfiglet, shutil, urllib
+import argparse, sys, os, json, subprocess, time, glob, yara, pyfiglet, urllib
+from graphviz import render
 from pathlib import Path
 from seleniumwire import webdriver
 from selenium.webdriver.chrome.options import Options
