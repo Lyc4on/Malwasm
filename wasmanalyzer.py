@@ -130,11 +130,17 @@ def main() -> None:
             print("    Number of WASM files detected: " + str(len(wasm_arr)))
             print("    WASM files detected:")
             for wasm_file in wasm_arr:
-                print("    - " + wasm_file)
-
-        # Clean up by deleting Temp folder
-        print("\n[+] Cleaning up")
-        # shutil.rmtree(working_directory)
+                print("    - " + wasm_file + ':')
+                try:
+        	        retrievedFile = open(working_directory + wasm_file.split('/')[-1], 'rb')
+                except IOError:
+                    print(wasm_file.split('/')[-1] + "file not found!\n Exiting")
+                    sys.exit(0)
+                fileHead = retrievedFile.read(4)
+                if(fileHead.startswith(bytes([0x00, 0x61, 0x73, 0x6D]))):
+                    print('File ' + wasm_file.split('/')[-1] + ' magic matches Web Assembly Binary Format')
+                else:
+                    print('File ' + wasm_file.split('/')[-1] + ' magic does not match Web Assembly Binary Format')
 
     # Process input code
     if args.file:
